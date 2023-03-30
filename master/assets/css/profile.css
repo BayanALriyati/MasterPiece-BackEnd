@@ -1,0 +1,285 @@
+#userProfile{
+  text-align: center;
+  margin-top: 10rem;
+  margin-bottom: 5rem;
+}
+
+.profile-image{
+  border-radius: 50%;
+  width: 20rem;
+  height: 20rem;
+
+}
+#profileCard{
+  width: 150rem;
+  margin: auto;
+  border-radius: 5rem;
+}
+.dashboardCards{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100rem;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+}
+.cardImage{
+  width: 25rem;
+  height: 25rem;
+
+}
+.card{
+  margin-top:6rem;
+  background-color: white;
+}
+.personalDetails,.address{
+  margin-top: 5rem;
+}
+#profileImageParent{
+  text-align: center;
+}
+ul{
+  list-style: none;
+}
+.btn{
+margin-top:3rem;
+}
+
+@media (max-width:1300px){
+  #profileCard {
+     width: 92rem;
+     margin: auto;
+     border-radius: 5rem;
+  }
+  }
+@media (max-width:1024px){
+  #profileCard {
+    width: 94rem;
+    margin: auto;
+    border-radius: 5rem;
+}
+.personalDetails, .address {
+  margin-top: 3rem;
+}
+.dashboardCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 85rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.profile-image{
+  width:150px;
+  height:150px;
+}
+
+}
+
+
+@media (max-width:992px){
+  #profileCard {
+    width: 90rem;
+    margin: auto;
+    border-radius: 5rem;
+}
+.personalDetails, .address {
+  margin-top: 3rem;
+}
+.dashboardCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 85rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.profile-image{
+  width:150px;
+  height:150px;
+}
+
+}
+@media (max-width:768px){
+  #profileCard {
+    width: 82rem;
+    margin: auto;
+    border-radius: 5rem;
+}
+.personalDetails, .address {
+  margin-top: 1rem;
+}
+
+.dashboardCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 75rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cardImage {
+  width: 20rem;
+  height: 20rem;
+}
+
+.profile-image {
+  width: 10rem;
+  height: 10rem;
+}
+.personalHead,.addressHead{
+  font-size: 2rem;
+} 
+}
+
+@media (max-width:576px){
+
+  #profileCard {
+    width: 52rem;
+    margin: auto;
+    border-radius: 5rem;
+}
+  .row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-evenly;
+}
+.col-sm-2 {
+  flex: 0 0 auto;
+  width: 50.666667%;
+}
+
+.cardImage{
+  width:60vw;
+  height:60vw;
+}
+.profile-image {
+  width: 15rem;
+  height: 15rem;
+}
+.personalHead{
+  margin-top:5rem;
+  text-align:center;
+}
+.col-sm-5{
+  margin:auto;
+  display: flex;
+  flex-direction: row;
+    align-content: stretch;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+.addressHead{
+  margin-top:10px;
+  text-align:center;
+}
+.dashboardCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 63rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  align-content: flex-start;
+}
+}
+
+@media (max-width:576px){
+
+  #profileCard {
+    width: 44rem;
+    margin: auto;
+    border-radius: 5rem;
+}
+  .row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-evenly;
+}
+.col-sm-2 {
+  flex: 0 0 auto;
+  width: 50.666667%;
+}
+
+.cardImage{
+  width:60vw;
+  height:60vw;
+}
+.profile-image {
+  width: 15rem;
+  height: 15rem;
+}
+.personalHead{
+  margin-top:5rem;
+  text-align:center;
+}
+.col-sm-5 {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  align-items: baseline;
+}
+.addressHead{
+  margin-top:10px;
+  text-align:center;
+}
+.dashboardCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 52rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  align-content: flex-start;
+}
+}
+@media (max-width:280px){
+#profileCard {
+  width: 30rem;
+  margin: auto;
+  border-radius: 5rem;
+}
+.col-sm-2 {
+  flex: 0 0 auto;
+  width: 40.666667%;
+}
+.profile-image {
+  width: 10rem;
+  height: 10rem;
+}
+.dashboardCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 35rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: flex-start;
+}
+} 
