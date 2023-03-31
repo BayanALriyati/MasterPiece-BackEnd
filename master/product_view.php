@@ -1,13 +1,6 @@
 <?php 
 include_once('includes/header.php');
 include_once('functions/userFunctions.php');
-// session_start() ;
-// if(isset($_SESSION['auth'])){
-
-//     $user_id = $_SESSION['userId'];
-// }else{
-//    $user_id = '';
-// }
 
 ?>
 <?php 

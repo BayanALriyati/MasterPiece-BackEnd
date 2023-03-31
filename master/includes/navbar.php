@@ -19,10 +19,8 @@
 
       <div class="icons">
         
-         <!-- <a href="search.php"><i class="fas fa-search"></i></a>
-         <a href="cart.php"><i class="fas fa-shopping-cart"></i><span></span></a> -->
          <div class="fas fa-search"></div>
-         <div class="fas fa-shopping-cart"></div>
+         <a href="yourCart.php" class="fas fa-shopping-cart"></a>
          <?php 
            if(isset($_SESSION['auth']))
            {
