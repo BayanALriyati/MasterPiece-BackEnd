@@ -520,7 +520,58 @@ else if( isset($_POST['remove-discountProduct'])){
 //    VALUES ( '$productId' , '$product_name' , '$product_price','$product_image' , '$product_qty')";
 //    $send_to_cart = mysqli_query($con , $send_to_cart) ;
 // }
+else if(isset($_POST['submit'])){
+   if(isset($_SESSION['auth']))
+   {
+   $user_id= $_SESSION['auth_user']['user_id'];
+   $name = $_POST['name'];
+   $email = $_POST['email'];
+   $city = $_POST['city'];
+   $image = $_FILES['image']['name'];
+   $image_size = $_FILES['image']['size'];
+   $image_tmp_name = $_FILES['image']['tmp_name'];
+   $image_folder = '../Uploads/'.$image; 
+   // $old_image = $_POST['old_image'];  
 
+   // if($new_image != ""){
+   //    $update_image = $new_image ;
+   // }
+   // else
+   // {
+   //     $update_image = $old_image ;
+   // }
+   $update_profile = $conn->prepare("UPDATE `users` SET name = ?, email = ? ,image = ?,city = ? WHERE User_id = ?");
+   $update_profile->execute([$name, $email, $image ,$city, $user_id ]);
+
+   $empty_pass = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
+   $prev_pass = $_POST['prev_pass'];
+   $old_pass = $_POST['old_pass'];
+   $new_pass = $_POST['new_pass'];
+   $cpass = $_POST['cpass'];
+
+   if($old_pass == $empty_pass){
+      $message[] = 'please enter old password!';
+   }elseif($old_pass != $prev_pass){
+      $message[] = 'old password not matched!';
+   }elseif($new_pass != $cpass){
+      $message[] = 'confirm password not matched!';
+   }else{
+      if($new_pass != $empty_pass){
+         $update_admin_pass = $conn->prepare("UPDATE `users` SET password = ? WHERE User_id = ?");
+         $update_admin_pass->execute([$cpass, $user_id]);
+         $message[] = 'password updated successfully!';
+      }else{
+         $message[] = 'please enter a new password!';
+      }
+   }
+   
+} 
+}
+else
+{
+    $_SESSION ['message']="Don't found";
+    header('Location: ../login.php');
+}
 
 
 ?>

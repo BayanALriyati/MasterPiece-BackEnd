@@ -8,18 +8,16 @@ if (isset($_POST['register'])){
     $username=  $_POST['name'];
     $email=  $_POST['email'];
     $password=  $_POST['password'];
-    // $hashedPass = sha1($password);
-    // $password = password_hash($password, PASSWORD_DEFAULT);
+  
     $cPassword= $_POST['cPassword'];
-    // $cPassword = password_hash($password, PASSWORD_DEFAULT);
-    // $hashedPass = sha1($cPassword);
-    $image = $_FILES['image']['name'];
-    $image_size = $_FILES['image']['size'];
-    $image_tmp_name = $_FILES['image']['tmp_name'];
-    $image_folder = './Uploads/'.$image;
+   
+    // $password = sha1($_POST['password']);
+    // $password =htmlspecialchars($password, ENT_QUOTES);
+    // $cPassword = sha1($_POST['cPassword']);
+    // $cPassword = htmlspecialchars($cPassword, ENT_QUOTES);
    
     // Check if email already registered 
-    $check_email_query="SELECT email FROM users WHERE email='$email' ";
+    $check_email_query="SELECT email FROM users WHERE email='$email'";
     $check_email_run=mysqli_query($con,$check_email_query);
     
     if(mysqli_num_rows($check_email_run)> 0)
@@ -32,12 +30,11 @@ if (isset($_POST['register'])){
             if($password === $cPassword)
             {
                 //Insert user data 
-                $register_query = "INSERT INTO users (name,email,password,image) VALUE ('$username','$email','$password','$image')";
+                $register_query = "INSERT INTO users (name,email,password) VALUE ('$username','$email','$password')";
                 $register_query_run=mysqli_query($con,$register_query);
                 
                 if($register_query_run)
                 {
-                    move_uploaded_file($image_tmp_name , $image_folder);
                     redirect("../login.php","Register Successfully");
                     // $_SESSION ['message']="Register Successfully";
                     // header('Location: ../login.php');
@@ -74,16 +71,20 @@ if(mysqli_num_rows($login_query_run) > 0)
 
         $userId = $userLogin['User_id'];
         $userName = $userLogin['name'];
+        $password = $userLogin['password'];
         $userEmail = $userLogin['email'];
-        $image = $userLogin['image'];
+        
+        // $image = $userLogin['image'];
 
         $Role = $userLogin['role'];
 
         $_SESSION ['auth_user'] = [
               'user_id'=> $userId ,
               'name'=> $userName ,
+              'password'=> $password,
               'email'=> $userEmail,
-              'image'=> $image 
+              
+            //   'image'=> $image 
 
         ];
 
