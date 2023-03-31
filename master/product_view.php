@@ -43,51 +43,42 @@ if (isset($_GET['product'])){
       </div>
     <div class="right">
         <h1><?= $product['productName']?></h1>
+        <p class="description"><?= $product['description']?></p>
         <?php if ($product['is_discount'] == 1){ ?>
 
-<div class="price">JD <?= $product['price_discount']?> <span>JD<?= $product['price']?></span> </div>
+            <div class="price">JD <?= $product['price_discount']?> <span>JD<?= $product['price']?></span> </div>
 
-<?php } else { ?>
-<div class="price"> JD<?= $product['price']?></div> <?php } ?> 
-        <!-- <div class="price">JD <?= $product['price_discount']?> <span>JD<?= $product['price']?></span> </div> -->
+            <?php } else { ?>
+            <div class="price"> JD<?= $product['price']?></div> <?php } ?> 
 
-        <!-- <div class="price"><?= $product['price_discount']?>JOD<span><?= $product['price']?>JOD</span> </div> -->
       <form class="form-view" action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">
-      <!-- <form class="form-view" method="POST" enctype="multipart/form-data"> -->
-      <!-- <div class="form-view"> -->
-
-      <input type="text" name="product_id" value="<?= $product['product_id']; ?>">
-      <input type="text" name="name" value="<?= $product['productName']; ?>">
+      
+      <input type="hidden" name="product_id" value="<?= $product['product_id']; ?>">
+      <input type="hidden" name="name" value="<?= $product['productName']; ?>">
       <?php 
       if ($product['is_discount'] == 1){
          ?>
-         <input type="text" name="price" value="<?=$product['price_discount'];?>">
+         <input type="hidden" name="price" value="<?=$product['price_discount'];?>">
          <?php
       } else {
          ?>
-         <input type="text" name="price" value="<?=$product['price'];?>">
+         <input type="hidden" name="price" value="<?=$product['price'];?>">
          <?php
       }
       ?>     
-      <input type="text" name="image" value="<?= $product['imageMain']; ?>">
-                  <input type="number" name="qty" class="qty" min="1" max="99"  value="1">
+      <input type="hidden" name="image" value="<?= $product['imageMain']; ?>">
 
-         <!-- <div class="input-group mb-3 ">
+         <div class="input-group mb-3 ">
             <buton type="button" class="input-group-text addCart decrement-btn">-</buton>
-            <input type="text" class="form-control input-qty" name="qty" value="1" disabled>
+            <input type="text" class="form-control input-qty" name="qty" value="1">
             <buton type="button" class="input-group-text addCart increment-btn">+</buton>
-         </div> -->
-         <button class="addCart" name="addTOcart"><i class="fas fa-shopping-cart"></i>Add To Favorite</button>
-
-            <!-- <button class="addCart" name="addTOcarts"><i class="fas fa-shopping-cart"></i>Add To Cart</button> -->
-            
-            <!-- <button type="submit" class="addCart addToCartBtn" value="<?= $product['product_id'];?>"><i class="fas fa-shopping-cart"></i>Add To Cart</button> -->
-            <button class="addCart" name="addTOheart"><i class="fas fa-heart"></i>Add To Favorite</button>
+         </div>
+         <button class="addCart" name="addTOcart"><i class="fas fa-shopping-cart"></i>Add To Cart</button>
+         <button class="addCart" name="addTOheart"><i class="fas fa-heart"></i>Add To Favorite</button>
     </div>
       </form>
-
-            <p><label><?= $product['description']?></label></p>
-            <br>
+            <!-- <p><label><?= $product['description']?></label></p> -->
+            
            
     </div>
 </div>
@@ -96,12 +87,11 @@ if (isset($_GET['product'])){
     <?php
         }
 
-        else
-        {
-            echo "Don't found" ;
+        // else
+        // {
+        //     echo "Don't found" ;
 
-        }
-
+        // }
 }
     else{
         echo "Something Went Wrong";
