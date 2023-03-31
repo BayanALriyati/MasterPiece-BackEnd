@@ -5,22 +5,19 @@ include_once('myfunctions.php');
 
 if (isset($_POST['register'])){
  
-    // $username=  mysqli_real_escape_string($con,$_POST['name']);
     $username=  $_POST['name'];
-
-    // $email=  mysqli_real_escape_string($con,$_POST['email']);
     $email=  $_POST['email'];
-    
-
-    // $password=  mysqli_real_escape_string($con,$_POST['password']);
     $password=  $_POST['password'];
-
-    $hashedPass = sha1($password);
-    // $cPassword= mysqli_real_escape_string($con,$_POST['cPassword']);
+    // $hashedPass = sha1($password);
+    // $password = password_hash($password, PASSWORD_DEFAULT);
     $cPassword= $_POST['cPassword'];
-
-    $hashedPass = sha1($cPassword);
-    
+    // $cPassword = password_hash($password, PASSWORD_DEFAULT);
+    // $hashedPass = sha1($cPassword);
+    $image = $_FILES['image']['name'];
+    $image_size = $_FILES['image']['size'];
+    $image_tmp_name = $_FILES['image']['tmp_name'];
+    $image_folder = './Uploads/'.$image;
+   
     // Check if email already registered 
     $check_email_query="SELECT email FROM users WHERE email='$email' ";
     $check_email_run=mysqli_query($con,$check_email_query);
@@ -35,11 +32,12 @@ if (isset($_POST['register'])){
             if($password === $cPassword)
             {
                 //Insert user data 
-                $register_query = "INSERT INTO users (name,email,password) VALUE ('$username','$email','$password')";
+                $register_query = "INSERT INTO users (name,email,password,image) VALUE ('$username','$email','$password','$image')";
                 $register_query_run=mysqli_query($con,$register_query);
                 
                 if($register_query_run)
                 {
+                    move_uploaded_file($image_tmp_name , $image_folder);
                     redirect("../login.php","Register Successfully");
                     // $_SESSION ['message']="Register Successfully";
                     // header('Location: ../login.php');

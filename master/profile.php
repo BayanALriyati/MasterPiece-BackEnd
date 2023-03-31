@@ -17,27 +17,33 @@ include_once('functions/userFunctions.php');
               alt="profile image"
             ></img>
           </div>
+          <?php 
+           if(isset($_SESSION['auth']))
+           {
+            ?>
           <div class="col-md-5 col-sm-5 personalDetails mx-auto">
-            
             <h3 class="personalHead">Personal Details:</h3>
             <ul>
-              <li>Name:{userObj.userName}</li>
-              <li>email:{userObj.email}</li>
-              <li>gender:{userObj.gender}</li>
-              <li>age:{userObj.age}</li>
+              <li>Name :<?= $_SESSION['auth_user']['name']; ?></li>
+              <li>Email :<?= $_SESSION['auth_user']['email']; ?></li>
+              <li>Gender :</li>
+              <li>Age :</li>
             </ul>
           </div>
           <div class="col-md-4 col-sm-5 address mx-auto">
             <h3 class="addressHead">Address:</h3>
             <ul>
               <li>Street:{userObj.street}</li>
-              <li>Locality:{userObj.locality}</li>
+              <!-- <li>Locality:{userObj.locality}</li> -->
               <li>City:{userObj.city}</li>
               <li>Pincode:{userObj.pincode}</li>
             </ul>
-            
           </div>
+          <?php
+          }
+            ?>
         </div>
+        
       </div>
       <div class="dashboardCards">
         <div class="cartCard">
@@ -57,9 +63,9 @@ include_once('functions/userFunctions.php');
               class="cardImage"
               src="https://img.freepik.com/free-vector/paper-pencil-cartoon-icon-illustration-education-object-icon-concept-isolated-flat-cartoon-style_138676-2137.jpg?size=338&ext=jpg&ga=GA1.2.1633237395.1647423373"
             ></img>
-            <button class="btn btn-warning" onClick={navigateToEditProfile}>
+            <a type="submit" href="updateProfile.php" class="btn btn-warning">
               Edit Profile
-            </button>
+            </a>
           </div>
         </div>
         <div class="logoutCard">
@@ -68,9 +74,9 @@ include_once('functions/userFunctions.php');
               class="cardImage"
               src="https://img.freepik.com/free-vector/man-showing-staircase-senior-woman_74855-10907.jpg?size=626&ext=jpg&ga=GA1.2.1633237395.1647423373"
             ></img>
-            <button class="btn btn-warning" onClick={userLogout}>
+            <a type="submit" href="Logout.php" class="btn btn-warning">
               Logout
-            </button>
+            </a>
           </div>
         </div>
       </div>

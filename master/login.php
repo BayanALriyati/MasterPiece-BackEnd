@@ -19,7 +19,7 @@ include('includes/header.php')
 
   <!-- login form  -->
 
-  <section class="vh-100 mt-5" style="background:url(./images/heading-bg.jpg);">
+  <section class="vh-100 mt-5" style="background:url(assets/images/heading-bg.jpg);">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-lg-12 col-xl-11">
