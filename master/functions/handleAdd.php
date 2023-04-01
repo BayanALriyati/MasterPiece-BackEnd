@@ -1,4 +1,3 @@
-
 <?php
 include_once ('../config/connect.php');
 include_once ('../functions/authCode.php');
@@ -9,13 +8,13 @@ if(isset($_POST['addTOcart'])){
   {
    $user_id = $_SESSION['auth_user']['user_id'];
    $productId = $_POST['product_id'];
-   $product_name = $_POST['name'];
+  //  $product_name = $_POST['name'];
    $product_qty = $_POST['qty'];
-   $product_price = $_POST['price'];
-   $product_image = $_POST['image'];
+  //  $product_price = $_POST['price'];
+  //  $product_image = $_POST['image'];
    
    
-   $sql = "SELECT * FROM `carts` WHERE product_id = '$productId' AND user_id = '$user_id';";
+   $sql = "SELECT * FROM `cart` WHERE product_id = '$productId' AND user_id = '$user_id';";
    $check_cart = mysqli_query($con , $sql) ;
    if(mysqli_num_rows($check_cart) > 0 )
    {      
@@ -23,7 +22,7 @@ if(isset($_POST['addTOcart'])){
 }
 else
 {
-      $sql = "INSERT INTO `carts`(`id`, `user_id`, `product_id`, `name`, `qty`, `price`, `image`) VALUES (NULL,'$user_id','$productId','$product_name','$product_qty','$product_price','$product_image');";
+      $sql = "INSERT INTO `cart`(`id`, `user_id`, `product_id`, `qty`) VALUES (NULL,'$user_id','$productId','$product_qty');";
  
        $send_to_cart = mysqli_query($con , $sql) ;
         if($send_to_cart){
@@ -35,10 +34,10 @@ else
         }
       }
     }
-   else
-   {
-    redirect("../login.php","Login To Continue");
-   }
+    else
+    {
+     redirect("../login.php","Login To Continue");
+    }
 }
 
 else if(isset($_POST['addTOheart'])){
@@ -78,5 +77,3 @@ else
 }
 
 ?>
-
-

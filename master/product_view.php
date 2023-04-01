@@ -43,11 +43,11 @@ if (isset($_GET['product'])){
 
             <?php } else { ?>
             <div class="price"> JD<?= $product['price']?></div> <?php } ?> 
-
+            
       <form class="form-view" action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">
       
       <input type="hidden" name="product_id" value="<?= $product['product_id']; ?>">
-      <input type="hidden" name="name" value="<?= $product['productName']; ?>">
+      <!-- <input type="hidden" name="name" value="<?= $product['productName']; ?>">
       <?php 
       if ($product['is_discount'] == 1){
          ?>
@@ -58,14 +58,16 @@ if (isset($_GET['product'])){
          <input type="hidden" name="price" value="<?=$product['price'];?>">
          <?php
       }
-      ?>     
-      <input type="hidden" name="image" value="<?= $product['imageMain']; ?>">
+      ?>      -->
+      <!-- <input type="hidden" name="image" value="<?= $product['imageMain']; ?>"> -->
+         <!-- <input type="number" name="qty" class="qty" min="1" max="99"  value="1"> -->
 
          <div class="input-group mb-3 ">
             <buton type="button" class="input-group-text addCart decrement-btn">-</buton>
             <input type="text" class="form-control input-qty" name="qty" value="1">
             <buton type="button" class="input-group-text addCart increment-btn">+</buton>
          </div>
+         
          <button class="addCart" name="addTOcart"><i class="fas fa-shopping-cart"></i>Add To Cart</button>
          <button class="addCart" name="addTOheart"><i class="fas fa-heart"></i>Add To Favorite</button>
     </div>

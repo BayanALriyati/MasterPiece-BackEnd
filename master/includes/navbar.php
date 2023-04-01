@@ -1,8 +1,3 @@
-<?php 
-// session_start();
-
-?>
-
 
 <header class="header">
 
@@ -19,18 +14,27 @@
 
       <div class="icons">
         
-         <div class="fas fa-search"></div>
-         <a href="yourCart.php" class="fas fa-shopping-cart"></a>
+         <!-- <div class="fas fa-search"></div>
+         <a href="yourCart.php" class="fas fa-shopping-cart"></a> -->
          <?php 
            if(isset($_SESSION['auth']))
            {
+            // $user_id = $_SESSION['auth_user']['user_id'];
             ?>
-            <!-- <?= $_SESSION['auth_user']['image']; ?> -->
-         <div id="user-btn" class="fas fa-user"></div>
-         <span id="user" style="cursor:default;"><?= $_SESSION['auth_user']['name']; ?></span>
+            <input type="hidden" name="price" value="<?= $_SESSION['auth_user']['user_id'];; ?>">
+
+            <div class="fas fa-search"></div>
+            <a href="yourCart.php" class="fas fa-shopping-cart"></a>
+            <a href="yourCart.php" class="fas fa-heart"></a>
+               <!-- <?= $_SESSION['auth_user']['image']; ?> -->
+            <div id="user-btn" class="fas fa-user"></div>
+            <!-- <span id="user" style="cursor:default;"><?= $_SESSION['auth_user']['name']; ?></span> -->
          <?php
             }else{
          ?>
+            <div class="fas fa-search"></div>
+            <a href="yourCart.php" class="fas fa-shopping-cart"></a>
+            <a href="yourCart.php" class="fas fa-heart"></a>
             <div id="user-btn" class="fas fa-user"></div>
          <?php
           }
@@ -48,6 +52,7 @@
          <!-- <div class="name"><img src="../Uploads/<?= $_SESSION['auth_user']['image']; ?>" alt="logo"></div> -->
          <div class="flex">
             <a href="profile.php" class="btn">profile</a>
+            <p class="name"><?= $_SESSION['auth_user']['name']; ?></p>
             <a href="Logout.php" class="btn">logout</a>
          </div>
          <!-- <p class="account">
@@ -57,7 +62,7 @@
          <?php
             }else{
          ?>
-            <p class="name">please login first!</p>
+            <p class="first">please login first!</p>
             <a href="login.php" class="btn">login</a>
          <?php
           }

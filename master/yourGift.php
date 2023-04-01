@@ -57,13 +57,13 @@ include_once('functions/userFunctions.php');
                                 <div class="box-container">
                                 <?php 
 
-if (isset($_GET['category'])){
-    $category_slug = $_GET['category'];
-    $category_data = getSlugActive("category" , $category_slug);
-    $category = mysqli_fetch_array($category_data);
-    if($category){
-        $category_id = $category['category_id'];
-?>
+    if (isset($_GET['category'])){
+        $category_slug = $_GET['category'];
+        $category_data = getSlugActive("category" , $category_slug);
+        $category = mysqli_fetch_array($category_data);
+        if($category){
+            $category_id = $category['category_id'];
+    ?>
                 
                 <?php
                     
@@ -96,11 +96,11 @@ if (isset($_GET['category'])){
                                         <img src="./uploads/<?= $item['imageMain']?>"  alt="">
 
                                     <div class="icons">
-                                        <form action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">
+                                        <!-- <form action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">
                                             <input type="hidden" name="product_id" value="<?= $item['product_id']; ?>">
                                             <input type="hidden" name="name" value="<?= $item['productName']; ?>">
                                             <?php 
-                                            if ($product['is_discount'] == 1){
+                                            if ($item['is_discount'] == 1){
                                                ?>
                                                <input type="hidden" name="price" value="<?=$item['price_discount'];?>">
                                                <?php
@@ -111,11 +111,11 @@ if (isset($_GET['category'])){
                                             }
                                             ?>     
 
-                                            <input type="hidden" name="image" value="<?= $item['imageMain']; ?>">
-                                            <button type="submit" name="addTOheart" class="fas fa-heart" ></button>
+                                            <input type="hidden" name="image" value="<?= $item['imageMain']; ?>"> -->
+                                            <a type="submit" name="addTOheart" class="fas fa-heart" ></a>
                                             <a href="#" class="cart-btn">add to cart</a>
                                             <a href="product_view.php?product=<?= $item['slug']?>" class="fas fa-share"></a>
-                                        </form>
+                                        <!-- </form> -->
                                     </div>
                                 </div>
                                     <div class="content">

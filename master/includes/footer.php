@@ -200,10 +200,7 @@ e.preventDefault();
 var qty = $('.input-qty').val();
 
 // alert(qty);
-
 // var qty = $(this).closest('.product_data').find('.input-qty').val();
-
-
 
 var value = parseInt(qty, 20); 
 value = isNaN(value)? 0 : value;
@@ -212,10 +209,8 @@ value = isNaN(value)? 0 : value;
 if(value > 1)
 {
    value--;
-
-  //  $(this).closest('.product_data').find('.input-qty').val(value);
   $('.input-qty').val(value);
-
+  // alert(qty);
 }
 
  });
@@ -225,44 +220,36 @@ if(value > 1)
 
     // var qty = $(this).closest('.product-data').find('.input-qty').val();
     var product_id = $(this).val();
-    // alert(qty);
-    $.ajax({
-            method: "POST",
-            url:"../functions/handleCart.php",
-            //  url:"http://localhost/master1/master/functions/handleCart.php",
-             data:{
-              'product_id': product_id,
-              'product_qty': qty,
-              'scope' : "add" ,
-            },
-              success : function (response){
+    alert(product_id);
+    // $.ajax({
+    //         method: "POST",
+    //         url:"./functions/handleAdd.php",
+    //          data:{
+    //           'product_id': product_id,
+    //           'product_qty': qty,
+    //           'scope' : "add" ,
+    //         },
+    //           success : function (response){
                 
-                if(response == 201){
-                  alertify.success ("Product Added TO Cart");
-                  alert ("pppp");
-                  // console.log(response , "pppp");
-
-                }
-                else if (response == 401){
-                  alertify.success ("Login To Continue");
-                  // console.log(response , "qty");
-
-                  alert("qty");
-                }
-                else if (response == 500){
-                  alertify.success ("Something Went Wrong");
-                  // console.log(response , "q/ty");
-
-                  alert("q/ty");
-                }
-                return ;
-                            console.log(response , "222bbb");
-
-
-             }
-            //  console.log(response , "222bbb");
+    //             if(response == 201){
+    //               alertify.success ("Product Added TO Cart");
+    //               // alert ("pppp");
+    //             }
+    //             else if (response == "existing"){
+    //               alertify.success ("Product Already TO Cart");
+    //               // alert("qty");
+    //             }
+    //             else if (response == 401){
+    //               alertify.success ("Login To Continue");
+    //               // alert("qty");
+    //             }
+    //             else if (response == 500){
+    //               alertify.success ("Something Went Wrong");
+    //               // alert("q/ty");
+    //             }
+    //          }
            
-     })
+    //  })
    }) 
 });
 

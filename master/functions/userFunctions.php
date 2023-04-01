@@ -1,5 +1,4 @@
 <?php
-// session_start();
  include ('config/connect.php');
 
 // read data from table
@@ -31,6 +30,13 @@ function getIDActive($table , $id){
 function getAll($table){
     global $con;
     $sql="SELECT *FROM $table";
+    return $sql_run=mysqli_query($con,$sql);
+}
+
+function getCartItems(){
+    global $con;
+    $user_id = $_SESSION['auth_user']['user_id'];
+    $sql = "SELECT * FROM `cart` INNER JOIN `product` ON cart.product_id = product.product_id AND cart.user_id = '$user_id' ORDER BY cart.id DESC";
     return $sql_run=mysqli_query($con,$sql);
 }
 

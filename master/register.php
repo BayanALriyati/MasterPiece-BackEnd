@@ -60,13 +60,15 @@ include('includes/header.php') ;
                       </div>
                     </div>
   
-                    <!-- <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-camera fa-3x mt-5 me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-2">
                         <label class="form-label" for="form3Example4c">Photo</label>
-                        <input type="file" name="image" id="form3Example4c" accept="image/*" class="form-control" required/>
+                        <input type="file" name="image" class="form-control" required>
+
+                        <!-- <input type="file" name="image" id="form3Example4c" class="form-control" required/> -->
                       </div>
-                    </div> -->
+                    </div>
 
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-lock fa-3x mt-5 me-3 fa-fw"></i>

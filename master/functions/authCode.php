@@ -10,6 +10,10 @@ if (isset($_POST['register'])){
     $password=  $_POST['password'];
   
     $cPassword= $_POST['cPassword'];
+    $image = $_FILES['image']['name'];
+    $image_size = $_FILES['image']['size'];
+    $image_tmp_name = $_FILES['image']['tmp_name'];
+    $image_folder = '../Uploads/'.$image;
    
     // $password = sha1($_POST['password']);
     // $password =htmlspecialchars($password, ENT_QUOTES);
@@ -30,11 +34,12 @@ if (isset($_POST['register'])){
             if($password === $cPassword)
             {
                 //Insert user data 
-                $register_query = "INSERT INTO users (name,email,password) VALUE ('$username','$email','$password')";
+                $register_query = "INSERT INTO users (name,password,email,image) VALUE ('$username','$password','$email','$image')";
                 $register_query_run=mysqli_query($con,$register_query);
                 
                 if($register_query_run)
                 {
+                    move_uploaded_file($image_tmp_name , $image_folder);
                     redirect("../login.php","Register Successfully");
                     // $_SESSION ['message']="Register Successfully";
                     // header('Location: ../login.php');
@@ -73,8 +78,7 @@ if(mysqli_num_rows($login_query_run) > 0)
         $userName = $userLogin['name'];
         $password = $userLogin['password'];
         $userEmail = $userLogin['email'];
-        
-        // $image = $userLogin['image'];
+        $image = $userLogin['image'];
 
         $Role = $userLogin['role'];
 
@@ -83,8 +87,7 @@ if(mysqli_num_rows($login_query_run) > 0)
               'name'=> $userName ,
               'password'=> $password,
               'email'=> $userEmail,
-              
-            //   'image'=> $image 
+              'image'=> $image 
 
         ];
 
