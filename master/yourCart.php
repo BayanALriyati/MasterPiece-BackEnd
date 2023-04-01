@@ -51,6 +51,8 @@ if(isset($_SESSION['auth']))
         </td>
         <td>
         <div class="input-group mb-3">
+        <buton type="button" class="input-group-text decrement-btn"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i></buton>
+            <!-- <a href="#" class="btnCart"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i></a> -->
             <buton type="button" class="input-group-text decrement-btn">-</buton>
             <input type="text" class="form-control input-qty" name="qty" value=<?= $item['qty']?>>
             <buton type="button" class="input-group-text increment-btn">+</buton>
