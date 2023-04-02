@@ -51,10 +51,10 @@ include_once('functions/userFunctions.php');
                 
                 <div class="col-lg-9 col-md-9">
                     <div class="row">
-                            <div class="col-lg-12 col-md-12">
+                            <!-- <div class="col-lg-12 col-md-12">
                                 <div class="products">
                             
-                                <div class="box-container">
+                                  <div class="box-container"> -->
                                 <?php 
 
     if (isset($_GET['category'])){
@@ -78,8 +78,8 @@ include_once('functions/userFunctions.php');
 
                     <div class="products">
                     
-                            <div class="box-container">
-                                <div class="box flower">
+                        <div class="box-container">
+                            <div class="box flower">
                                 <?php 
                                     if ($item['is_discount'] == 1){
                                         ?>
@@ -126,11 +126,11 @@ include_once('functions/userFunctions.php');
                                         <?php } else { ?>
                                         <div class="price"> JD<?= $item['price']?></div> <?php } ?> 
                                     </div>
-                                </div>
-                    
                             </div>
+                    
                         </div>
-                        </div>
+                    </div>
+                </div>
                                     <?php
                             }
                         }
@@ -144,9 +144,9 @@ include_once('functions/userFunctions.php');
                     
                 
                     ?>
-                                </div>
+                                <!-- </div>
                             </div> 
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             
@@ -158,9 +158,9 @@ include_once('functions/userFunctions.php');
 
                         <div class="col-lg-9 col-md-9">
                             <div class="row">
-                                <div class="col-lg-12 col-md-12">
+                                <!-- <div class="col-lg-12 col-md-12">
                                     <div class="products">
-                                        <div class="box-container">
+                                        <div class="box-container"> -->
                         <?php
                             }
                         }
@@ -173,12 +173,12 @@ include_once('functions/userFunctions.php');
                             foreach($product as $item)
                             {
                         ?>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="products">
+                <div class="col-lg-4 col-md-6">
+                    <div class="products">
                             
-                            <div class="box-container">
+                        <div class="box-container">
                          
-                                <div class="box flower">
+                            <div class="box flower">
 
                                 <?php 
                                   if ($item['is_discount'] == 1){
@@ -209,10 +209,10 @@ include_once('functions/userFunctions.php');
                                         <?php } else { ?>
                                             <div class="price"> JD<?= $item['price']?></div> <?php } ?> 
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
                                             <!-- <div class="box card">
                                                     <div class="image">
                                                     <img src="./uploads/<?= $item['imageMain']?>" alt="">
@@ -236,11 +236,9 @@ include_once('functions/userFunctions.php');
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                </div>       
-
-
+                     </div>
+                  </div>
+                </div>        
             </div>
         </div>
     </div>

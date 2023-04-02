@@ -15,7 +15,7 @@ include_once ('../config/connect.php') ;
 				<div class="left">
 					<h1>Product</h1>
 				</div>
-				<a href="addusers.php" class="btn-download">
+				<a href="addProduct.php" class="btn-download">
 				<i class="fa-solid fa-plus"></i>
 				<span class="text">Add New Product</span>
 				</a>

@@ -26,18 +26,59 @@ else
  
        $send_to_cart = mysqli_query($con , $sql) ;
         if($send_to_cart){
-         redirect("../yourGift.php","Product Added Successfully");
+         redirect("../yourGift.php" ,"Product Added Successfully");
         }
           else
         {
-           redirect("../index.php","Something went wrong");
+           redirect("../index.php" , "Something went wrong");
         }
       }
     }
     else
     {
-     redirect("../login.php","Login To Continue");
+     redirect("../login.php" , "Login To Continue");
     }
+}
+
+else if(isset($_POST['delete'])){
+  $cart_id = $_POST['cart_id'];
+  $sql = "DELETE FROM `cart` WHERE id = $cart_id";
+  $delete_item = mysqli_query($con , $sql) ;
+  if($delete_item)
+   {
+      redirect("../yourCart.php" , "Item Deleted Successfully");
+   }
+   else{
+      redirect("../yourCart.php" , "Something went wrong");
+   }
+}
+
+else if(isset($_POST['delete_all'])){
+  $user_id = $_POST['user_id'];
+  $sql = "DELETE FROM `cart` WHERE user_id = $user_id";
+  $delete_item = mysqli_query($con , $sql) ;
+  if($delete_item)
+   {
+      redirect("../yourCart.php" , "Items Deleted Successfully");
+   }
+   else{
+      redirect("../yourCart.php" , "Something went wrong");
+   }
+}
+
+else if(isset($_POST['update_qty'])){
+  $cart_id = $_POST['cart_id'];
+  $user_id = $_POST['user_id'];
+  $product_qty = $_POST['qty'];
+  $sql = "UPDATE `cart` SET `qty` = $product_qty WHERE id = $cart_id AND user_id= $user_id ;";
+  $update_item = mysqli_query($con , $sql) ;
+  if($update_item)
+   {
+      redirect("../yourCart.php" , "Item Update Successfully");
+   }
+   else{
+      redirect("../yourCart.php" , "Something went wrong");
+   }
 }
 
 else if(isset($_POST['addTOheart'])){
@@ -53,7 +94,7 @@ else if(isset($_POST['addTOheart'])){
    $check_cart = mysqli_query($con , $sql) ;
    if(mysqli_num_rows($check_cart) > 0 )
    {      
-    redirect("../yourGift.php" , "Your Product Added To Cart!");
+    redirect("../yourGift.php" , "Your Product Added To Favorite!");
 }
 else
 {
@@ -62,7 +103,7 @@ else
      $send_to_cart = mysqli_query($con , $sql) ;
      echo ($sql);
      if($send_to_cart){
-     redirect("../yourGift.php.php","Product Added Successfully");
+        redirect("../yourGift.php","Product Added Successfully");
      }
      else
      {

@@ -20,24 +20,36 @@ include_once('functions/userFunctions.php');
 if(isset($_SESSION['auth']))
 {
 ?>
+
+
   <div class="container cart">
+  
     <table>
+    
       <tr>
+      
         <th>Product</th>
         <th>Quantity</th>
         <th>Subtotal</th>
         <th>Remove</th>
       </tr>
-<?php 
-    $items = getCartItems();
 
-    foreach($items as $item){
-      // echo $item['productName'];
-    
+      <?php 
+$total_price = 0;
+$sub_total = 0;
+$items = getCartItems();
+if(mysqli_num_rows($items)> 0 )
+{
+   foreach($items as $item){
+
 ?>
       <tr>
+      <form action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">  
+
         <td>
-          <div class="cart-info">
+        <div class="cart-info">
+
+            <input type="hidden" name="cart_id" value="<?= $item['id']; ?>">
             <img src="./uploads/<?= $item['imageMain']?>" alt="" />
             <div>
               <p><?= $item['productName']?></p>
@@ -50,101 +62,79 @@ if(isset($_SESSION['auth']))
           </div>
         </td>
         <td>
-        <div class="input-group mb-3">
-        <buton type="button" class="input-group-text decrement-btn"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i></buton>
-            <!-- <a href="#" class="btnCart"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i></a> -->
-            <buton type="button" class="input-group-text decrement-btn">-</buton>
-            <input type="text" class="form-control input-qty" name="qty" value=<?= $item['qty']?>>
-            <buton type="button" class="input-group-text increment-btn">+</buton>
-         </div>
-          <!-- <input type="number" value="1" min="1" /> -->
-        </td>
-        <td>$50.00</td>
-        <td><a href="#" class="btnCart"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i></a></td>
-         </tr>
-       <!-- <tr>
-           <td>
-            <div class="cart-info">
-             <img src="./images/card/card2.jpg" alt="" />
-             <div>
-              <p>Bambi Print Mini Backpack</p>
-              <span>Price: $900.00</span>
-              <br />
-              <a href="#">remove</a>
+        <form action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">  
+
+          <div class="input-group mb-3">
+            <input type="number" name="qty" class="qty" min="1" max="99" value="<?=$item['qty'];?>">
+            <!-- <buton type="button" class="input-group-text decrement-btn">-</buton>
+            <input type="text" class="form-control input-qty" name="qty" value="<?= $item['qty']?>">
+            <buton type="button" class="input-group-text increment-btn">+</buton> -->
+            <input type="hidden" name="cart_id" value="<?= $item['id']; ?>">
+            <input type="hidden" name="user_id" value="<?= $item['user_id']; ?>">
+            <div class="cart-btn">
+            <button type="submit" class="input-group-text cart-btn" name="update_qty"><i class="fa-solid fa-pen"></i></button>
             </div>
           </div>
-          </td>
-          <td><input type="number" value="1" min="1" /></td>
-          <td>$90.00</td>
-      </tr> -->
-<?php 
-    }
-?>
-      <!-- <tr>
+            <!-- <button type="submit" class="btnCart" name="delete" value="<?= $item['id']; ?>" onclick="return confirm('Delete This From Cart?');"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i></button></td>  -->
+        </form>
+         <!-- <div class="cart-btn">
+            <button type="submit" class="input-group-text cart-btn" name="update_qty"><i class="fa-solid fa-pen"></i></button>
+           </div>
+         </div> -->
+        
+        </td>
         <td>
-          <div class="cart-info">
-            <img src="./images/gifts/gift2.jpg" alt="" />
-            <div>
-              <p>Bambi Print Mini Backpack</p>
-              <t>Price: $700.00</t>
-              <br />
-              <a href="#">remove</a>
-            </div>
-          </div>
+         <div class="cart-sub">
+           <?php if ($item['is_discount'] == 1){ ?>
+                  <span>JD<?= $sub_total = ($item['price_discount'] * $item['qty']); ?></span>
+               <?php } else { ?>
+                  <span>JD<?= $sub_total = ($item['price'] * $item['qty']); ?></span>
+                <?php } ?>   
+           </div>          
         </td>
-        <td><input type="number" value="1" min="1" /></td>
-        <td>$60.00</td>
-      </tr>
-      <tr>
+        
         <td>
-          <div class="cart-info">
-            <img src="./images/Chocolate/Chocolate2.jpg" alt="" />
-            <div>
-              <p>Bambi Print Mini Backpack</p>
-              <span>Price: $600.00</span>
-              <br />
-              <a href="#">remove</a>
-            </div>
-          </div>
-        </td>
-        <td><input type="number" value="1" min="1" /></td>
-        <td>$60.00</td>
-      </tr>
-      <tr>
-        <td>
-          <div class="cart-info">
-            <img src="./images/flower/flower1-remove.png" alt="" />
-            <div>
-              <p>Bambi Print Mini Backpack</p>
-              <span>Price: $600.00</span>
-              <br />
-              <a href="#">remove</a>
-            </div>
-          </div>
-        </td>
-        <td><input type="number" value="1" min="1" /></td>
-        <td class="price">$60.00</td>
-      </tr> -->
+        <form action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">  
+            <input type="hidden" name="user_id" value="<?= $item['user_id']; ?>">
+            <button type="submit" class="btnCart" name="delete" value="<?= $item['id']; ?>" onclick="return confirm('Delete This From Cart?');"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i></button></td> 
+        </form> 
+          </tr>
+          <?php 
+       $total_price += $sub_total;
+       }
+      }else{
+        echo '<p class="empty">your cart is empty</p>';
+     }
+      ?>
     </table>      
-    <a href="./yourGift.html" target="_blank" class="btnCart">CONTINUE SHOPPING</a>
+    
+    <!-- <a href="./yourGift.html" target="_blank" class="btnCart">CONTINUE SHOPPING</a> -->
 
     <div class="total-price">
         <div >
       <table class="table">
         <tr>
-          <td>Subtotal</td>
-          <td>$200</td>
-        </tr>
-        <tr>
-          <td>Tax</td>
-          <td>$50</td>
-        </tr>
-        <tr>
-          <td>Total</td>
-          <td>$250</td>
+          <td class="total1">Total</td>
+          <td class="total">
+            <?=
+             $total_price
+            ?>
+            JD
+          </td>
         </tr>
       </table>
+      <div class="total_btn">
+      <form action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">  
+            <input type="hidden" name="user_id" value="<?= $item['user_id']; ?>">
+            <a type="submit" class="btnCart" name="delete_all" onclick="return confirm('Delete This From Cart?');">Delete All Item</a></td> 
+      </form> 
+      <!-- <a href="./functions/handleAdd.php" name="delete_all"  class="btnCart <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from cart?');">delete all item</a> -->
+
+      <!-- <a href="yourGift.php" class="btnCart <?= ($total_price > 1)?'':'disabled'; ?>" target="_blank">Delete All Item</a> -->
+        <!-- <a href="./yourGift.html" target="_blank" class="btnCart">Delete All Item</a> -->
+        <a href="./yourGift.php" target="_blank" class="btnCart">Continue Shopping</a>
         <a href="./Checkout.html" target="_blank" class="btnCart">Proceed To Checkout</a>
+      </div>
     </div>
   </div>
   </div>
