@@ -46,6 +46,7 @@ if (isset($_GET['product'])){
             
       <form class="form-view" action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">
       
+      <input type="hidden" name="description" value="<?= $product['description']; ?>">
       <input type="hidden" name="product_id" value="<?= $product['product_id']; ?>">
       <input type="hidden" name="name" value="<?= $product['productName']; ?>">
       <?php 

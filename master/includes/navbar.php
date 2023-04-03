@@ -25,7 +25,7 @@
 
             <div class="fas fa-search"></div>
             <a href="yourCart.php" class="fas fa-shopping-cart"></a>
-            <a href="yourCart.php" class="fas fa-heart"></a>
+            <a href="yourFavorite.php" class="fas fa-heart"></a>
                <!-- <?= $_SESSION['auth_user']['image']; ?> -->
             <div id="user-btn" class="fas fa-user"></div>
             <!-- <span id="user" style="cursor:default;"><?= $_SESSION['auth_user']['name']; ?></span> -->
@@ -34,7 +34,7 @@
          ?>
             <div class="fas fa-search"></div>
             <a href="yourCart.php" class="fas fa-shopping-cart"></a>
-            <a href="yourCart.php" class="fas fa-heart"></a>
+            <a href="yourFavorite.php" class="fas fa-heart"></a>
             <div id="user-btn" class="fas fa-user"></div>
          <?php
           }
