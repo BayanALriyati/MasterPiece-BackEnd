@@ -40,6 +40,12 @@ function getCartItems(){
     return $sql_run=mysqli_query($con,$sql);
 }
 
+function getAllFavorite($table , $id){
+    global $con;
+    $sql="SELECT *FROM $table ORDER BY $id DESC";
+    return $sql_run=mysqli_query($con,$sql);
+}
+
 function redirect($url,$message)
 {
     $_SESSION ['message'] = $message;
