@@ -27,36 +27,44 @@ if(isset($_SESSION['auth']))
       <?php 
   $total_price = 0;
   $sub_total = 0;
+  $cart_items[] = '';
   $items = getCartItems();
   if(mysqli_num_rows($items)> 0 )
 {
-   foreach($items as $item){
+  while($fetch_cart = mysqli_fetch_array($items)){
+        $cart_items[] = ($fetch_cart['productName'].' ('.$fetch_cart['price'].' x '. $fetch_cart['qty'].') - ');
+        $total_products = implode($cart_items);
+//   if(mysqli_num_rows($items)> 0 )
+// {
+//    foreach($items as $item){
 
 ?>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
-        <img src="./uploads/<?= $item['imageMain']?>" alt="image" width="50" height="50"/>
+        <img src="./uploads/<?= $fetch_cart['imageMain']?>" alt="image" width="50" height="50"/>
           <div>
-            <h6 class="my-5 ms-1 fs-2"><?= $item['productName']?></h6>
+            <h6 class="my-5 ms-1 fs-2"><?= $fetch_cart['productName']?></h6>
             <!-- <small class="text-muted fs-4">Brief description</small> -->
           </div>
-          <?php if ($item['is_discount'] == 1){ ?>
-                <span class="text-center my-5 fs-2">JD <?= $item['price_discount']?></span>
+          <?php if ($fetch_cart['is_discount'] == 1){ ?>
+                <span class="text-center my-5 fs-2">JD <?= $fetch_cart['price_discount']?></span>
                <?php } else { ?>
-                <span class="text-center my-5 fs-2">JD<?= $item['price']?></span> 
+                <span class="text-center my-5 fs-2">JD<?= $fetch_cart['price']?></span> 
           <?php } ?>
-          <span class="text-center my-5 fs-2"><span class="text-center my-5 fs-0" >x</span><?=$item['qty'];?></span>
+          <span class="text-center my-5 fs-2"><span class="text-center my-5 fs-0" >x</span><?=$fetch_cart['qty'];?></span>
 
-          <?php if ($item['is_discount'] == 1){ ?>
-               <input type="hidden" value="<?= $sub_total = ($item['price_discount'] * $item['qty']); ?>">
+          <?php if ($fetch_cart['is_discount'] == 1){ ?>
+               <input type="hidden" value="<?= $sub_total = ($fetch_cart['price_discount'] * $fetch_cart['qty']); ?>">
             <?php } else { ?>
-                <input type="hidden" value="<?= $sub_total = ($item['price'] * $item['qty']); ?>">
-          <?php } ?> 
+                <input type="hidden" value="<?= $sub_total = ($fetch_cart['price'] * $fetch_cart['qty']); ?>">
+          <?php } ?>
           <!-- <span class="text-muted my-3 fs-2">JD12</span> -->
         </li>
         
         <?php 
        $total_price += $sub_total;
+       $total_products;
        }
+      
       }else{
         echo '<p class="empty">your cart is empty</p>';
      }
@@ -71,106 +79,112 @@ if(isset($_SESSION['auth']))
 
 
         
-      
+      <form action="./functions/placeOrder.php" class="needs-validation" method="POST" enctype="multipart/form-data">  
+
       <!-- <form class="card p-3 my-3"> -->
         <div class="input-group">
           <div class="input-group-append card">
-            <button type="submit" class="btn btn-secondary my-3 fs-2">place order</button>
+            <button type="submit" class="btn btn-secondary my-3 fs-2" name="placeOrder">place order</button>
           </div>
         </div>
       <!-- </form> -->
     </div>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
-      <form class="needs-validation" novalidate>
+<!-- <form class="needs-validation" novalidate> -->
+
+      <input type="hidden" name="total_products" value="<?= $total_products; ?>">
+      <input type="hidden" name="total_price" value="<?= $total_price; ?>" value="">
+
         <div class="row">
           <div class="col-md-6 mb-5">
             <label for="firstName" class="fs-4">First name</label>
-            <input type="text"  class="card form-control vh-10" id="firstName" placeholder="" value="" required>
-            <!-- <div class="invalid-feedback">
-              Valid first name is required.
-            </div> -->
+            <input type="text"  class="card form-control vh-10" name="firstName" placeholder="" value="" required>
           </div>
           <div class="col-md-6 mb-5">
             <label for="lastName" class="fs-4">Last name</label>
-            <input type="text" class="card form-control vh-10" id="lastName" placeholder="" value="" required>
-            <!-- <div class="invalid-feedback">
-              Valid last name is required.
-            </div> -->
+            <input type="text" class="card form-control vh-10" name="lastName" placeholder="" value="" required>
           </div>
         </div>
-
-        <!-- <div class="mb-5">
-          <label for="username" class="fs-4">Username</label>
-          <div class="input-group">
-            <input type="text" class="card form-control vh-10" id="username" placeholder="Username" required>
-            <div class="invalid-feedback" style="width: 100%;">
-              Your username is required.
-            </div>
-          </div>
-        </div> -->
 
         <div class="mb-5">
           <label for="email" class="fs-4">Email</label>
-          <input type="email" class="card form-control hvh-10" id="email" placeholder="you@example.com">
-          <div class="invalid-feedback">
-            Please enter a valid email address for shipping updates.
-          </div>
+          <input type="email" class="card form-control hvh-10" name="email" placeholder="you@example.com">
         </div>
 
         <div class="mb-5">
-          <label for="address" class="fs-4">Address</label>
-          <input type="text" class="card form-control vh-10" id="address" placeholder="1234 Main St" required>
-          <div class="invalid-feedback">
-            Please enter your shipping address.
+          <label for="username" class="fs-4">Phone</label>
+          <div class="input-group">
+            <input type="text" class="card form-control vh-10" name="phone" placeholder="0786324604" required>
           </div>
         </div>
-
-        <div class="mb-5">
-          <label for="address2" class="fs-4">Address 2 <span class="text-muted">(Optional)</span></label>
-          <input type="text" class="card form-control vh-10" id="address2" placeholder="Apartment or suite">
-        </div>        
-        <hr class="mb-4">
-
-        <h4 class="mb-5">Payment</h4>
-
-        <div class="d-block my-5">
-          <div class="custom-control custom-radio">
-            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-            <label class="custom-control-label h-100 fs-4" for="credit">Credit card</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label h-100 fs-4" for="debit">pay cash</label>
-          </div>
+      <div class="row">
+      <div class="col-md-3 mb-5">
+          <label for="address" class="fs-4">Flat Number</label>
+          <input type="text" class="card form-control vh-10" name="flat" placeholder="12" required>
         </div>
-        <div class="row">
-          <div class="col-md-6 mb-5">
-            <label for="cc-name" class="fs-4">Name on card</label>
-            <input type="text" class="card form-control vh-10" id="cc-name" placeholder="" required>
-            <small class="text-muted fs-5">Full name as displayed on card</small>
-            <div class="invalid-feedback">
-              Name on card is required
-            </div>
-          </div>
-          <div class="col-md-6 mb-5">
-            <label for="cc-number" class="fs-4">Credit card number</label>
-            <input type="text" class="card form-control vh-10" id="cc-number" placeholder="" required>
-            <div class="invalid-feedback">
-              Credit card number is required
-            </div>
-          </div>
+
+        <div class="col-md-3 mb-5">
+          <label for="address" class="fs-4">Street Name</label>
+          <input type="text" class="card form-control vh-10" name="street" placeholder="Main Street" required>
         </div>
+
+        <div class="col-md-3 mb-5">
+          <label for="address2" class="fs-4">City</label>
+          <input type="text" class="card form-control vh-10" name="city" placeholder="Aqaba">
+        </div>  
+
+        <div class="col-md-3 mb-5">
+          <label for="address2" class="fs-4">Country</label>
+          <input type="text" class="card form-control vh-10" name="country" placeholder="Jordan">
+        </div> 
+    </div>      
         <hr class="mb-4">
         <div class="mb-1">
-          <label for="address" class="fs-4">Date & Time</label>
-          <input type="datetime-local" class="card form-control vh-15 fs-4" id="datetime" placeholder="10-22-1995" required>
-          <div class="invalid-feedback">
-
-            Please enter your gift delivery time.
-          </div>
+          <label for="address" class="fs-4">Gift Delivery Time</label>
+          <input type="datetime-local" class="card form-control vh-15 fs-3" name="time" id="datetime" placeholder="10-22-1995" required>
         </div>
-      </form>
+        <div class="mb-5">
+          <label for="address2" class="fs-4">Letter With Gift</label>
+          <textarea id="letter" class="card form-control vh-10" name="letter" rows="4" cols="50">Write the letter here</textarea>
+        </div> 
+
+        <hr class="mb-4"> 
+        <!-- <div class="col-md-4">
+            <label for="" class="label">Select Method</label>
+             <select name="category" class="form-select">
+              <option selected>Select Method</option>
+                        <option value="methodCredit">Credit card</option>
+                        <option value="methodCash">Pay Cash</option>
+            </select>
+           </div>
+        <div> -->
+        <h4 class="mb-5">Payment</h4>
+        <div class="row">
+        <div class="col-md-6 d-block my-5">
+        <!-- <label for="" class="label">Select Method</label> -->
+             <select name="method" class="form-select method">
+              <option selected>Select Method</option>
+                        <option value="Credit card">Credit card</option>
+                        <option value="Pay Cash">Pay Cash</option>
+            </select>
+          <!-- <div class="custom-control custom-radio" id="credit_card">
+            <input id="credit_card" name="methodCredit" type="radio" checked class="custom-control-input" required>
+            <label id="credit_card" class="custom-control-label h-100 fs-4" for="credit">Credit card</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input id="debit" name="methodCash" type="radio" class="custom-control-input" required>
+            <label class="custom-control-label h-100 fs-4" for="debit">Pay Cash</label>
+          </div> -->
+        </div>
+        <div class="col-md-6 mb-5 credit">
+            <label for="cc-number" class="fs-4">Credit card number</label>
+            <input type="text" class="card form-control vh-10" name="cc-number" placeholder="e.g. 123456" required>
+          </div>
+       </div>
+        <hr class="mb-4">
+        </div>
+
     </div>
   </div>
 </div>

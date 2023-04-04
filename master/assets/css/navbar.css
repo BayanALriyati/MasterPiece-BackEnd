@@ -107,7 +107,7 @@ html::-webkit-scrollbar-thumb{
 
 .header .flex .icons #user{
    font-size: 3rem;
-   text-decoration-line: underline ;
+   text-decoration-line: none ;
    background-color: var(--pink);
 }
 
@@ -115,10 +115,6 @@ html::-webkit-scrollbar-thumb{
    font-size: 3rem;
    text-decoration-line:none ;
    
-}
-
-#menu-btn{
-   display: none;
 }
 
 .header .flex .profile {

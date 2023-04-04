@@ -21,14 +21,14 @@
            {
             // $user_id = $_SESSION['auth_user']['user_id'];
             ?>
-            <input type="hidden" name="price" value="<?= $_SESSION['auth_user']['user_id'];; ?>">
+            <input type="hidden" name="user" value="<?= $_SESSION['auth_user']['user_id'];; ?>">
 
             <div class="fas fa-search"></div>
             <a href="yourCart.php" class="fas fa-shopping-cart"></a>
             <a href="yourFavorite.php" class="fas fa-heart"></a>
                <!-- <?= $_SESSION['auth_user']['image']; ?> -->
             <div id="user-btn" class="fas fa-user"></div>
-            <!-- <span id="user" style="cursor:default;"><?= $_SESSION['auth_user']['name']; ?></span> -->
+            <span id="user" style="cursor:default;"><?= $_SESSION['auth_user']['name']; ?></span>
          <?php
             }else{
          ?>
@@ -39,7 +39,7 @@
          <?php
           }
          ?>
-         <div id="menu-btn" class="fas fa-bars"></div>
+         <!-- <div id="menu-btn" class="fas fa-bars"></div> -->
       </div>
 
       <div class="profile">

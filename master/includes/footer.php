@@ -176,18 +176,33 @@
 });
 </script>
   <script>
-     navbar = document.querySelector('.header .flex .navbar');
+// navbar = document.querySelector('.header .flex .navbar');
 
-document.querySelector('#menu-btn').onclick = () =>{
-   navbar.classList.toggle('active');
-   profile.classList.remove('active');
-}
+// document.querySelector('#menu-btn').onclick = () =>{
+//    navbar.classList.toggle('active');
+//    profile.classList.remove('active');
+// }
 
 profile = document.querySelector('.header .flex .profile');
 
 document.querySelector('#user-btn').onclick = () =>{
    profile.classList.toggle('active');
-   navbar.classList.remove('active');
+  //  navbar.classList.remove('active');
+}
+  </script>
+   <script>
+// navbar = document.querySelector('.header .flex .navbar');
+
+// document.querySelector('#menu-btn').onclick = () =>{
+//    navbar.classList.toggle('active');
+//    profile.classList.remove('active');
+// }
+
+credit = document.querySelector('.credit');
+
+document.querySelector('#credit_card').onclick = () =>{
+  credit.classList.toggle('active');
+  //  navbar.classList.remove('active');
 }
   </script>
   <script>
