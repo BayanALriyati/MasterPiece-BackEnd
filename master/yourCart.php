@@ -3,12 +3,7 @@ include_once('includes/header.php');
 include_once('functions/userFunctions.php');
 
 ?>
-<!-- function getCartItems($table){
-    global $con;
-    $user_id = $_SESSION['auth_user']['user_id'];
-    $sql = "SELECT * FROM `cart` INNER JOIN `product` ON cart.product_id = product.product_id AND cart.user_id = '$user_id' ORDER BY cart.id DESC";
-    return $sql_run=mysqli_query($con,$sql);
-} -->
+
 <div class="heading-main">
     <h3>Your Cart</h3>
     <p><a href="index.php">home </a> <span> / Your Cart</span></p>
@@ -133,7 +128,7 @@ if(mysqli_num_rows($items)> 0 )
       <!-- <a href="yourGift.php" class="btnCart <?= ($total_price > 1)?'':'disabled'; ?>" target="_blank">Delete All Item</a> -->
         <!-- <a href="./yourGift.html" target="_blank" class="btnCart">Delete All Item</a> -->
         <a href="./yourGift.php" target="_blank" class="btnCart">Continue Shopping</a>
-        <a href="./Checkout.html" target="_blank" class="btnCart">Proceed To Checkout</a>
+        <a href="checkout.php" target="_blank" class="btnCart">Proceed To Checkout</a>
       </div>
     </div>
   </div>
@@ -182,57 +177,5 @@ if(mysqli_num_rows($items)> 0 )
    </section>
    
    <!-- icons section ends -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php include('./includes/footer.php') ?>
