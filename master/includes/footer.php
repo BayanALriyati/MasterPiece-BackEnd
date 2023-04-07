@@ -191,18 +191,24 @@ document.querySelector('#user-btn').onclick = () =>{
 }
   </script>
    <script>
-// navbar = document.querySelector('.header .flex .navbar');
+function showInputBox() {
+  var selectBox = document.getElementById("mySelect");
+  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 
-// document.querySelector('#menu-btn').onclick = () =>{
-//    navbar.classList.toggle('active');
-//    profile.classList.remove('active');
-// }
+  if (selectedValue === "Credit") {
+    var inputBox = document.createElement("input");
+    inputBox.type = "text";
+    inputBox.id = "myInputBox";
+    inputBox.class = "myInputBox";
+    inputBox.placeholder = "Enter your text here";
 
-credit = document.querySelector('.credit');
-
-document.querySelector('#credit_card').onclick = () =>{
-  credit.classList.toggle('active');
-  //  navbar.classList.remove('active');
+    var container = document.getElementById("inputBoxContainer");
+    container.innerHTML = "";
+    container.appendChild(inputBox);
+  } else {
+    var container = document.getElementById("inputBoxContainer");
+    container.innerHTML = "";
+  }
 }
   </script>
   <script>
