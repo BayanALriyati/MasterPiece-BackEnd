@@ -79,7 +79,7 @@ if(isset($_SESSION['auth']))
 
 
         
-      <form action="./functions/placeOrder.php" class="needs-validation" method="POST" enctype="multipart/form-data">  
+      <form action="./functions/placeOrder.php" class="needs-validation" method="POST" enctype="multipart/form-data" d>  
 
       <!-- <form class="card p-3 my-3"> -->
         <div class="input-group">
@@ -165,8 +165,8 @@ if(isset($_SESSION['auth']))
         <!-- <label for="" class="label">Select Method</label> -->
              <select name="method" class="form-select method" id="mySelect" onchange="showInputBox()">
               <option selected>Select Method</option>
-                        <option value="Credit">Credit card</option>
-                        <option value="Cash">Pay Cash</option>
+                        <option value="Credit card">Credit card</option>
+                        <option value="Pay Cash">Pay Cash</option>
             </select>
           <!-- <div class="custom-control custom-radio" id="credit_card">
             <input id="credit_card" name="methodCredit" type="radio" checked class="custom-control-input" required>
@@ -176,7 +176,11 @@ if(isset($_SESSION['auth']))
             <input id="debit" name="methodCash" type="radio" class="custom-control-input" required>
             <label class="custom-control-label h-100 fs-4" for="debit">Pay Cash</label>
           </div> -->
-          <div class="credit" id="inputBoxContainer"></div>
+          <!-- class="credit"  -->
+          <div id="inputBoxContainer"></div>
+          <div id="inputBoxExpiryDate"></div>
+          <!-- <div id="inputBoxContainer"></div>
+          <div id="inputBoxContainer"></div> -->
         </div>
         <!-- <div class="col-md-6 mb-5 credit">
           <div id="inputBoxContainer"></div> -->
@@ -186,7 +190,7 @@ if(isset($_SESSION['auth']))
        </div>
         <hr class="mb-4">
         </div>
-
+    </form>
     </div>
   </div>
 </div>

@@ -195,18 +195,42 @@ function showInputBox() {
   var selectBox = document.getElementById("mySelect");
   var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 
-  if (selectedValue === "Credit") {
-    var inputBox = document.createElement("input");
+  if (selectedValue === "Credit card") {
+    var inputBox = document.createElement("input"); 
     inputBox.type = "text";
+    inputBox.name = "card_Number";
     inputBox.id = "myInputBox";
-    inputBox.class = "myInputBox";
-    inputBox.placeholder = "Enter your text here";
+    inputBox.className = "credit"; 
+    inputBox.placeholder = "Enter your Number here";
 
-    var container = document.getElementById("inputBoxContainer");
+    var container = document.getElementById("inputBoxNumber");
+    container.innerHTML = "";
+    container.appendChild(inputBox);
+
+  } else {
+    var container = document.getElementById("inputBoxNumber");
+    container.innerHTML = "";
+  }
+}
+  </script>
+  <script>
+function showInputBox() {
+  var selectBox = document.getElementById("mySelect");
+  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+  if (selectedValue === "Credit card") {
+    var inputBox = document.createElement("input"); 
+    inputBox.type = "text";
+    inputBox.name = "card_Number";
+    inputBox.id = "myInputBox";
+    inputBox.className = "credit"; 
+    inputBox.placeholder = "Enter your Expiry Date here";
+
+    var container = document.getElementById("inputBoxExpiryDate");
     container.innerHTML = "";
     container.appendChild(inputBox);
   } else {
-    var container = document.getElementById("inputBoxContainer");
+    var container = document.getElementById("inputBoxExpiryDate");
     container.innerHTML = "";
   }
 }

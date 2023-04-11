@@ -661,14 +661,16 @@ section{
 }
 
 .credit{
-   background-color: var(--dark-color);
-   max-width: 110rem;
-   margin-top: 0rem;
-   padding: 1rem;
+   background-color: var(--white);
+   width: 100%;
+   margin-top: 2rem;
+   padding: 2rem;
    top: 2rem;
    margin-bottom: 3rem;
    border: var(--border);
    box-shadow: var(--box-shadow);
+   display:none;
+
 }
 /* .credit{
    display: none;
