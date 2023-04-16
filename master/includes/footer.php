@@ -213,7 +213,7 @@ function showInputBox() {
   }
 }
   </script>
-  <script>
+  <!-- <script>
 function showInputBox() {
   var selectBox = document.getElementById("mySelect");
   var selectedValue = selectBox.options[selectBox.selectedIndex].value;
@@ -234,7 +234,7 @@ function showInputBox() {
     container.innerHTML = "";
   }
 }
-  </script>
+  </script> -->
   <script>
 $(document).ready(function(){
 

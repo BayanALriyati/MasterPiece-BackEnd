@@ -7,6 +7,8 @@ if(isset($_SESSION['auth'])){
     $user_id = '';
     header('location:user_login.php');
  };
+
+
  
 if(isset($_POST['placeOrder'])){
 //     if(isset($_SESSION['auth']))
@@ -25,37 +27,65 @@ if(isset($_POST['placeOrder'])){
    $letter = $_POST['letter'];
    $letter = filter_var($letter, FILTER_SANITIZE_STRING);
    $pay_method = $_POST['method'];
-   $card_Number = $_POST['card_Number'];
+  //  $card_Number = $_POST['card_Number'];, `card_Number` '$card_Number',
    $total_products = $_POST['total_products'];
    $total_price = $_POST['total_price'];
    date_default_timezone_set("Asia/Amman");
    $order_time = date("Y:m:d h:i:sa"); 
+
+   $sql ="SELECT * FROM `users` WHERE User_id  = '$user_id'";
+   $check_user = mysqli_query($con , $sql) ;
+   if(mysqli_num_rows($check_user) > 0 ){
+    while($fetch_users = mysqli_fetch_array($check_user)){
+         $NameUser=$fetch_users['name'];
+      }}
+    
    
    $sql = "SELECT * FROM `cart` WHERE user_id = '$user_id';";
    $check_cart = mysqli_query($con , $sql) ;
    if(mysqli_num_rows($check_cart) > 0 )
    {      
-    $sql = "INSERT INTO `orders`(`order_id`, `user_id`, `fullName`, `email`, `phone`, `delivery_time`, `letter`, `location`, `pay_method`, `card_Number` ,`total_products`, `total_price`, `order_time`) VALUES (NULL,'$user_id','$fullName','$email','$phone','$delivery_time','$letter','$location','$pay_method','$card_Number','$total_products','$total_price','$order_time');";
+    $sql = "INSERT INTO `orders`(`order_id`, `user_id`, `fullName`, `email`, `phone`, `delivery_time`, `letter`, `location`, `pay_method`,`total_products`, `total_price`, `order_time`) VALUES (NULL,'$user_id','$fullName','$email','$phone','$delivery_time','$letter','$location','$pay_method','$total_products','$total_price','$order_time');";
     $check_cart = mysqli_query($con , $sql) ;
-    redirect("../yourCart.php" , "Place Order Successfully");
-}
-else
-{
-    redirect("../index.php" , "Error");
-    //   $sql = "INSERT INTO `cart`(`id`, `user_id`, `product_id`, `qty`) VALUES (NULL,'$user_id','$productId','$product_qty');";
- 
-    //    $send_to_cart = mysqli_query($con , $sql) ;
-    //     if($send_to_cart){
-    //      redirect("../yourGift.php" ,"Product Added Successfully");
-    //     }
-    //       else
-    //     {
-    //        redirect("../index.php" , "Something went wrong");
-    //     }
-      }
-    // }
-    // else
-    // {
-    //  redirect("../login.php" , "Login To Continue");
-    // }
+    // redirect("../yourCart.php" , "Place Order Successfully");
+    $sql = "SELECT * FROM `orders` ORDER BY order_id DESC LIMIT 1;";
+    $check_order = mysqli_query($con , $sql);
+    if(mysqli_num_rows($check_order)> 0){                                                             
+      while($fetch_order_to_details = mysqli_fetch_array($check_order)){
+        $last_id = $fetch_order_to_details['order_id'];
+        $_SESSION['last_order']= $last_id;
+
+      // echo  $_SESSION['last_order'] ;
+      } }
+      $sql="SELECT product.product_id,product.productName,product.price,product.is_discount,product.price_discount,cart.qty FROM product INNER JOIN cart ON product.product_id=cart.product_id WHERE cart.user_id=$user_id";
+      $check_orderDetails = mysqli_query($con , $sql) ;
+      if(mysqli_num_rows($check_orderDetails) > 0)
+        {
+          $data = mysqli_fetch_all($check_orderDetails);
+          print_r ($data) ;
+          foreach ($data as $value) {
+            $product_id = $value["product_id"];
+            echo $product_id ;
+            if($value["is_discount"]==1){
+               $price = $value["price"];
+            } else{
+               $price = $value["price_discount"];
+            }
+        
+            $quantity = $value["qty"];
+            $nameProduct = $value["productName"];
+
+         $sql = "INSERT INTO order_details (order_id, product_id, quantity, price,NameProduct,NameUser) 
+         VALUES ('$last_id', '$product_id', '$quantity', '$price','$nameProduct','$fullName')";
+         $insert_orderDetails = mysqli_query($con , $sql) ;
+
+          }
+        }
+        // redirect("../yourCart.php" , "Place Order Successfully");
+    }
+    else
+    {
+    // redirect("../index.php" , "Something went wrong");
+    }
+    
 }

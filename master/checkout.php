@@ -177,8 +177,8 @@ if(isset($_SESSION['auth']))
             <label class="custom-control-label h-100 fs-4" for="debit">Pay Cash</label>
           </div> -->
           <!-- class="credit"  -->
-          <div id="inputBoxContainer"></div>
-          <div id="inputBoxExpiryDate"></div>
+          <div id="inputBoxNumber"></div>
+          <!-- <div id="inputBoxExpiryDate"></div> -->
           <!-- <div id="inputBoxContainer"></div>
           <div id="inputBoxContainer"></div> -->
         </div>

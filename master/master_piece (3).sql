@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2023 at 12:40 AM
+-- Generation Time: Apr 17, 2023 at 01:52 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -143,7 +143,57 @@ INSERT INTO `orders` (`order_id`, `user_id`, `fullName`, `email`, `phone`, `deli
 (13, 47, 'kkk ,klll', 'Bayanaaaaaa@Gmail.Com', '0000000000', '2023-04-18 00:27:00', 'Write the letter here', 'flat no. 000,aaaaaaaaaaa, aqaba,Jordan', 'Credit card', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-12 12:28:37', '2023-04-11 21:28:37'),
 (14, 47, 'after payment_status', 'Bayanaaaaaa@Gmail.Com', '0000000000', '2023-04-14 00:45:00', 'Write the letter here', 'flat no. 000,aaaaaaaaaaa, aqaba,Jordan', 'Credit card', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-12 12:45:32', '2023-04-11 21:45:32'),
 (15, 47, 'noman alriyati', 'Bayanaaaaaa@Gmail.Com', '0000000000', '2023-04-27 01:09:00', 'Write the letter here', 'flat no. 000,aaaaaaaaaaa, aqaba,Jordan', 'Credit card', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-12 01:10:06', '2023-04-11 22:10:06'),
-(16, 47, 'noman alriyati', 'Bayanaaaaaa@Gmail.Com', '0000000000', '2023-04-21 01:13:00', 'Write the letter here', 'flat no. 00,aaaaaaaaaaa, aqaba,Jordan', 'Credit card', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-12 01:13:16', '2023-04-11 22:13:16');
+(16, 47, 'noman alriyati', 'Bayanaaaaaa@Gmail.Com', '0000000000', '2023-04-21 01:13:00', 'Write the letter here', 'flat no. 00,aaaaaaaaaaa, aqaba,Jordan', 'Credit card', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-12 01:13:16', '2023-04-11 22:13:16'),
+(17, 47, 'afterxxxxx pay_method', 'bayanalriyati95@gmail.com', '0785364521', '2023-04-05 16:54:00', 'Write the letter here', 'flat no. 000,aqaba, 444,Jordan', 'Credit card', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-16 04:55:05', '2023-04-16 13:55:05'),
+(18, 47, 'after created_at', 'Bayanaaaaaa@Gmail.Com', '0785364521', '2023-04-12 22:47:00', 'Write the letter here', 'flat no. xxx,cxx, ccc,Jordan', 'Pay Cash', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-16 10:47:22', '2023-04-16 19:47:22'),
+(19, 47, 'after created_at', 'bayanalriyati95@gmail.com', '0785364521', '2023-04-14 22:48:00', 'Write the letter here', 'flat no. 0,aqaba, lll,Jordan', 'Select Method', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-16 10:48:59', '2023-04-16 19:48:59'),
+(20, 47, 'flex alriyati', 'Bayanaaaaaa@Gmail.Com', '0000000000', '2023-04-13 22:53:00', 'Write the letter here', 'flat no. 00,aaaaaaaaaaa, aqaba,Jordan', 'Credit card', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-16 10:53:11', '2023-04-16 19:53:11'),
+(21, 47, 'bayan  Alriyati', 'bayannoman22@gmail.com', '0785364521', '2023-04-14 00:55:00', 'Write the letter here', 'flat no. 00,11, aqaba,Jordan', 'Pay Cash', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 12:56:04', '2023-04-16 21:56:04'),
+(22, 47, 'Bayan Alriyati', 'bayannoman22@gmail.com', '0785364521', '2023-04-03 00:58:00', 'Write the letter here', 'flat no. .00,11, aqaba,Jordan', 'Pay Cash', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 12:58:44', '2023-04-16 21:58:44'),
+(23, 47, 'Bayan Alriyati', 'bayannoman22@gmail.com', '0785364521', '2023-04-15 01:01:00', 'Write the letter here', 'flat no. 00,11, aqaba,Jordan', 'Pay Cash', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 01:01:10', '2023-04-16 22:01:10'),
+(24, 47, 'Bayan Alriyati', 'bayannoman22@gmail.com', '0785364521', '2023-04-05 01:10:00', 'Write the letter here', 'flat no. 000,11, aqaba,Jordan', 'Select Method', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 01:10:42', '2023-04-16 22:10:42'),
+(25, 47, 'Bayan Alriyati', 'bayannoman22@gmail.com', '0785364521', '2023-04-05 01:12:00', 'Write the letter here', 'flat no. 00,11, aqaba,Jordan', 'Pay Cash', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 01:12:17', '2023-04-16 22:12:17'),
+(26, 47, 'noman alriyati', 'Bayanaaaaaa@Gmail.Com', '0000000000', '2023-03-09 01:15:00', 'Write the letter here', 'flat no. .00,aaaaaaaaaaa, aqaba,Jordan', 'Pay Cash', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 01:15:19', '2023-04-16 22:15:19'),
+(27, 47, 'noman alriyati', 'Bayanaaaaaa@Gmail.Com', '0000000000', '2023-04-04 01:16:00', 'Write the letter here', 'flat no. 00,aaaaaaaaaaa, aqaba,Jordan', 'Pay Cash', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 01:16:32', '2023-04-16 22:16:32'),
+(28, 47, 'Bayan Alriyati', 'bayannoman22@gmail.com', '0785364521', '2023-04-20 01:19:00', 'Write the letter here', 'flat no. 00,11, aqaba,Jordan', 'Pay Cash', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 01:19:13', '2023-04-16 22:19:13'),
+(29, 47, 'Bayan Alriyati', 'bayannoman22@gmail.com', '0785364521', '2023-04-12 01:23:00', 'Write the letter here', 'flat no. 00,11, aqaba,Jordan', 'Pay Cash', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 01:23:42', '2023-04-16 22:23:42'),
+(30, 47, 'Bayan Alriyati', 'bayannoman22@gmail.com', '0785364521', '2023-03-15 01:32:00', 'Write the letter here', 'flat no. 00,11, aqaba,Jordan', 'Credit card', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 01:32:17', '2023-04-16 22:32:17'),
+(31, 47, 'Bayan Alriyati', 'bayannoman22@gmail.com', '0785364521', '2023-04-11 01:58:00', 'Write the letter here', 'flat no. 00,11, aqaba,Jordan', 'Pay Cash', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 01:58:56', '2023-04-16 22:58:56'),
+(32, 47, 'Bayan Alriyati', 'bayannoman22@gmail.com', '0785364521', '2023-04-26 02:03:00', 'Write the letter here', 'flat no. 00,11, aqaba,Jordan', 'Credit card', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 02:03:58', '2023-04-16 23:03:58'),
+(33, 47, 'Bayan Alriyati', 'bayannoman22@gmail.com', '0785364521', '2023-04-07 02:05:00', 'Write the letter here', 'flat no. 0,11, aqaba,Jordan', 'Credit card', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 02:06:05', '2023-04-16 23:06:05'),
+(34, 47, 'Bayan Alriyati', 'bayannoman22@gmail.com', '0785364521', '2023-03-08 02:15:00', 'Write the letter here', 'flat no. 000,11, aqaba,Jordan', 'Pay Cash', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 02:15:50', '2023-04-16 23:15:50'),
+(35, 47, 'Bayan Alriyati', 'bayannoman22@gmail.com', '0785364521', '2023-04-13 02:18:00', 'Write the letter here', 'flat no. 000,11, aqaba,Jordan', 'Pay Cash', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 02:18:14', '2023-04-16 23:18:14'),
+(36, 47, 'orderDetails Alriyati', 'bayannoman22@gmail.com', '0785364521', '2023-04-12 02:21:00', 'Write the letter here', 'flat no. 000,11, aqaba,Jordan', 'Credit card', '', 'flower 1 (100 x 8) - mmm (0 x 1) - flower 2 (100 x 7) - ', 1325, '2023-04-17 02:21:47', '2023-04-16 23:21:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` decimal(10,0) NOT NULL,
+  `NameProduct` varchar(255) NOT NULL,
+  `NameUser` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`order_id`, `product_id`, `quantity`, `price`, `NameProduct`, `NameUser`) VALUES
+(30, 0, 0, '0', '', ''),
+(30, 0, 0, '0', '', ''),
+(30, 0, 0, '0', '', ''),
+(35, 0, 0, '0', '', 'Ahmad'),
+(35, 0, 0, '0', '', 'Ahmad'),
+(35, 0, 0, '0', '', 'Ahmad'),
+(36, 0, 0, '0', '', 'orderDetails Alriyati'),
+(36, 0, 0, '0', '', 'orderDetails Alriyati'),
+(36, 0, 0, '0', '', 'orderDetails Alriyati');
 
 -- --------------------------------------------------------
 
@@ -293,7 +343,7 @@ ALTER TABLE `favorite`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `product`
