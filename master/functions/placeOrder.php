@@ -47,7 +47,7 @@ if(isset($_POST['placeOrder'])){
    {      
     $sql = "INSERT INTO `orders`(`order_id`, `user_id`, `fullName`, `email`, `phone`, `delivery_time`, `letter`, `location`, `pay_method`,`total_products`, `total_price`, `order_time`) VALUES (NULL,'$user_id','$fullName','$email','$phone','$delivery_time','$letter','$location','$pay_method','$total_products','$total_price','$order_time');";
     $check_cart = mysqli_query($con , $sql) ;
-    // redirect("../yourCart.php" , "Place Order Successfully");
+   //  redirect("../yourCart.php" , "Place Order Successfully");
     $sql = "SELECT * FROM `orders` ORDER BY order_id DESC LIMIT 1;";
     $check_order = mysqli_query($con , $sql);
     if(mysqli_num_rows($check_order)> 0){                                                             
@@ -61,17 +61,13 @@ if(isset($_POST['placeOrder'])){
       $check_orderDetails = mysqli_query($con , $sql) ;
       if(mysqli_num_rows($check_orderDetails) > 0)
         {
-          $data = mysqli_fetch_all($check_orderDetails);
-          print_r ($data) ;
-          foreach ($data as $value) {
+         while($value = mysqli_fetch_assoc($check_orderDetails)){
             $product_id = $value["product_id"];
-            echo $product_id ;
             if($value["is_discount"]==1){
-               $price = $value["price"];
-            } else{
                $price = $value["price_discount"];
+            } else{
+               $price = $value["price"];
             }
-        
             $quantity = $value["qty"];
             $nameProduct = $value["productName"];
 
@@ -79,13 +75,16 @@ if(isset($_POST['placeOrder'])){
          VALUES ('$last_id', '$product_id', '$quantity', '$price','$nameProduct','$fullName')";
          $insert_orderDetails = mysqli_query($con , $sql) ;
 
+         $sql = "DELETE FROM `cart` WHERE user_id = $user_id";
+         $delate_cart = mysqli_query($con , $sql) ;
+         redirect("../order.php" , "Place Order Successfully");
           }
         }
-        // redirect("../yourCart.php" , "Place Order Successfully");
+      //   redirect("../yourCart.php" , "Place Order Successfully");
     }
     else
     {
-    // redirect("../index.php" , "Something went wrong");
+    redirect("../index.php" , "Something went wrong");
     }
     
 }

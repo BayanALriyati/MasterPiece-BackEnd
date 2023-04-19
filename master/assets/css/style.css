@@ -616,6 +616,14 @@ section{
    box-shadow: var(--box-shadow);
 }
 
+.itemProduct {
+   margin: 3px;
+   font-family: inherit;
+   font-size: 1rem;
+   line-height: inherit;
+   height: 4rem;
+   border: var(--border);
+}
 /* search-categories */
 #search-categories{
    margin: 1rem 0;
