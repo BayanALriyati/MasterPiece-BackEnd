@@ -9,234 +9,106 @@ if(isset($_SESSION['auth']))
 {
 ?>
 
-<section class="products-shop" id="products-shop">
+<div class="heading-main">
+    <h3>Your Favorite</h3>
+    <p><a href="index.php">home </a> <span> / Your Favorite</span></p>
 
-    <h1 class="heading-shop"> <span>Choose Gifts</span> </h1>
+</div>
 
-    <a href="./yourGift.html" class="btnCart" target="_blank">View All</a>
-    
+<!-- prodcuts section starts  -->
 
-    <div class="swiper products-slider">
-    
-        <div class="swiper-wrapper">
-        
-            <div class="swiper-slide box">
-            <?php 
+<section class="products" id="product">
 
-$items = getAllFavorite("favorite" , "id");
+   <div class="box-container">
+   <?php 
+
+$items = getHeartItems();
 if(mysqli_num_rows($items)> 0 )
 {
    foreach($items as $item){
 
 ?>
-                <div class="box">
-                
-                    <span class="discount">-30%</span>
-                    <div class="image">
-                        <img src="./uploads/<?= $item['image']?>" alt="">
-                        <div class="icons">
-                            <a href="#" class="fas fa-heart"></a>
-                            <a href="#" class="cart-btn">add to cart</a>
-                            <a href="./view.html" class="fas fa-share"></a>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h3><?= $item['name']?></h3>
-                        <div class="price"> JD<?= $item['price']; ?> </div>
-                    </div>
-                    
+
+       <div class="box">
+       <form class="form-view" action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="description" value="<?= $item['description']; ?>">
+            <input type="hidden" name="product_id" value="<?= $item['product_id']; ?>">
+            <input type="hidden" name="name" value="<?= $item['productName']; ?>">
+            <?php 
+            if ($item['is_discount'] == 1){
+               ?>
+               <input type="hidden" name="price" value="<?=$item['price_discount'];?>">
+               <?php
+            } else {
+               ?>
+               <input type="hidden" name="price" value="<?=$item['price'];?>">
+               <?php
+            }
+            ?>     
+            <input type="hidden" name="image" value="<?= $item['imageMain']; ?>">
+            <div class="flexCard">
+            <?php 
+                 if ($item['is_discount'] == 1){
+                    ?>
+                       <div class="discount">-<?= $item['percent_discount']?>%</div>
+                    <?php
+                 } else {
+                    ?>
+                    <input type="hidden" name="price" value="<?=$item['percent_discount'];?>">
+                    <?php
+                 }
+
+                 ?>
+                 <form action="./functions/handleAdd.php" method="POST" enctype="multipart/       form-data">  
+                     <input type="hidden" name="user_id" value="<?= $item['user_id']; ?>">
+                     <input type="hidden" name="favorite_id" value="<?= $item['id']; ?>">
+                     <button type="submit" name="deleteFavorite" value="<?= $item['id']; ?>" onclick="return confirm('Delete This From Cart?');"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i></button></td> 
+                 </form> 
+        </div>
+           <div class="image">
+               <img src="./uploads/<?= $item['imageMain']?>" alt="Image">
+               <div class="icons">
+                  <button name="addheartFavorite" class="cart-btn"><i class="fas fa-heart"></i></button>
+                  <button name="addcartFavorite" class="cart-btn">Add Cart</button>
+                  <a href="product_view.php?product=<?= $item['slug']?>"><i class="fas fa-share"></i></a>
+               </div>
+           </div>
+           <div class="content">
+              <div class="itemProduct">
+                  <h3><?= $item['productName']?></h3>
+                  <input type="number" name="qty" class="qtyMain" min="1" max="99"  value="1">
                 </div>
-                <?php 
+               <?php if ($item['is_discount'] == 1){ ?>
+               <div class="price"> JOD<?= $item['price_discount']?> <span>JOD<?= $item['price']?></span> </div>
+                <?php } else { ?>
+                  <div class="price"> JD<?= $item['price']?></div> 
+               <?php } ?>           
+           </div>
+       </div>
+       </form>
+       <?php 
        }
       }else{
         echo '<p class="empty">your cart is empty</p>';
      }
       ?>
-            </div>
+   </div>
 
-            <!-- <div class="swiper-slide box">
-                <div class="box">
-                    <span class="discount">-30%</span>
-                    <div class="image">
-                        <img src="images/gifts/gift2.jpg" alt="">
-                        <div class="icons">
-                            <a href="#" class="fas fa-heart"></a>
-                            <a href="#" class="cart-btn">add to cart</a>
-                            <a href="./view.html" class="fas fa-share"></a>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h3>gift Woman</h3>
-                        <div class="price"> JOD21 <span>JOD30</span> </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="box">
-                    <span class="discount">-30%</span>
-                    <div class="image">
-                        <img src="images/gifts/gift3.jpg" alt="">
-                        <div class="icons">
-                            <a href="#" class="fas fa-heart"></a>
-                            <a href="#" class="cart-btn">add to cart</a>
-                            <a href="./view.html" class="fas fa-share"></a>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h3>gift Woman</h3>
-                        <div class="price"> JOD21 <span>JOD30</span> </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="box">
-                    <span class="discount">-30%</span>
-                    <div class="image">
-                        <img src="images/gifts/gift4.jpg" alt="">
-                        <div class="icons">
-                            <a href="#" class="fas fa-heart"></a>
-                            <a href="#" class="cart-btn">add to cart</a>
-                            <a href="./view.html" class="fas fa-share"></a>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h3>gift Woman</h3>
-                        <div class="price"> JOD21 <span>JOD30</span> </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="box-container ">
-             
-                    <div class="box">
-                        
-                        <div class="image">
-                            <img src="images/gifts/gift5.jpg" alt="">
-                            <div class="icons">
-                                <a href="#" class="fas fa-heart"></a>
-                                <a href="#" class="cart-btn">add to cart</a>
-                                <a href="./view.html" class="fas fa-share"></a>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h3>Gift man</h3>
-                            <div class="price"> JOD21 </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="box-container ">
-             
-                    <div class="box">
-                        
-                        <div class="image">
-                            <img src="images/gifts/gift5.jpg" alt="">
-                            <div class="icons">
-                                <a href="#" class="fas fa-heart"></a>
-                                <a href="#" class="cart-btn">add to cart</a>
-                                <a href="./view.html" class="fas fa-share"></a>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h3>Gift man</h3>
-                            <div class="price"> JOD21 </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="box">
-                    
-                    <div class="image">
-                        <img src="images/gifts/gift7.jpg" alt="">
-                        <div class="icons">
-                            <a href="#" class="fas fa-heart"></a>
-                            <a href="#" class="cart-btn">add to cart</a>
-                            <a href="./view.html" class="fas fa-share"></a>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h3>Gift man</h3>
-                        <div class="price"> JOD21 <span>JOD30</span> </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="box">
-                
-                    <div class="image">
-                        <img src="images/gifts/gift8.jpg" alt="">
-                        <div class="icons">
-                            <a href="#" class="fas fa-heart"></a>
-                            <a href="#" class="cart-btn">add to cart</a>
-                            <a href="./view.html" class="fas fa-share"></a>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h3>gift Woman</h3>
-                        <div class="price"> JOD21  </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="box">
-                
-                    <div class="image">
-                        <img src="images/gifts/gift9.jpg" alt="">
-                        <div class="icons">
-                            <a href="#" class="fas fa-heart"></a>
-                            <a href="#" class="cart-btn">add to cart</a>
-                            <a href="./view.html" class="fas fa-share"></a>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h3>gift Woman</h3>
-                        <div class="price"> JOD21 </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="box">
-                
-                    <div class="image">
-                        <img src="images/gifts/gift10.jpg" alt="">
-                        <div class="icons">
-                            <a href="#" class="fas fa-heart"></a>
-                            <a href="#" class="cart-btn">add to cart</a>
-                            <a href="./view.html" class="fas fa-share"></a>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h3>Gift men</h3>
-                        <div class="price"> JOD21 </div>
-                    </div>
-                </div>
-            </div> -->
-
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        
-    </div>
-    
 </section>
+
 <?php
-}
-   else
-   {
-    redirect("./login.php","Login To Continue");
-   }
-  
-?>
+     }
+        else
+        {
+         redirect("./login.php","Login To Continue");
+        }
+       
+     ?> 
+
+<!-- prodcuts section ends -->
+
+
+
     
     <!-- icons section starts  -->
 

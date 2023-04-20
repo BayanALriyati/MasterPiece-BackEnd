@@ -40,6 +40,13 @@ function getCartItems(){
     return $sql_run=mysqli_query($con,$sql);
 }
 
+function getHeartItems(){
+    global $con;
+    $user_id = $_SESSION['auth_user']['user_id'];
+    $sql = "SELECT * FROM `favorite` INNER JOIN `product` ON favorite.product_id = product.product_id AND favorite.user_id = '$user_id'";
+    return $sql_run=mysqli_query($con,$sql);
+}
+
 function getAllFavorite($table , $id){
     global $con;
     $sql="SELECT *FROM $table ORDER BY $id DESC";

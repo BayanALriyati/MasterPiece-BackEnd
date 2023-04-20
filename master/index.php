@@ -113,24 +113,44 @@ include_once('functions/userFunctions.php');
                     {
                 ?>
        <div class="box">
+         <form class="form-view" action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="description" value="<?= $item['description']; ?>">
+            <input type="hidden" name="product_id" value="<?= $item['product_id']; ?>">
+            <input type="hidden" name="name" value="<?= $item['productName']; ?>">
+            <?php 
+            if ($item['is_discount'] == 1){
+               ?>
+               <input type="hidden" name="price" value="<?=$item['price_discount'];?>">
+               <?php
+            } else {
+               ?>
+               <input type="hidden" name="price" value="<?=$item['price'];?>">
+               <?php
+            }
+            ?>     
+            <input type="hidden" name="image" value="<?= $item['imageMain']; ?>">
            <span class="discount">-<?= $item['percent_discount']?>%</span>
            <div class="image">
                <img src="./uploads/<?= $item['imageMain']?>" alt="">
                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="./yourCart.html" class="cart-btn">add to cart</a>
-                    <a href="./view.html" class="fas fa-share"></a>
+                  <button name="addheartIndrex" class="cart-btn"><i class="fas fa-heart"></i></button>
+                  <button name="addcartIndrex" class="cart-btn">Add Cart</button>
+                  <a href="product_view.php?product=<?= $item['slug']?>"><i class="fas fa-share"></i></a>
                </div>
            </div>
            <div class="content">
-               <h3><?= $item['productName']?></h3>
+               <div class="itemProduct">
+                    <h3><?= $item['productName']?></h3>
+                    <input type="number" name="qty" class="qtyMain" min="1" max="99"  value="1">
+               </div>
                <?php if ($item['is_discount'] == 1){ ?>
-               <div class="price"> JOD<?= $item['price_discount']?> <span>JOD<?= $item['price']?></span> </div>
-               <?php } else { ?>
+              <div class="price"> JOD<?= $item['price_discount']?> <span>JOD<?= $item['price']?></span> </div>
+                <?php } else { ?>
                   <div class="price"> JD<?= $item['price']?></div> 
                <?php } ?>
               </div>
-       </div>
+           </div>
+        </form>
        <?php
                             }
                         }
@@ -144,7 +164,7 @@ include_once('functions/userFunctions.php');
                     
                 
                     ?>
-   </div>
+       </div>
   
 </section>
 

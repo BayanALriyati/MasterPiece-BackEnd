@@ -61,9 +61,6 @@ if(mysqli_num_rows($items)> 0 )
 
           <div class="input-group mb-3">
             <input type="number" name="qty" class="qty" min="1" max="99" value="<?=$item['qty'];?>">
-            <!-- <buton type="button" class="input-group-text decrement-btn">-</buton>
-            <input type="text" class="form-control input-qty" name="qty" value="<?= $item['qty']?>">
-            <buton type="button" class="input-group-text increment-btn">+</buton> -->
             <input type="hidden" name="cart_id" value="<?= $item['id']; ?>">
             <input type="hidden" name="user_id" value="<?= $item['user_id']; ?>">
             <div class="cart-btn">
@@ -89,8 +86,9 @@ if(mysqli_num_rows($items)> 0 )
         </td>
         
         <td>
-        <form action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">  
+        <form action="./functions/handleAdd.php" method="POST" enctype="multipart/       form-data">  
             <input type="hidden" name="user_id" value="<?= $item['user_id']; ?>">
+            <input type="hidden" name="cart_id" value="<?= $item['id']; ?>">
             <button type="submit" class="btnCart" name="delete" value="<?= $item['id']; ?>" onclick="return confirm('Delete This From Cart?');"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i></button></td> 
         </form> 
           </tr>
@@ -120,8 +118,9 @@ if(mysqli_num_rows($items)> 0 )
       </table>
       <div class="total_btn">
       <form action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">  
+            <input type="hidden" name="cart_id" value="<?= $item['id']; ?>">
             <input type="hidden" name="user_id" value="<?= $item['user_id']; ?>">
-            <a type="submit" class="btnCart" name="delete_all" onclick="return confirm('Delete This From Cart?');">Delete All Item</a></td> 
+            <button type="submit" class="btnCart" name="delete_all" value="<?= $item['user_id'];?>"  onclick="return confirm('Delete All From Cart?');">Delete All Item</button></td> 
       </form> 
       <!-- <a href="./functions/handleAdd.php" name="delete_all"  class="btnCart <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from cart?');">delete all item</a> -->
 
