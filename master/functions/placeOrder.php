@@ -61,7 +61,8 @@ if(isset($_POST['placeOrder'])){
       $check_orderDetails = mysqli_query($con , $sql) ;
       if(mysqli_num_rows($check_orderDetails) > 0)
         {
-         while($value = mysqli_fetch_assoc($check_orderDetails)){
+         while($value = mysqli_fetch_array($check_orderDetails)){
+            print_r ($value);
             $product_id = $value["product_id"];
             if($value["is_discount"]==1){
                $price = $value["price_discount"];
@@ -77,10 +78,12 @@ if(isset($_POST['placeOrder'])){
 
          $sql = "DELETE FROM `cart` WHERE user_id = $user_id";
          $delate_cart = mysqli_query($con , $sql) ;
-         redirect("../order.php" , "Place Order Successfully");
+         // redirect("../yourOrder.php" , "Place Order Successfully");
           }
         }
       //   redirect("../yourCart.php" , "Place Order Successfully");
+      redirect("../yourOrder.php" , "Place Order Successfully");
+
     }
     else
     {

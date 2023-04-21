@@ -136,10 +136,7 @@ else if(isset($_POST['addcartFavorite'])){
  {
   $user_id = $_SESSION['auth_user']['user_id'];
   $productId = $_POST['product_id'];
- //  $product_name = $_POST['name'];
   $product_qty = $_POST['qty'];
- //  $product_price = $_POST['price'];
- //  $product_image = $_POST['image'];
   
   
   $sql = "SELECT * FROM `cart` WHERE product_id = '$productId' AND user_id = '$user_id';";

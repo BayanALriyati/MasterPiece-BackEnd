@@ -53,6 +53,7 @@ function getAllFavorite($table , $id){
     return $sql_run=mysqli_query($con,$sql);
 }
 
+
 function redirect($url,$message)
 {
     $_SESSION ['message'] = $message;

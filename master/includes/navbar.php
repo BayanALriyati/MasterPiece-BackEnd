@@ -1,3 +1,6 @@
+<?php
+include_once ('./config/connect.php');
+?>
 
 <header class="header">
 
@@ -19,23 +22,53 @@
          <?php 
            if(isset($_SESSION['auth']))
            {
-            // $user_id = $_SESSION['auth_user']['user_id'];
+            $user_id = $_SESSION['auth_user']['user_id'];
             ?>
             <input type="hidden" name="user" value="<?= $_SESSION['auth_user']['user_id'];; ?>">
-
+            
             <div class="fas fa-search"></div>
-            <a href="yourCart.php" class="fas fa-shopping-cart"></a>
-            <a href="yourFavorite.php" class="fas fa-heart"></a>
+            <?php
+            $sql = "SELECT * FROM `cart` WHERE user_id = '$user_id';";
+            $check_cart = mysqli_query($con , $sql) ;
+            // $total_cart_counts = mysqli_num_rows($check_cart);
+            if(mysqli_num_rows($check_cart)> 0 ){
+               $total_cart_counts = mysqli_num_rows($check_cart);
+           
+            ?>
+               <a href="yourCart.php" class="fas fa-shopping-cart" class="hover"><span class="counts">(<?= $total_cart_counts; ?>)</span></a>
+            <?php
+            }else{
+         ?>
+               <a href="yourCart.php" class="fas fa-shopping-cart" class="hover"></a>
+            <?php
+            }
+         ?>
+         <?php
+            $sql = "SELECT * FROM `favorite` WHERE user_id = '$user_id';";
+            $check_favorite = mysqli_query($con , $sql) ;
+            // $total_cart_counts = mysqli_num_rows($check_cart);
+            if(mysqli_num_rows($check_favorite)> 0 ){
+               $total_favorite_counts = mysqli_num_rows($check_favorite);
+            ?>
+               <a href="yourFavorite.php" class="fas fa-heart" class="hover"><span class="counts">(<?= $total_favorite_counts; ?>)</span></a>
+            <?php
+            }else{
+         ?>
+               <a href="yourFavorite.php" class="fas fa-heart" class="hover"></a>
+            <?php
+            }
+         ?>
+            <!-- <a href="yourFavorite.php" class="fas fa-heart"></a> -->
                <!-- <?= $_SESSION['auth_user']['image']; ?> -->
             <div id="user-btn" class="fas fa-user"></div>
-            <span id="user" style="cursor:default;"><?= $_SESSION['auth_user']['name']; ?></span>
+            <span id="user" style="cursor:default;" class="hover"><?= $_SESSION['auth_user']['name']; ?></span>
          <?php
             }else{
          ?>
             <div class="fas fa-search"></div>
-            <a href="yourCart.php" class="fas fa-shopping-cart"></a>
-            <a href="yourFavorite.php" class="fas fa-heart"></a>
-            <div id="user-btn" class="fas fa-user"></div>
+            <a href="yourCart.php" class="fas fa-shopping-cart" class="hover"></a>
+            <a href="yourFavorite.php" class="fas fa-heart" class="hover"></a>
+            <div id="user-btn" class="fas fa-user" class="hover"></div>
          <?php
           }
          ?>
