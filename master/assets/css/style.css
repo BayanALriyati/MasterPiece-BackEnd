@@ -1684,6 +1684,12 @@ section i{
  .text-danger strong {
    color: #9f181c;
 }
+.orderFlex{
+   display: flex;
+   flex-wrap: nowrap;
+   justify-content: space-between;
+}
+
 .order-main {
    background: var(--pink);
    border: var(--border);
@@ -1701,12 +1707,43 @@ section i{
  line-height: 1.42857;
 }
 
-.order-footer h1 {
- font-size: 15px;
- font-weight: 400 !important;
- margin: 0 !important;
+.order-footer {
+ font-size: 1rem;
+ font-weight: 400 ;
+ margin: 0 ;
+ width: 40rem;
 }
-.order-main::after {
+.order-footer p{
+   font-size: 2rem;
+   font-weight: 400 ;
+   margin: 0 ;
+   width: 40rem;
+   padding: 1rem 1rem;
+  }
+
+.order-footer h5{
+   font-size: 2rem;
+   font-weight: 400 ;
+   margin: 0 ;
+   width: 40rem;
+   padding: 1rem 1rem;
+  }
+
+.order-footer a{
+   font-size: 2rem;
+   font-weight: 400 ;
+   margin: 0 ;
+   width: 40rem;
+   text-decoration: none;
+   color: var(--white);
+   padding: 1rem 1rem;
+   margin: 1rem 1rem;
+   cursor: pointer;
+   border: var(--border);
+   background: var(--dark-color);
+  }
+
+/* .order-main::after {
  background: #414143 none repeat scroll 0 0;
  content: "";
  height: 5px;
@@ -1714,56 +1751,58 @@ section i{
  position: absolute;
  right: 0;
  top: -13px;
-}
+} */
 .order-main thead {
  background: #414143 none repeat scroll 0 0;
 }
 .order-main thead th {
- color:#fff;
+   color: var(--white);
+   background-color: var(--dark-color);
+   text-align: center;
 }
+
 .order-right h5 {
- font-size: 16px;
+ font-size: 3rem;
  font-weight: bold;
- margin: 0 0 7px 0;
+ margin: 0 0 2rem 0;
 }
+
 .order-right p {
- font-size: 12px;
- margin: 0px;
+ font-size: 1.5rem;
+ margin: 0rem;
 }
-.order-right p i {
- text-align: center;
- width: 18px;
-}
+
 .order-main td {
- padding: 9px 20px !important;
+   padding: 1rem 1rem;
 }
+
 .order-main th {
- padding: 13px 20px !important;
+   padding: 1rem 5rem;
 }
+
 .order-main td {
- font-size: 13px;
- font-weight: initial !important;
+   font-size: 2rem;
+   font-weight: 600;
+   text-align: center;
 }
+
 .order-main td p:last-child {
  margin: 0;
  padding: 0;
 }	
+
 .order-main td h2 {
  font-size: 20px;
  font-weight: 900;
  margin: 0;
  text-transform: uppercase;
 }
-.order-header-mid .order-left h1 {
- font-weight: 100;
- margin: 34px 0 0;
- text-align: right;
- text-transform: uppercase;
-}
+
 .order-header-mid {
- margin: 24px 0;
- overflow: hidden;
-}
+   margin: 3rem 0rem;
+   overflow: hidden;
+   width: 44rem;
+}  
 
 #container {
  background-color: #dcdcdc;

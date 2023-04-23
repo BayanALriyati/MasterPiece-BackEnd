@@ -54,7 +54,7 @@ if(isset($_POST['placeOrder'])){
       while($fetch_order_to_details = mysqli_fetch_array($check_order)){
         $last_id = $fetch_order_to_details['order_id'];
         $_SESSION['last_order']= $last_id;
-
+echo $last_id ;
       // echo  $_SESSION['last_order'] ;
       } }
       $sql="SELECT product.product_id,product.productName,product.price,product.is_discount,product.price_discount,cart.qty FROM product INNER JOIN cart ON product.product_id=cart.product_id WHERE cart.user_id=$user_id";
@@ -82,12 +82,12 @@ if(isset($_POST['placeOrder'])){
           }
         }
       //   redirect("../yourCart.php" , "Place Order Successfully");
-      redirect("../yourOrder.php" , "Place Order Successfully");
+      // redirect("../yourOrder.php" , "Place Order Successfully");
 
     }
     else
     {
-    redirect("../index.php" , "Something went wrong");
+   //  redirect("../index.php" , "Something went wrong");
     }
     
 }
