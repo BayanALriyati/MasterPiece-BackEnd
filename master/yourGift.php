@@ -25,7 +25,7 @@ include_once('functions/userFunctions.php');
                                 {
                                     foreach($category as $item)
                                 {
-                        ?>
+                                ?>
                                 <a href="yourGift.php?category=<?= $item['slug']?>" class="btn" data-filter="gift">Choose <?= $item['categoryName']?></a>
                                 <?php
                                     }
@@ -37,49 +37,44 @@ include_once('functions/userFunctions.php');
                                      // $_SESSION ['message']="Don't found";
                                      // header('Location: ../category.php');
                                     }
-                        ?>
+                                  ?>
                             </div>
                         </div>
                         <div id="search-categories">
-                            <form action="" onsubmit="return false">
-                            <input type="search" id="search-form" placeholder="search gift name here....">
-                            <button id="search-form">search</button>
+                            <form action="" method="post">
+                               <input type="search" id="search-form" name="search_box" placeholder="search gift name here....">
+                               <button id="search-form" type="submit" name="search_btn">search</button>
                             </form>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-lg-9 col-md-9">
-                    <div class="row">
-                            <!-- <div class="col-lg-12 col-md-12">
-                                <div class="products">
-                            
-                                  <div class="box-container"> -->
+<div class="col-lg-9 col-md-9">
+    <div class="row">
+                           
                                 <?php 
 
-    if (isset($_GET['category'])){
-        $category_slug = $_GET['category'];
-        $category_data = getSlugActive("category" , $category_slug);
-        $category = mysqli_fetch_array($category_data);
-        if($category){
-            $category_id = $category['category_id'];
-    ?>
-                
-                <?php
-                    
-                    $sql="SELECT *FROM product WHERE category_id='$category_id' AND status='0'";
-                    $product=mysqli_query($con,$sql);
-                    if(mysqli_num_rows($product)> 0 )
-                    {
-                        foreach($product as $item)
-                    {
-                ?>
-                <div class="col-lg-4 col-md-6">
-                <div class="products">
+            if (isset($_GET['category'])){
+                $category_slug = $_GET['category'];
+                $category_data = getSlugActive("category" , $category_slug);
+                $category = mysqli_fetch_array($category_data);
+                if($category){
+                    $category_id = $category['category_id'];
+            ?>
+                        
+                        <?php
                             
-                            <div class="box-container">
+                            $sql="SELECT *FROM product WHERE category_id='$category_id' AND status='0'";
+                            $product=mysqli_query($con,$sql);
+                            if(mysqli_num_rows($product)> 0 )
+                            {
+                                foreach($product as $item)
+                            {
+                        ?>
 
-                                <div class="box">
+                <div class="col-lg-4 col-md-6 mb-4">
+                   <div class="products">
+                            <div class="box-container">
+                                <div class="box flower">
                                   <form class="form-view" action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="description" value="<?= $item['description']; ?>">
                                     <input type="hidden" name="product_id" value="<?= $item['product_id']; ?>">
@@ -95,7 +90,8 @@ include_once('functions/userFunctions.php');
                                        <?php
                                     }
                                     ?>     
-                                    <input type="hidden" name="image" value="<?= $item['imageMain']; ?>">                                    <?php 
+                                    <input type="hidden" name="image" value="<?= $item['imageMain']; ?>">
+                                    <?php 
                                       if ($item['is_discount'] == 1){
                                          ?>
                                             <div class="discount">-<?= $item['percent_discount']?>%</div>
@@ -105,23 +101,22 @@ include_once('functions/userFunctions.php');
                                          <input type="hidden" name="price" value="<?=$item['percent_discount'];?>">
                                          <?php
                                       }
+
                                       ?>
     
                                         <div class="image">
                                             <a href="product_view.php?product=<?= $item['slug']?>"><img src="./uploads/<?= $item['imageMain']?>"  alt="Image"></a>
                                             <div class="icons">
-                                                <button name="addTOheart" class="fas fa-heart"></button>
+                                                <button name="addTOheart" class="cart-btn"><i class="fas fa-heart"></i></button>
                                                 <button class="cart-btn" name="addTOcart">Add Cart</button>
-                                                <a href="product_view.php?product=<?= $item['slug']?>" class="fas fa-share"></a>
+                                                <a href="product_view.php?product=<?= $item['slug']?>" ><i class="fas fa-share"></i></a>
                                             </div>
                                         </div>
                                         <div class="content">
-                                          <div class="itemProduct">
                                             <div class="itemProduct">
-                                                <h3><?= $item['productName']?></h3>
-                                                <input type="number" name="qty" class="qtyMain" min="1" max="99"  value="1">
-                                            </div>                                            <input type="number" name="qty" class="qty" min="1" max="99"  value="1">
-                                          </div>
+                                              <h3><?= $item['productName']?></h3>
+                                              <input type="number" name="qty" class="qtyMain" min="1" max="99"  value="1">
+                                            </div>
                                             <?php if ($item['is_discount'] == 1){ ?>
     
                                                 <div class="price">JD <?= $item['price_discount']?> <span>JD<?= $item['price']?></span> </div>
@@ -131,9 +126,10 @@ include_once('functions/userFunctions.php');
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                   </div>
                   
                 </div>
+                
                                     <?php
                             }
                         }
@@ -146,20 +142,18 @@ include_once('functions/userFunctions.php');
                     
                 
                     ?>
-                    </div>
-                </div>
-            
+    </div>
+</div>
+            </div>
+        </div>
                 
                 <?php 
     }
     else{
         ?>
 
-                        <div class="col-lg-9 col-md-9">
-                            <div class="row">
-                                <!-- <div class="col-lg-12 col-md-12">
-                                    <div class="products">
-                                        <div class="box-container"> -->
+     <div class="col-lg-9 col-md-9">
+       <div class="row">
                         <?php
                             }
                         }
@@ -172,8 +166,97 @@ include_once('functions/userFunctions.php');
                             foreach($product as $item)
                             {
                         ?>
+                <div class="col-lg-4 col-md-6 mb-4">
+                   <div class="products">
+                            <div class="box-container">
+                                <div class="box flower">
+                                  <form class="form-view" method="POST" enctype="multipart/form-data">
+                                    <input type="hidden" name="description" value="<?= $item['description']; ?>">
+                                    <input type="hidden" name="product_id" value="<?= $item['product_id']; ?>">
+                                    <input type="hidden" name="name" value="<?= $item['productName']; ?>">
+                                    <?php 
+                                    if ($item['is_discount'] == 1){
+                                       ?>
+                                       <input type="hidden" name="price" value="<?=$item['price_discount'];?>">
+                                       <?php
+                                    } else {
+                                       ?>
+                                       <input type="hidden" name="price" value="<?=$item['price'];?>">
+                                       <?php
+                                    }
+                                    ?>     
+                                    <input type="hidden" name="image" value="<?= $item['imageMain']; ?>">
+                                    <?php 
+                                      if ($item['is_discount'] == 1){
+                                         ?>
+                                            <div class="discount">-<?= $item['percent_discount']?>%</div>
+                                         <?php
+                                      } else {
+                                         ?>
+                                         <input type="hidden" name="price" value="<?=$item['percent_discount'];?>">
+                                         <?php
+                                      }
+
+                                      ?>
+    
+                                        <div class="image">
+                                            <a href="product_view.php?product=<?= $item['slug']?>"><img src="./uploads/<?= $item['imageMain']?>"  alt="Image"></a>
+                                            <div class="icons">
+                                                <button name="addTOheart" class="cart-btn"><i class="fas fa-heart"></i></button>
+                                                <button class="cart-btn" name="addTOcart">Add Cart</button>
+                                                <a href="product_view.php?product=<?= $item['slug']?>"><i class="fas fa-share"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <div class="itemProduct">
+                                              <h3><?= $item['productName']?></h3>
+                                              <input type="number" name="qty" class="qtyMain" min="1" max="99"  value="1">
+                                            </div>
+                                            <?php if ($item['is_discount'] == 1){ ?>
+    
+                                                <div class="price">JD <?= $item['price_discount']?> <span>JD<?= $item['price']?></span> </div>
+                                            <?php } else { ?>
+                                                <div class="price"> JD<?= $item['price']?></div> <?php } ?> 
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                   </div>
+                  
+                </div>
+                <!-- </div> -->
+                                           
+                    <?php
+                    }
+                }
+            }
+        
+                ?>     
+       </div>
+     </div>
+
+                        </div>
+                     </div>
+                        
+                <?php 
+    }
+}
+    else{
+        ?>
+    
+<div class="col-lg-9 col-md-9">
+    <div class="row">
+                     <?php
+                   if(isset($_POST['search_box']) OR isset($_POST['search_btn'])){
+                   $search_box = $_POST['search_box'];
+                   $sql = "SELECT * FROM `product` WHERE productName LIKE '%{$search_box}%'"; 
+                   $select_product = mysqli_query($con , $sql);
+                   if(mysqli_num_rows($select_product)> 0 ){
+                       foreach($select_product as $item){
+                 ?>
                 <div class="col-lg-4 col-md-6">
-                <div class="products">
+                   
+                   <div class="products">
                             
                             <div class="box-container">
                                 <div class="box flower">
@@ -228,7 +311,7 @@ include_once('functions/userFunctions.php');
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                   </div>
                   
                 </div>
                 <!-- </div> -->
@@ -239,13 +322,14 @@ include_once('functions/userFunctions.php');
             }
         
                 ?>     
-                                </div>
-                            </div>
+    </div>
+</div>
+
                         </div>
                      </div>
-                  </div>
-                </div>        
-            </div>
+    
+                 
+
         </div>
     </div>
     </section>

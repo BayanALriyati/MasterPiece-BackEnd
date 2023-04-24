@@ -53,7 +53,13 @@ function getAllFavorite($table , $id){
     return $sql_run=mysqli_query($con,$sql);
 }
 
+function getSearch($table , $productName){
+    global $con;
+    $sql = "SELECT * FROM `table` WHERE productName LIKE '%{$search_box}%'";
+    return $sql_run=mysqli_query($con,$sql);
+}
 
+// $sql = "SELECT * FROM `product` WHERE productName LIKE '%{$search_box}%'";
 function redirect($url,$message)
 {
     $_SESSION ['message'] = $message;

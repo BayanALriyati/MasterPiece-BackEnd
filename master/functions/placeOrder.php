@@ -82,12 +82,12 @@ echo $last_id ;
           }
         }
       //   redirect("../yourCart.php" , "Place Order Successfully");
-      // redirect("../yourOrder.php" , "Place Order Successfully");
+      redirect("../yourOrder.php" , "Place Order Successfully");
 
     }
     else
     {
-   //  redirect("../index.php" , "Something went wrong");
+    redirect("../index.php" , "Something went wrong");
     }
     
 }

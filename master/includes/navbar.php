@@ -3,7 +3,12 @@ include_once ('./config/connect.php');
 ?>
 
 <header class="header">
-
+  <!-- <section class="search-form">
+     <form action="" method="post">
+       <input type="text" name="search_box" placeholder="search here..." maxlength="100" class="box" required>
+       <button type="submit" class="fas fa-search" name="search_btn"></button>
+     </form>
+   </section> -->
    <section class="flex">
 
       <a href="home.php" class="logo"><img src="assets/images/logo-color.png" alt="logo"></a>
@@ -26,7 +31,7 @@ include_once ('./config/connect.php');
             ?>
             <input type="hidden" name="user" value="<?= $_SESSION['auth_user']['user_id'];; ?>">
             
-            <div class="fas fa-search"></div>
+            <a href="search.php" class="fas fa-search"></a>
             <?php
             $sql = "SELECT * FROM `cart` WHERE user_id = '$user_id';";
             $check_cart = mysqli_query($con , $sql) ;
@@ -65,7 +70,7 @@ include_once ('./config/connect.php');
          <?php
             }else{
          ?>
-            <div class="fas fa-search"></div>
+            <a href="search.php" class="fas fa-search"></a>
             <a href="yourCart.php" class="fas fa-shopping-cart" class="hover"></a>
             <a href="yourFavorite.php" class="fas fa-heart" class="hover"></a>
             <div id="user-btn" class="fas fa-user" class="hover"></div>

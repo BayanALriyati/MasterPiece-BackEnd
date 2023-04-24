@@ -47,7 +47,8 @@ html::-webkit-scrollbar-thumb{
 section{
    max-width: 1200px;
    margin:0 auto;
-   padding:2rem;
+   margin-bottom: 1rem;
+   padding:1rem;
 }
 
 .heading-main{
@@ -1743,18 +1744,10 @@ section i{
    background: var(--dark-color);
   }
 
-/* .order-main::after {
- background: #414143 none repeat scroll 0 0;
- content: "";
- height: 5px;
- left: 0;
- position: absolute;
- right: 0;
- top: -13px;
+/* .order-main thead {
+ background: #2a2ae9 none repeat scroll 0 0;
 } */
-.order-main thead {
- background: #414143 none repeat scroll 0 0;
-}
+
 .order-main thead th {
    color: var(--white);
    background-color: var(--dark-color);
@@ -1808,6 +1801,40 @@ section i{
  background-color: #dcdcdc;
 }
  
+.search-form form{
+   display: flex;
+   gap:1rem;
+   border: var(--border);
+   background-color: var(--pink);
+}
+
+.search-form form input{
+   width: 100%;
+   border:var(--border);
+   border-radius: .5rem;
+   background-color: var(--dark-color);
+   box-shadow: var(--box-shadow);
+   padding:1.4rem;
+   font-size: 1.8rem;
+   color:var(--white);
+}
+
+.search-form form button{
+   font-size: 2.5rem;
+   height: 5.5rem;
+   line-height: 5.5rem;
+   background-color: var(--main-color);
+   cursor: pointer;
+   color:var(--white);
+   border-radius: .5rem;
+   width: 6rem;
+   text-align: center;
+}
+
+.search-form form button:hover{
+   background-color: var(--black);
+}
+
 @media (max-width:991px){
 
    html{
