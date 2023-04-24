@@ -709,7 +709,7 @@ section{
    border-bottom-color: var(--dark-color);
 }
 
-#search-categories button{
+#search-categories a{
    padding: 1rem 2rem;
    /* margin-left: 0rem; */
    margin: 0.5rem 0;
@@ -717,6 +717,8 @@ section{
    color: var(--white);
    /* border-radius: 50%; */
    border: var(--border);
+   font-size: 2rem;
+   text-decoration: none;
 }
 
 #products{

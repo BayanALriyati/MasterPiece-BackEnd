@@ -43,11 +43,13 @@ include_once('functions/userFunctions.php');
                         <div id="search-categories">
                             <form action="" method="post">
                                <input type="search" id="search-form" name="search_box" placeholder="search gift name here....">
-                               <button id="search-form" type="submit" name="search_btn">search</button>
+                               <a href="search.php" id="search-form" type="submit" name="search_btn">search</a>
                             </form>
                         </div>
                     </div>
                 </div>
+
+                         
 <div class="col-lg-9 col-md-9">
     <div class="row">
                            
@@ -242,17 +244,14 @@ include_once('functions/userFunctions.php');
 
                         </div>
                      </div>
-                                        
-                
-    
-<div class="col-lg-9 col-md-9">
+                   
+           
+     
+<!-- <div class="col-lg-9 col-md-9">
     <div class="row">
                      <?php
-                    //   }
-                    // // }
-                    // else
-                    // {
-                   if(isset($_POST['search_box']) OR isset($_POST['search_btn'])){
+                       
+                  if(isset($_POST['search_box']) OR isset($_POST['search_btn'])){
                    $search_box = $_POST['search_box'];
                    $sql = "SELECT * FROM `product` WHERE productName LIKE '%{$search_box}%'"; 
                    $select_product = mysqli_query($con , $sql);
@@ -324,23 +323,26 @@ include_once('functions/userFunctions.php');
                        }
                             }
                         }
-                    }
+                    // }
                         // else
                         // {
                         //     echo "Don't found" ;
                         // //   redirect("login.php","Don't found");
                         
                         // }
-                    
+                        }
                 
                     ?>    
     </div>
 </div>
 
                         </div>
-                     </div>
-    
-                 
+                     </div> -->
+                    
+                       
+                
+                
+            
 
         </div>
     </div>

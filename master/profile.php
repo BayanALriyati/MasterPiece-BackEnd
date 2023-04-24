@@ -52,9 +52,9 @@ include_once('functions/userFunctions.php');
               class="cardImage"
               src="https://img.freepik.com/free-vector/vector-shopping-cart-icon_8276-197.jpg?size=338&ext=jpg&ga=GA1.2.1633237395.1647423373"
             ></img>
-            <button class="btn btn-warning" onClick={navigateToCart}>
+            <a href="yourCart.php" class="btn btn-warning" onClick={navigateToCart}>
               Go To Cart
-            </button>
+        </a>
           </div>
         </div>
         <div class="editProfileCard">
