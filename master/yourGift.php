@@ -224,29 +224,34 @@ include_once('functions/userFunctions.php');
                    </div>
                   
                 </div>
-                <!-- </div> -->
-                                           
-                    <?php
-                    }
-                }
-            }
-        
-                ?>     
+                <?php
+                            }
+                        }
+                        else
+                        {
+                            echo "Don't found" ;
+                        //   redirect("login.php","Don't found");
+                        
+                        }
+                    
+                
+                    ?>                      
+                       
        </div>
      </div>
 
                         </div>
                      </div>
-                        
-                <?php 
-    }
-}
-    else{
-        ?>
+                                        
+                
     
 <div class="col-lg-9 col-md-9">
     <div class="row">
                      <?php
+                    //   }
+                    // // }
+                    // else
+                    // {
                    if(isset($_POST['search_box']) OR isset($_POST['search_btn'])){
                    $search_box = $_POST['search_box'];
                    $sql = "SELECT * FROM `product` WHERE productName LIKE '%{$search_box}%'"; 
@@ -314,14 +319,21 @@ include_once('functions/userFunctions.php');
                    </div>
                   
                 </div>
-                <!-- </div> -->
                                            
-                    <?php
+                <?php
+                       }
+                            }
+                        }
                     }
-                }
-            }
-        
-                ?>     
+                        // else
+                        // {
+                        //     echo "Don't found" ;
+                        // //   redirect("login.php","Don't found");
+                        
+                        // }
+                    
+                
+                    ?>    
     </div>
 </div>
 
