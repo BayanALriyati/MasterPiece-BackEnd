@@ -29,8 +29,12 @@ include_once('config/connect.php');
     // while($product = mysqli_fetch_array($check_order)){ 
 
       // _________________________________      ____-
+
+                while($product = mysqli_fetch_array($check_order)){ 
+                //     $i=0 ;               
+                    // foreach ($check_order as $product) {
+                    ?>
       
-      ?>
          <div class="col-md-12">   
     <div class="row">   
 		
@@ -80,17 +84,11 @@ include_once('config/connect.php');
                     <tbody>
 				
                         <tr>
-                        <?php	
-                    //   $data = mysqli_fetch_array($check_order);
-
-                while($product = mysqli_fetch_array($check_order)){ 
-                    $i=0 ;               
-                    // foreach ($data as $product) {
-                    ?>
+                        
                             <td class="col-md-9"><?= $product['NameProduct']; ?></td>
 							<td class="col-md-3"> <?= $product['quantity']; ?></td>  
 							<td class="col-md-3"> <?= " JD".$product['price']; ?></td>
-                    <?php	}?>
+                    
                         </tr>
                         
                         <tr>
@@ -129,6 +127,7 @@ include_once('config/connect.php');
         </div>    
 	</div>
 </div>
+<?php	}?>
 
     <!-- icons section starts  -->
 

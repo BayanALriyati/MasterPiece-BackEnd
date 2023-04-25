@@ -10,7 +10,7 @@ if (isset($_GET['product'])){
     $product_data = getSlugActive("product" , $product_slug);
     $product = mysqli_fetch_array($product_data);
     if($product){
-        // $category_id = $category['category_id'];
+        $product_id = $product['product_id'];
         ?>
 <section class="section product-detail">
 <div class="details container">
@@ -74,7 +74,6 @@ if (isset($_GET['product'])){
          </div>
   </div>
       </form>
-            <!-- <p><label><?= $product['description']?></label></p> -->
             
            
     </div>
@@ -96,6 +95,87 @@ if (isset($_GET['product'])){
 
 ?>
 
+<section class="quick-view">
+
+   <h1 class="headingReview">Review for products</h1>
+
+   <?php
+
+//   ADD COMMENT
 
 
-<?php include('./includes/footer.php') ?>
+$sql = "SELECT * FROM review INNER JOIN users 
+        ON (review.user_id = users.user_id) WHERE product_id = $product_id";
+        // $stmt = $conn->prepare($query);
+        $check_review = mysqli_query($con , $sql);
+
+        // $stmt->execute([$pid]);
+         ?>
+<section style="background-color:rgb(98, 17, 71); !important;">
+
+  <div class="container my-1 mx-5 py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12 col-lg-12">
+        <div class="card text-dark">
+          <div class="card-body p-4">
+            <h4 class="mb-0" style="font-size: 25px;">Recent comments</h4>
+           
+           
+                    <?php 
+             while($review = mysqli_fetch_array($check_review)){ 
+                  $comment_id = $review['review_id'];
+                  $product_id = $review['product_id'];
+                  $comment_date = $review['review_date'];
+                  $comment_content = $review['review_text'];
+                  $user_name = $review['name'];
+            ?>
+            <div class="card-body p-4">
+            <div class="d-flex flex-start">
+              <div>
+                <h6 class="fw-bold mb-1" style="font-size: 26px;"><?php echo $user_name ?></h6>
+                <div class="d-flex align-items-center mb-3">
+                  <p class="mb-0" style="font-size: 12px;">
+                  <?php echo $comment_date ?>
+                  </p>
+                </div>
+                <p class="mb-0" style="font-size: 20px;">
+                <?php echo  $comment_content; ?>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-0" /><?php } ?>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form action="" method="post">
+    
+            <div class="writeReview">
+               <div >
+                  <textarea style="width:120rem;font-size:20px;margin-top:20px; border:2px solid silver"  class="form-control" name="comment_text" cols="5"  rows="1" placeholder="Add your comment" value=""></textarea>
+               </div>
+            </div>
+            <div class="col-md-12 text-right">
+               <button type="submit" class="btnReview btn-secondary my-5 fs-2" name="placeOrder">Add Now</button>
+
+               <!-- <input type="submit" name="submit_comment" value="Submit Now" class="btn"> -->
+
+            </div>
+            </form>
+</section>
+          <!-- <form action="" method="post">
+            <div class="writeReview">
+               <div >
+                  <textarea style="width:50%;font-size:20px;margin-top:20px; border:2px solid silver"  class="form-control" name="comment_text" cols="5"  rows="1" placeholder="Add your comment" value=""></textarea>
+               </div>
+            </div>
+            <div class="col-md-12 text-right">
+               <input type="submit" name="submit_comment" value="Submit Now" class="btn submit_btn" style="background-color:#C6861A ; font-size : 20px;">
+
+            </div>
+            </form> -->
+
+
+ <?php include('./includes/footer.php') ?>

@@ -19,8 +19,6 @@ if (isset($_GET['category'])){
 
 
 <section class="products" id="product">
-<div class="row">
-<div class="col-lg-3 col-md-3">
 <div class="box-container">
 <?php
                     
@@ -32,7 +30,34 @@ if (isset($_GET['category'])){
                     {
                 ?>
         <div class="box">
+        <form class="form-view" action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">
+                                    <input type="hidden" name="description" value="<?= $item['description']; ?>">
+                                    <input type="hidden" name="product_id" value="<?= $item['product_id']; ?>">
+                                    <input type="hidden" name="name" value="<?= $item['productName']; ?>">
+                                    <?php 
+                                    if ($item['is_discount'] == 1){
+                                       ?>
+                                       <input type="hidden" name="price" value="<?=$item['price_discount'];?>">
+                                       <?php
+                                    } else {
+                                       ?>
+                                       <input type="hidden" name="price" value="<?=$item['price'];?>">
+                                       <?php
+                                    }
+                                    ?>     
+                                    <input type="hidden" name="image" value="<?= $item['imageMain']; ?>">
+                                    <?php 
+                                      if ($item['is_discount'] == 1){
+                                         ?>
+                                            <div class="discount">-<?= $item['percent_discount']?>%</div>
+                                         <?php
+                                      } else {
+                                         ?>
+                                         <input type="hidden" name="price" value="<?=$item['percent_discount'];?>">
+                                         <?php
+                                      }
 
+                                      ?>
         <?php 
         if ($item['is_discount'] == 1){
             ?>
@@ -47,9 +72,9 @@ if (isset($_GET['category'])){
            <div class="image">
                <img src="./uploads/<?= $item['imageMain']?>" alt="">
                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="./yourCart.html" class="cart-btn">add to cart</a>
-                    <a href="./view.html" class="fas fa-share"></a>
+               <button name="addTOheart" class="cart-btn"><i class="fas fa-heart"></i></button>
+                                                <button class="cart-btn" name="addTOcart">Add Cart</button>
+                                                <a href="product_view.php?product=<?= $item['slug']?>" ><i class="fas fa-eye"></i></a>
                </div>
            </div>
            <div class="content">
@@ -60,7 +85,7 @@ if (isset($_GET['category'])){
 <?php } else { ?>
 <div class="price"> JD<?= $item['price']?></div> <?php } ?> 
            </div>
-           
+        </form>
        </div>
        <?php
                           }
@@ -77,8 +102,7 @@ if (isset($_GET['category'])){
                     ?>
       
 </div>
-</div>
-</div>
+
 </section>
 
 
