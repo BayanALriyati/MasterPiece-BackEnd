@@ -12,7 +12,7 @@ include_once('config/connect.php');
      while($fetch_order_to_details = mysqli_fetch_array($check_order)){
        $last_id = $fetch_order_to_details['order_id'];
        $_SESSION['last_order']= $last_id;
-    //    echo $last_id ;
+       echo $last_id ;
       } }
       $_SESSION['last_order'] = $last_id;
       $sql = "SELECT * FROM `users` WHERE user_id= $user_id ;";
@@ -71,23 +71,28 @@ include_once('config/connect.php');
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Description</th>
+                            <th>Your GIFT</th>
 							<th>Quantity</th>
                             <th>Price </th>
 							
                         </tr>
                     </thead>
                     <tbody>
-				<?php	
-                while($product = mysqli_fetch_array($check_order)){ 
-                // foreach ($data as $product) {
-                    ?>
+				
                         <tr>
+                        <?php	
+                    //   $data = mysqli_fetch_array($check_order);
+
+                while($product = mysqli_fetch_array($check_order)){ 
+                    $i=0 ;               
+                    // foreach ($data as $product) {
+                    ?>
                             <td class="col-md-9"><?= $product['NameProduct']; ?></td>
 							<td class="col-md-3"> <?= $product['quantity']; ?></td>  
 							<td class="col-md-3"> <?= " JD".$product['price']; ?></td>
+                    <?php	}?>
                         </tr>
-                        <?php	}?>
+                        
                         <tr>
                            
                             <td class="text-right"><h2><strong>Total Price: </strong></h2></td>

@@ -120,7 +120,7 @@ if(mysqli_num_rows($items)> 0 )
       <form action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">  
             <input type="hidden" name="cart_id" value="<?= $item['id']; ?>">
             <input type="hidden" name="user_id" value="<?= $item['user_id']; ?>">
-            <button type="submit" class="btnCart" name="delete_all" value="<?= $item['user_id'];?>"  onclick="return confirm('Delete All From Cart?');">Delete All Item</button></td> 
+            <button type="submit" class="btnCartDelete" name="delete_all" value="<?= $item['user_id'];?>"  onclick="return confirm('Delete All From Cart?');">Delete All Item</button></td> 
       </form> 
       <!-- <a href="./functions/handleAdd.php" name="delete_all"  class="btnCart <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from cart?');">delete all item</a> -->
 

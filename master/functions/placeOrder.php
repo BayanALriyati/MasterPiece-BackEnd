@@ -27,7 +27,7 @@ if(isset($_POST['placeOrder'])){
    $letter = $_POST['letter'];
    $letter = filter_var($letter, FILTER_SANITIZE_STRING);
    $pay_method = $_POST['method'];
-  //  $card_Number = $_POST['card_Number'];, `card_Number` '$card_Number',
+   $card_Number = $_POST['card_Number'];
    $total_products = $_POST['total_products'];
    $total_price = $_POST['total_price'];
    date_default_timezone_set("Asia/Amman");
@@ -45,7 +45,7 @@ if(isset($_POST['placeOrder'])){
    $check_cart = mysqli_query($con , $sql) ;
    if(mysqli_num_rows($check_cart) > 0 )
    {      
-    $sql = "INSERT INTO `orders`(`order_id`, `user_id`, `fullName`, `email`, `phone`, `delivery_time`, `letter`, `location`, `pay_method`,`total_products`, `total_price`, `order_time`) VALUES (NULL,'$user_id','$fullName','$email','$phone','$delivery_time','$letter','$location','$pay_method','$total_products','$total_price','$order_time');";
+    $sql = "INSERT INTO `orders`(`order_id`, `user_id`, `fullName`, `email`, `phone`, `delivery_time`, `letter`, `location`, `pay_method`, `card_Number` ,`total_products`, `total_price`, `order_time`) VALUES (NULL,'$user_id','$fullName','$email','$phone','$delivery_time','$letter','$location','$pay_method','$card_Number','$total_products','$total_price','$order_time');";
     $check_cart = mysqli_query($con , $sql) ;
    //  redirect("../yourCart.php" , "Place Order Successfully");
     $sql = "SELECT * FROM `orders` ORDER BY order_id DESC LIMIT 1;";
@@ -78,10 +78,8 @@ echo $last_id ;
 
          $sql = "DELETE FROM `cart` WHERE user_id = $user_id";
          $delate_cart = mysqli_query($con , $sql) ;
-         // redirect("../yourOrder.php" , "Place Order Successfully");
           }
         }
-      //   redirect("../yourCart.php" , "Place Order Successfully");
       redirect("../yourOrder.php" , "Place Order Successfully");
 
     }

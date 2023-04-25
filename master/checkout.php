@@ -79,7 +79,7 @@ if(isset($_SESSION['auth']))
 
 
         
-      <form action="./functions/placeOrder.php" class="needs-validation" method="POST" enctype="multipart/form-data" d>  
+      <form action="./functions/placeOrder.php" class="needs-validation" method="POST" enctype="multipart/form-data">  
 
       <!-- <form class="card p-3 my-3"> -->
         <div class="input-group">
@@ -94,7 +94,7 @@ if(isset($_SESSION['auth']))
 <!-- <form class="needs-validation" novalidate> -->
 
       <input type="hidden" name="total_products" value="<?= $total_products; ?>">
-      <input type="hidden" name="total_price" value="<?= $total_price; ?>" value="">
+      <input type="hidden" name="total_price" value="<?= $total_price; ?>" >
 
         <div class="row">
           <div class="col-md-6 mb-5">
@@ -177,16 +177,13 @@ if(isset($_SESSION['auth']))
             <label class="custom-control-label h-100 fs-4" for="debit">Pay Cash</label>
           </div> -->
           <!-- class="credit"  -->
-          <div id="inputBoxNumber"></div>
-          <!-- <div id="inputBoxExpiryDate"></div> -->
-          <!-- <div id="inputBoxContainer"></div>
-          <div id="inputBoxContainer"></div> -->
+          <div id="inputName"></div>
+          <div id="inputCardNumber" name = "card_Number">
+            <input type="text" name="card_number" placeholder="Enter your Card Number here">
+          </div>
+          <div id="inputExpirationDate"></div>
+          <div id="inputCVV"></div>
         </div>
-        <!-- <div class="col-md-6 mb-5 credit">
-          <div id="inputBoxContainer"></div> -->
-            <!-- <label for="cc-number" class="fs-4">Credit card number</label>
-            <input type="text" class="card form-control vh-10" name="cc-number" placeholder="e.g. 123456" required> -->
-        <!-- </div> -->
        </div>
         <hr class="mb-4">
         </div>

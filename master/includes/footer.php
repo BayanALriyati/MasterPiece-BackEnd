@@ -1,4 +1,6 @@
-   <!-- Remove the container if you want to extend the Footer to full width. -->
+
+
+<!-- Remove the container if you want to extend the Footer to full width. -->
    <div class="container-fluid my-5">
    
        <footer class="bg-danger-subtle text-center text-lg-start text-white">
@@ -114,7 +116,10 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-   <script src="./assets/js/script.js"></script>
+   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="./assets/js/script.js"></script>
    <script src="assets/js/silder.js"></script>
     <!-- Alertify Js -->
    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
@@ -190,51 +195,60 @@ document.querySelector('#user-btn').onclick = () =>{
   //  navbar.classList.remove('active');
 }
   </script>
-   <script>
+  <script>
 function showInputBox() {
   var selectBox = document.getElementById("mySelect");
   var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 
   if (selectedValue === "Credit card") {
+    // var inputBox = document.createElement("input"); 
+    // inputBox.type = "text";
+    // inputBox.name = "card_Number";
+    // inputBox.id = "myInputBox";
+    // inputBox.placeholder = "Enter your Name here";
+    // var container = document.getElementById("inputName");
+    // container.innerHTML = "";
+    // container.appendChild(inputBox);
+
     var inputBox = document.createElement("input"); 
+    
     inputBox.type = "text";
     inputBox.name = "card_Number";
     inputBox.id = "myInputBox";
-    inputBox.className = "credit"; 
-    inputBox.placeholder = "Enter your Number here";
-
-    var container = document.getElementById("inputBoxNumber");
+    inputBox.placeholder = "Enter your Card Number here";
+    var container = document.getElementById("inputCardNumber");
     container.innerHTML = "";
     container.appendChild(inputBox);
 
+    // var inputBox = document.createElement("input"); 
+    // inputBox.type = "text";
+    // inputBox.name = "card_Number";
+    // inputBox.id = "myInputBox";
+    // inputBox.placeholder = "Enter your Name here";
+    // var container = document.getElementById("inputExpirationDate");
+    // container.innerHTML = "";
+    // container.appendChild(inputBox);
+
+    // var inputBox = document.createElement("input"); 
+    // inputBox.type = "text";
+    // inputBox.name = "card_Number";
+    // inputBox.id = "myInputBox";
+    // inputBox.placeholder = "Enter your CVV here";
+    // var container = document.getElementById("inputCVV");
+    // container.innerHTML = "";
+    // container.appendChild(inputBox);
   } else {
-    var container = document.getElementById("inputBoxNumber");
+    // var container = document.getElementById("inputName");
+    // container.innerHTML = "";
+    var container = document.getElementById("inputCardNumber");
     container.innerHTML = "";
+    // var container = document.getElementById("inputExpirationDate");
+    // container.innerHTML = "";
+    // var container = document.getElementById("inputCVV");
+    // container.innerHTML = "";
   }
 }
   </script>
-  <!-- <script>
-function showInputBox() {
-  var selectBox = document.getElementById("mySelect");
-  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-  if (selectedValue === "Credit card") {
-    var inputBox = document.createElement("input"); 
-    inputBox.type = "text";
-    inputBox.name = "card_Number";
-    inputBox.id = "myInputBox";
-    inputBox.className = "credit"; 
-    inputBox.placeholder = "Enter your Expiry Date here";
-
-    var container = document.getElementById("inputBoxExpiryDate");
-    container.innerHTML = "";
-    container.appendChild(inputBox);
-  } else {
-    var container = document.getElementById("inputBoxExpiryDate");
-    container.innerHTML = "";
-  }
-}
-  </script> -->
   <script>
 $(document).ready(function(){
 

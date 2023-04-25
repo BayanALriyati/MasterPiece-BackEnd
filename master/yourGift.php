@@ -172,7 +172,7 @@ include_once('functions/userFunctions.php');
                    <div class="products">
                             <div class="box-container">
                                 <div class="box flower">
-                                  <form class="form-view" method="POST" enctype="multipart/form-data">
+                                  <form class="form-view" action="./functions/handleAdd.php" method="POST" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="description" value="<?= $item['description']; ?>">
                                     <input type="hidden" name="product_id" value="<?= $item['product_id']; ?>">
                                     <input type="hidden" name="name" value="<?= $item['productName']; ?>">

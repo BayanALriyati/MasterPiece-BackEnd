@@ -93,10 +93,6 @@ include_once ('./config/connect.php');
             <p class="name"><?= $_SESSION['auth_user']['name']; ?></p>
             <a href="Logout.php" class="btn">logout</a>
          </div>
-         <!-- <p class="account">
-            <a href="login.php">login</a> or
-            <a href="register.php">register</a>
-         </p>  -->
          <?php
             }else{
          ?>
@@ -105,6 +101,17 @@ include_once ('./config/connect.php');
          <?php
           }
          ?>
+      </div>
+      <div class="btn-group">
+         
+        <button type="button" class="btn btn-primary"><div id="user-btn" class="fas fa-user" class="hover"></div></button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+=        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="yourFavorite.php" class="fas fa-heart" class="hover"></a></li>
+          <li><a href="search.php" class="fas fa-search"><i></i></a></li>
+          <li><a href="yourCart.php" class="fas fa-shopping-cart" class="hover"></a></li>
+        </ul>
       </div>
       <nav class="bottom-nav">
       <a href="./index.php" class="fas fa-home"></a>
