@@ -1436,6 +1436,7 @@ td .input-group .cart-btn:hover{
    text-transform: capitalize;
 }
 
+
 .fs-4{
    margin-bottom: 0rem;
 }
@@ -2008,11 +2009,32 @@ a.start:hover {
    font-size: 1.7rem;
    cursor: pointer;
    font-weight: 500;
-   margin: 5rem 49rem;
-   padding: 2rem 2rem;
+   margin: 5rem 48rem;
+   padding: 1rem 2rem;
 }
 
 .btnReview:hover{
    color:var(--black);
    background-image: url(../images/heading-bg.jpg);
 }
+
+.reviewBox{
+   overflow-y: scroll; /* Show vertical scrollbar */
+  overflow-x: scroll; /* Show horizontal scrollbar */
+  height: 18rem;
+  margin-bottom: 2rem;
+
+}
+
+.emptyReview{
+   padding:1.5rem;
+   background-color: var(--pink);
+   border: var(--border);
+   box-shadow: var(--box-shadow);
+   text-align: center;
+   color:var(--dark-color);
+   border-radius: 5.5rem;
+   font-size: 2rem;
+   text-transform: capitalize;
+}
+

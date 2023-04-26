@@ -347,4 +347,31 @@ else
    }
 }
 
+
+else if(isset($_POST['addReview'])){
+   if(isset($_SESSION['auth']))
+  {
+    $user_id = $_SESSION['auth_user']['user_id'];
+    $review_text = $_POST['review_text'];
+    $product_id = $_POST['product_id'];
+      // $sql = "INSERT INTO review (user_id,product_id,review_text,review_date) 
+      // VALUES ('$user_id','$product_id','$review_text',NOW())";
+      $sql = "INSERT INTO `reviews`(`review_id`, `user_id`, `product_id`, `review_text`, `review_date`) VALUES ('NULL','$user_id','$product_id','$review_text',NOW())";
+      $send_to_review = mysqli_query($con , $sql) ;
+      echo ($sql);
+      if($send_to_review){
+        redirect("../yourGift.php","Product Review Added Successfully");
+      //   redirect("../product_view.php","Product Review Added Successfully");
+      }
+      else
+      {
+         redirect("../index.php","Something went wrong");
+      }
+    }
+  } 
+     else
+     {
+      redirect("../login.php","Login To Continue");
+     }
+//   }
 ?>
