@@ -119,7 +119,7 @@ if(isset($_SESSION['auth']))
           </div>
         </div>
       <div class="row">
-      <div class="col-md-3 mb-5">
+        <div class="col-md-3 mb-5">
           <label for="address" class="fs-4">Flat Number</label>
           <input type="text" class="card form-control vh-10" name="flat" placeholder="12" required>
         </div>
@@ -138,7 +138,7 @@ if(isset($_SESSION['auth']))
           <label for="address2" class="fs-4">Country</label>
           <input type="text" class="card form-control vh-10" name="country" placeholder="Jordan">
         </div> 
-    </div>      
+      </div>      
         <hr class="mb-4">
         <div class="mb-1">
           <label for="address" class="fs-4">Gift Delivery Time</label>
@@ -162,26 +162,53 @@ if(isset($_SESSION['auth']))
         <h4 class="mb-5">Payment</h4>
         <div class="row">
         <div class="col-md-6 d-block my-5">
-        <!-- <label for="" class="label">Select Method</label> -->
-             <select name="method" class="form-select method" id="mySelect" onchange="showInputBox()">
+             <select  name="method" class="form-select method" id="selectBox" onchange="createDiv()">
+               <option selected>Select method</option>
+               <option value="Credit card">Credit card</option>
+               <option value="Pay Cash">Pay Cash</option>
+            </select>
+             <!-- <select name="method" class="form-select method" id="mySelect" onchange="toggleDiv(this.value)">
               <option selected>Select Method</option>
                         <option value="Credit card">Credit card</option>
                         <option value="Pay Cash">Pay Cash</option>
-            </select>
-          <!-- <div class="custom-control custom-radio" id="credit_card">
-            <input id="credit_card" name="methodCredit" type="radio" checked class="custom-control-input" required>
-            <label id="credit_card" class="custom-control-label h-100 fs-4" for="credit">Credit card</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="debit" name="methodCash" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label h-100 fs-4" for="debit">Pay Cash</label>
-          </div> -->
-          <!-- class="credit"  -->
+                        <option value="1">Credit card</option>
+                        <option value="0">Pay Cash</option>
+            </select> -->
 
+             <div id="output" name="Credit">
+              
+             <div class="row">
+                  <div class="col-md-3 mb-5">
+                    <label for="address" class="fs-4">Name</label>
+                    <input type="text" class="card form-control vh-10" name="card_Name" placeholder="Enter your Name here" required>
+                  </div>
+                  <div class="col-md-3 mb-5">
+                    <label for="address" class="fs-4">card Number</label>
+                    <input type="text" class="card form-control vh-10" name="card_Number" placeholder="Enter your Card Number here" required>
+                  </div>
+                  <div class="col-md-3 mb-5">
+                    <label for="address2" class="fs-4">Expiration Date</label>
+                    <input type="datetime-local" class="card form-control vh-10" name="expiration_Date" placeholder="Enter your Expiration Datehere">
+                  </div>  
+                  <div class="col-md-3 mb-5">
+                    <label for="address2" class="fs-4">CVV</label>
+                    <input type="text" class="card form-control vh-10" name="CVV" placeholder="Enter your CVV here">
+                  </div> 
+             </div>
+             </div>
+             <!-- <div id="boxCash">
+             <div class="row">
+                  <div class="col-md-3 mb-5">
+                    <label for="address" class="fs-4">Name</label>
+                    <input type="text" class="card form-control vh-10" name="card_Name" placeholder="Enter your Name here" required>
+                  </div>
+             </div>
+             </div> -->
+                <!-- onchange="showInputBox()"
           <div id="inputName"></div>
           <div id="inputCardNumber"></div>
           <div id="inputExpirationDate"></div>
-          <div id="inputCVV"></div>
+          <div id="inputCVV"></div> -->
         </div>
        </div>
         <hr class="mb-4">

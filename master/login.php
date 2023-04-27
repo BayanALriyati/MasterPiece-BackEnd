@@ -12,7 +12,7 @@ include('includes/header.php')
 
 <div class="heading-main">
   <h3>Login</h3>
-  <p><a href="home.html">home </a> <span> / Login</span></p>
+  <p><a href="index.php" target="_blank">home </a> <span> / Login</span></p>
 </div>
 
 

@@ -13,8 +13,8 @@ if (isset($_GET['category'])){
 ?>
 
 <div class="heading-main">
-    <!-- <h3>Your Cart</h3> -->
-    <p><a href="index.php">home </a> <span> / <?= $category['categoryName']?></span></p>
+    <h3>Our gift</h3>
+    <p><a href="index.php" target="_blank">home </a> <span> / <?= $category['categoryName']?></span></p>
 </div>
 
 
@@ -74,7 +74,7 @@ if (isset($_GET['category'])){
                <div class="icons">
                <button name="addTOheart" class="cart-btn"><i class="fas fa-heart"></i></button>
                                                 <button class="cart-btn" name="addTOcart">Add Cart</button>
-                                                <a href="product_view.php?product=<?= $item['slug']?>" ><i class="fas fa-eye"></i></a>
+                                                <a href="product_view.php?product=<?= $item['slug']?>" target="_blank"><i class="fas fa-eye"></i></a>
                </div>
            </div>
            <div class="content">

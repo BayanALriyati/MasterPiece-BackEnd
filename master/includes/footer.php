@@ -135,6 +135,7 @@
      } 
      ?>
   </script>
+  
   <script>
     var ProductImg = document.getElementById('ProductImg');
     var SmallImg = document.getElementsByClassName('small-img');
@@ -180,7 +181,16 @@
   },
 });
 </script>
-  <script>
+<script>
+
+
+profile = document.querySelector('.header .flex .profile');
+
+document.querySelector('#user-btn').onclick = () =>{
+   profile.classList.toggle('active');
+}
+  </script>
+  <!-- <script>
 // navbar = document.querySelector('.header .flex .navbar');
 
 // document.querySelector('#menu-btn').onclick = () =>{
@@ -197,58 +207,91 @@ document.querySelector('#user-btn').onclick = () =>{
   </script>
   <script>
 function showInputBox() {
-  var selectBox = document.getElementById("mySelect");
-  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+  // var selectBox = document.getElementById("mySelect");
+  // var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 
-  if (selectedValue === "Credit card") {
-    // var inputBox = document.createElement("input"); 
-    // inputBox.type = "text";
-    // inputBox.name = "card_Number";
-    // inputBox.id = "myInputBox";
-    // inputBox.placeholder = "Enter your Name here";
-    // var container = document.getElementById("inputName");
-    // container.innerHTML = "";
-    // container.appendChild(inputBox);
+  // if (selectedValue === "Credit card") {
+  //   // var inputBox = document.createElement("input"); 
+  //   // inputBox.type = "text";
+  //   // inputBox.name = "card_Number";
+  //   // inputBox.id = "myInputBox";
+  //   // inputBox.placeholder = "Enter your Name here";
+  //   // var container = document.getElementById("inputName");
+  //   // container.innerHTML = "";
+  //   // container.appendChild(inputBox);
 
-    var inputBox = document.createElement("input"); 
+  //   var inputBox = document.createElement("Div"); 
     
-    inputBox.type = "text";
-    inputBox.name = "card_Number";
-    inputBox.id = "myInputBox";
-    inputBox.placeholder = "Enter your Card Number here";
-    var container = document.getElementById("inputCardNumber");
-    container.innerHTML = "";
-    container.appendChild(inputBox);
+  //   // inputBox.type = "text";
+  //   // inputBox.name = "card_Number";
+  //   // inputBox.id = "myInputBox";
+  //   // inputBox.placeholder = "Enter your Card Number here";
+  //   var container = document.getElementById("boxCredit");
+  //   container.innerHTML = "";
+  //   // container.appendChild(inputBox);
 
-    // var inputBox = document.createElement("input"); 
-    // inputBox.type = "text";
-    // inputBox.name = "card_Number";
-    // inputBox.id = "myInputBox";
-    // inputBox.placeholder = "Enter your Name here";
-    // var container = document.getElementById("inputExpirationDate");
-    // container.innerHTML = "";
-    // container.appendChild(inputBox);
+  //   // var inputBox = document.createElement("input"); 
+  //   // inputBox.type = "text";
+  //   // inputBox.name = "card_Number";
+  //   // inputBox.id = "myInputBox";
+  //   // inputBox.placeholder = "Enter your Name here";
+  //   // var container = document.getElementById("inputExpirationDate");
+  //   // container.innerHTML = "";
+  //   // container.appendChild(inputBox);
 
-    // var inputBox = document.createElement("input"); 
-    // inputBox.type = "text";
-    // inputBox.name = "card_Number";
-    // inputBox.id = "myInputBox";
-    // inputBox.placeholder = "Enter your CVV here";
-    // var container = document.getElementById("inputCVV");
-    // container.innerHTML = "";
-    // container.appendChild(inputBox);
-  } else {
-    // var container = document.getElementById("inputName");
-    // container.innerHTML = "";
-    var container = document.getElementById("inputCardNumber");
-    container.innerHTML = "";
-    // var container = document.getElementById("inputExpirationDate");
-    // container.innerHTML = "";
-    // var container = document.getElementById("inputCVV");
-    // container.innerHTML = "";
-  }
+  //   // var inputBox = document.createElement("input"); 
+  //   // inputBox.type = "text";
+  //   // inputBox.name = "card_Number";
+  //   // inputBox.id = "myInputBox";
+  //   // inputBox.placeholder = "Enter your CVV here";
+  //   // var container = document.getElementById("inputCVV");
+  //   // container.innerHTML = "";
+  //   // container.appendChild(inputBox);
+  // } else {
+  //   // var container = document.getElementById("inputName");
+  //   // container.innerHTML = "";
+  //   var container = document.getElementById("boxCredit");
+  //   container.innerHTML = "";
+  //   // var container = document.getElementById("inputExpirationDate");
+  //   // container.innerHTML = "";
+  //   // var container = document.getElementById("inputCVV");
+  //   // container.innerHTML = "";
+  // }
+  function createDiv() {
+    
+    
+
+			const selectBox = document.getElementById("selectBox");
+			const selectedValue = selectBox.value;
+      if (selectedValue === "Credit card") {
+			const div = document.createElement("div");
+			// div.innerHTML = `You selected ${selectedValue}`;
+			document.getElementById("output").appendChild(div);
+    }
+		}
 }
-  </script>
+  </script> -->
+  <script>
+		function createDiv() {
+			const selectBox = document.getElementById("selectBox");
+			const selectedValue = selectBox.value;
+			if (selectedValue === "Credit card") {
+				const div = document.createElement("div");
+				div.innerHTML = "You selected Credit card";
+				document.getElementById("output").appendChild(div);
+				document.getElementById("output").style.display = "block";
+			
+     
+    } else if (selectedValue === "Pay Cash") {
+				document.getElementById("output").innerHTML = "You selected green";
+				document.getElementById("output").style.display = "none";
+			} else {
+				document.getElementById("output").style.display = "none";
+			}
+		
+    }
+	</script>
+ 
   <script>
 $(document).ready(function(){
 
@@ -260,12 +303,6 @@ e.preventDefault();
 
 var qty = $('.input-qty').val();
 
-// alert(qty);
-
-// var qty = $(this).closest('.product_data').find('.input-qty').val();
-
-
-
 var value = parseInt(qty, 20); 
 value = isNaN(value)? 0 : value;
 
@@ -273,8 +310,6 @@ value = isNaN(value)? 0 : value;
 if(value < 20)
 {
    value++;
-
-  //  $(this).closest('.product_data').find('.input-qty').val(value);
   $('.input-qty').val(value);
 
 }
@@ -287,8 +322,6 @@ e.preventDefault();
 
 var qty = $('.input-qty').val();
 
-// alert(qty);
-// var qty = $(this).closest('.product_data').find('.input-qty').val();
 
 var value = parseInt(qty, 20); 
 value = isNaN(value)? 0 : value;

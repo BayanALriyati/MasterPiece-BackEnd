@@ -30,7 +30,7 @@ include_once('functions/userFunctions.php');
     <div>
     <h1 class="head-h1">The Best GIFT</h1>
     <p class="head-p">Your gift is on us and the visit is on you.</p>
-    <a href="./yourGift.html" class="btnCart" target="_blank">Discover More</a>
+    <a href="./yourGift.php" class="btnCart" target="_blank">Discover More</a>
     </div>
  
     <video class="video-bg" autoplay muted loop>
@@ -58,7 +58,7 @@ include_once('functions/userFunctions.php');
                 ?>
 
       <div class="box">
-        <a href="gifts.php?category=<?= $item['slug']?>">
+        <a href="gifts.php?category=<?= $item['slug']?>" target="_blank">
          <img src="./uploads/<?= $item['image']?>" alt="">
          <div class="content">
         <h3>Choose <?= $item['categoryName']?></h3>
@@ -90,7 +90,7 @@ include_once('functions/userFunctions.php');
    <div class="Offers-container">
        <h3>Deal Of The Day</h3>
        <p>Upto 50% Off</p>
-       <a href="#" class="btn">Discover More</a>
+       <a href="#" class="btn" target="_blank">Discover More</a>
    </div>
 
 </section>
@@ -135,7 +135,7 @@ include_once('functions/userFunctions.php');
                <div class="icons">
                   <button name="addheartIndrex" class="cart-btn"><i class="fas fa-heart"></i></button>
                   <button name="addcartIndrex" class="cart-btn">Add Cart</button>
-                  <a href="product_view.php?product=<?= $item['slug']?>"><i class="fas fa-eye"></i></a>
+                  <a href="product_view.php?product=<?= $item['slug']?>" target="_blank"><i class="fas fa-eye"></i></a>
                </div>
            </div>
            <div class="content">

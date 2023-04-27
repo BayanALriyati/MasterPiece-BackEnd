@@ -1750,7 +1750,7 @@ section i{
  font-size: 1rem;
  font-weight: 400 ;
  margin: 0 ;
- width: 40rem;
+ width: 30rem;
 }
 .order-footer p{
    font-size: 2rem;
@@ -1764,7 +1764,7 @@ section i{
    font-size: 2rem;
    font-weight: 400 ;
    margin: 0 ;
-   width: 40rem;
+   /* width: 40rem; */
    padding: 1rem 1rem;
   }
 
@@ -1790,6 +1790,11 @@ section i{
    color: var(--white);
    background-color: var(--dark-color);
    text-align: center;
+   
+}
+
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border: var(--border);
 }
 
 .table-bordered{
@@ -1836,12 +1841,17 @@ section i{
 .order-header-mid {
    margin: 3rem 0rem;
    overflow: hidden;
-   width: 44rem;
-}  
-
-#container {
- background-color: #dcdcdc;
+   width: 60rem;
 }
+
+.order-header-footer{
+   margin: 3rem 0rem;
+   overflow: hidden;
+   width: 50rem;
+}
+/* #container {
+ background-color: #dcdcdc;
+} */
  
 .search-form form{
    display: flex;
@@ -2038,3 +2048,22 @@ a.start:hover {
    text-transform: capitalize;
 }
 
+#output{
+   display: none;
+   /* background-color:var(--pink); */
+   padding: 20px;
+   height: 10rem;
+   width: 100rem;
+   margin-top: 20px;
+   color: var(--black);
+}
+
+/* #boxCash{
+   display: none;
+   background-color:var(--pink);
+   padding: 20px;
+   height: 10rem;
+   width: 100rem;
+   margin-top: 20px;
+   color: var(--black);
+} */

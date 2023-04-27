@@ -71,7 +71,7 @@ if(isset($_SESSION['auth'])){
                <div class="icons">
                   <button name="addheartSearch" class="cart-btn"><i class="fas fa-heart"></i></button>
                   <button name="addcartSearch" class="cart-btn">Add Cart</button>
-                  <a href="product_view.php?product=<?= $item['slug']?>"><i class="fas fa-share"></i></a>
+                  <a href="product_view.php?product=<?= $item['slug']?>" target="_blank"><i class="fas fa-share"></i></a>
                </div>
            </div>
            <div class="content">

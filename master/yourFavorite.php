@@ -11,7 +11,7 @@ if(isset($_SESSION['auth']))
 
 <div class="heading-main">
     <h3>Your Favorite</h3>
-    <p><a href="index.php">home </a> <span> / Your Favorite</span></p>
+    <p><a href="index.php" target="_blank">home </a> <span> / Your Favorite</span></p>
 
 </div>
 
@@ -70,7 +70,7 @@ if(mysqli_num_rows($items)> 0 )
                <div class="icons">
                   <button name="addheartFavorite" class="cart-btn"><i class="fas fa-heart"></i></button>
                   <button name="addcartFavorite" class="cart-btn">Add Cart</button>
-                  <a href="product_view.php?product=<?= $item['slug']?>"><i class="fas fa-share"></i></a>
+                  <a href="product_view.php?product=<?= $item['slug']?>" target="_blank"><i class="fas fa-share"></i></a>
                </div>
            </div>
            <div class="content">

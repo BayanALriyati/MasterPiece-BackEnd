@@ -111,7 +111,7 @@ include_once('functions/userFunctions.php');
                                             <div class="icons">
                                                 <button name="addTOheart" class="cart-btn"><i class="fas fa-heart"></i></button>
                                                 <button class="cart-btn" name="addTOcart">Add Cart</button>
-                                                <a href="product_view.php?product=<?= $item['slug']?>" ><i class="fas fa-eye"></i></a>
+                                                <a href="product_view.php?product=<?= $item['slug']?>" target="_blank"><i class="fas fa-eye"></i></a>
                                             </div>
                                         </div>
                                         <div class="content">

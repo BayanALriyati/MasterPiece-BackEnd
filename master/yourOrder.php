@@ -20,17 +20,24 @@ include_once('config/connect.php');
       $data_user = mysqli_fetch_array($check_user);
       $sql="SELECT 
       order_details.NameProduct,order_details.price,order_details.quantity,
-      orders.fullName,orders.phone,orders.email,orders.location,orders.total_price,orders.location,orders.order_time,orders.delivery_time,orders.phone,orders.email
+      orders.fullName,orders.phone,orders.email,orders.location,orders.pay_method,orders.credit_information,orders.total_price,orders.location,orders.order_time,orders.delivery_time,orders.phone,orders.email
       FROM order_details INNER JOIN orders
       ON order_details.order_id=orders.order_id
       WHERE order_details.order_id ='$last_id'";
+    //   echo ($sql);
       $check_order = mysqli_query($con , $sql);
+      
       $data = mysqli_fetch_array($check_order);
+    
+    //   print_r ($check_order);
+
     // while($product = mysqli_fetch_array($check_order)){ 
 
       // _________________________________      ____-
-
-                while($product = mysqli_fetch_array($check_order)){ 
+    //   if(mysqli_num_rows($check_order)> 0 )
+    //   {
+    //     // while($fetch_product = mysqli_fetch_array($product)){ 
+    //             while($product = mysqli_fetch_array($check_order)){ 
                 //     $i=0 ;               
                     // foreach ($check_order as $product) {
                     ?>
@@ -39,7 +46,7 @@ include_once('config/connect.php');
     <div class="row">   
 		
         <div class="order-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
-            <div class="orderFlex">
+        <div class="orderFlex">
             <div class="row">
 				<div class="order-header order-header-mid">
 					<div class="col-xs-8 col-sm-8 col-md-8 text-left">
@@ -53,7 +60,6 @@ include_once('config/connect.php');
 					</div>
 				</div>
             </div>
-           
 			
 			<div class="row">
 				<div class="order-header order-header-mid">
@@ -64,7 +70,18 @@ include_once('config/connect.php');
 							<p><b>Mobile :</b> <?= $data['phone']; ?></p>
 							<p><b>Email :</b> <?= $data['email']; ?></p>
 							<p><b>Address :</b> <?= $data['location']; ?></p>
-         
+                            <?php 
+                                    if ($data['pay_method'] == "Credit card"){
+                                       ?>
+                                         <p><b>credit information :</b><?= $data['credit_information']; ?></p>
+                                       <?php
+                                    } else {
+                                       ?>
+                                       <input type="hidden" name="credit_information" value="<?= $data['credit_information'];?>">
+                                       <?php
+                                    }
+                                    ?>
+                            
 						</div>
 					
 					</div>
@@ -82,15 +99,24 @@ include_once('config/connect.php');
                         </tr>
                     </thead>
                     <tbody>
-				
+                    <?php
+                        if(mysqli_num_rows($check_order)> 0 )
+      {
+        // while($fetch_product = mysqli_fetch_array($product)){ 
+                // while($product = mysqli_fetch_array($check_order)){ 
+                //     $i=0 ;               
+                    foreach ($check_order as $product) {
+                    ?>
                         <tr>
-                        
+                            
                             <td class="col-md-9"><?= $product['NameProduct']; ?></td>
 							<td class="col-md-3"> <?= $product['quantity']; ?></td>  
 							<td class="col-md-3"> <?= " JD".$product['price']; ?></td>
-                    
+                          
                         </tr>
-                        
+                        <?php	}
+                            }
+?>
                         <tr>
                            
                             <td class="text-right"><h2><strong>Total Price: </strong></h2></td>
@@ -105,20 +131,17 @@ include_once('config/connect.php');
 				<div class="order-header order-header-mid order-footer">
 					<div class="col-xs-8 col-sm-8 col-md-8 text-right">
 						<div class="order-footer">
-							<p><b>Date :</b><?= $data['delivery_time']; ?></p>
-							<!-- <h5 style="color: rgb(140, 140, 140);">Thanks for shopping.!</h5>
-                            <a href="yourGift.php" class="option-btn">Continue Shopping</a> -->
+							<p><b>Date delivery:</b><?= $data['delivery_time']; ?></p>
 						</div>
 					</div>
 				</div>
             </div>
             <div class="row">
-				<div class="order-header order-header-mid order-footer">
+				<div class="order-header order-header-footer order-footer">
 					<div class="col-xs-8 col-sm-8 col-md-8 text-right">
 						<div class="order-footer">
-							<!-- <p><b>Date :</b><?= $data['delivery_time']; ?></p> -->
 							<h5 style="color: rgb(140, 140, 140);">Thanks for shopping.!</h5>
-                            <a href="yourGift.php" class="option-btn" >Continue Shopping</a>
+                            <a href="yourGift.php" class="option-btn" target="_blank">Continue Shopping</a>
 						</div>
 					</div>
 				</div>
@@ -127,7 +150,7 @@ include_once('config/connect.php');
         </div>    
 	</div>
 </div>
-<?php	}?>
+
 
     <!-- icons section starts  -->
 

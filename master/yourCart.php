@@ -101,7 +101,6 @@ if(mysqli_num_rows($items)> 0 )
       ?>
     </table>      
     
-    <!-- <a href="./yourGift.html" target="_blank" class="btnCart">CONTINUE SHOPPING</a> -->
 
     <div class="total-price">
         <div >
@@ -122,10 +121,6 @@ if(mysqli_num_rows($items)> 0 )
             <input type="hidden" name="user_id" value="<?= $item['user_id']; ?>">
             <button type="submit" class="btnCartDelete" name="delete_all" value="<?= $item['user_id'];?>"  onclick="return confirm('Delete All From Cart?');">Delete All Item</button></td> 
       </form> 
-      <!-- <a href="./functions/handleAdd.php" name="delete_all"  class="btnCart <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from cart?');">delete all item</a> -->
-
-      <!-- <a href="yourGift.php" class="btnCart <?= ($total_price > 1)?'':'disabled'; ?>" target="_blank">Delete All Item</a> -->
-        <!-- <a href="./yourGift.html" target="_blank" class="btnCart">Delete All Item</a> -->
         <a href="./yourGift.php" target="_blank" class="btnCart">Continue Shopping</a>
         <a href="checkout.php" target="_blank" class="btnCart">Proceed To Checkout</a>
       </div>

@@ -11,7 +11,7 @@ include('includes/header.php') ;
 
 <div class="heading-main">
     <h3>Register</h3>
-    <p><a href="home.html">home </a> <span> / Register</span></p>
+    <p><a href="index.php" target="_blank">home </a> <span> / Register</span></p>
  </div>
 <section class="w-100 vh-150 mt-5" style="background:url(assets/images/heading-bg.jpg);">
     <div class="container h-100">
