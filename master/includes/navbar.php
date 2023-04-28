@@ -28,6 +28,12 @@ include_once ('./config/connect.php');
            if(isset($_SESSION['auth']))
            {
             $user_id = $_SESSION['auth_user']['user_id'];
+            $user_id= $_SESSION['auth_user']['user_id'];
+              $sql="SELECT *FROM users WHERE User_id='$user_id'";
+              $sql_run=mysqli_query($con,$sql);
+              if(mysqli_num_rows($sql_run)> 0 )
+             { 
+                foreach($sql_run as $item){
             ?>
             <input type="hidden" name="user" value="<?= $_SESSION['auth_user']['user_id'];; ?>">
             
@@ -63,12 +69,22 @@ include_once ('./config/connect.php');
             <?php
             }
          ?>
+         <!-- class="fas fa-user" -->
             <!-- <a href="yourFavorite.php" class="fas fa-heart"></a> -->
                <!-- <?= $_SESSION['auth_user']['image']; ?> -->
-            <div id="user-btn" class="fas fa-user"></div>
-            <span id="user" style="cursor:default;" class="hover"><?= $_SESSION['auth_user']['name']; ?></span>
+               <div id="user-btn" >
+                  <img src="./uploads/<?= $item['image']; ?>" alt="logo" class="img_user" width: 5rem;
+                     height: 5rem;>
+                  <!-- <span id="user" style="cursor:default;" class="hover"><?= $_SESSION['auth_user']['name']; ?></span> -->
+
+               </div>
+                           <!-- <div id="user-btn"><img src="./uploads/<?= $item['image']; ?>" alt="logo" class="img_user"></div> -->
+            <!-- <span id="user" style="cursor:default;" class="hover"><?= $_SESSION['auth_user']['name']; ?></span> -->
          <?php
-            }else{
+            }
+         }
+      }
+         else{
          ?>
             <a href="search.php" class="fas fa-search"></a>
             <a href="yourCart.php" class="fas fa-shopping-cart" class="hover"></a>
@@ -84,22 +100,35 @@ include_once ('./config/connect.php');
       <?php 
            if(isset($_SESSION['auth']))
            {
+            $user_id= $_SESSION['auth_user']['user_id'];
+              $sql="SELECT *FROM users WHERE User_id='$user_id'";
+              $sql_run=mysqli_query($con,$sql);
+              if(mysqli_num_rows($sql_run)> 0 )
+             { 
+                foreach($sql_run as $item){
             ?>
-         <!-- <p class="name"><?= $_SESSION['auth_user']['name']; ?></p>
-          <a><img src="../Uploads/<?= $_SESSION['auth_user']['image']; ?>" alt="logo"></a> -->
+         <!-- <p class="name"><?= $item['name']; ?></p> -->
+          <!-- <a><img src="./uploads/<?= $item['image']; ?>" alt="logo" height="10"></a> -->
          <!-- <div class="name"><img src="../Uploads/<?= $_SESSION['auth_user']['image']; ?>" alt="logo"></div> -->
          <div class="flex">
-            <a href="profile.php" class="btn">profile</a>
-            <p class="name"><?= $_SESSION['auth_user']['name']; ?></p>
-            <a href="Logout.php" class="btn">logout</a>
+            <a href="profile.php" class="btnprofile">profile</a>
+            <p class="name"><?= $item['name']; ?></p>
+            <a href="Logout.php" class="btnprofile">logout</a>
          </div>
          <?php
-            }else{
+            }
+         }
+         
+   }else{
+               
          ?>
             <p class="first">please login first!</p>
             <a href="login.php" class="btn">login</a>
          <?php
-          }
+          
+            }
+      
+
          ?>
       </div>
       
@@ -108,7 +137,7 @@ include_once ('./config/connect.php');
       <a href="./yourGift.php" class="fas fa-gift"></a>
       <a href="./aboutUs.php" class="fas fa-question"></a>
       <a href="./contactUs.php" class="fas fa-address-card"></a>
-  </nav>
+      </nav>
 
    </section>
 

@@ -509,199 +509,86 @@ else if( isset($_POST['remove-discountProduct'])){
    }
 
 }
-// else if( isset($_POST['addTOcart'])){
-//    // $_SESSION['auth_user']['user_id'];
-//    $productId = $_POST['product_id'];
-//    $product_name = $_POST['name'];
-//    $product_price = $_POST['price'];
-//    $product_image = $_POST['image'];
-//    $product_qty = $_POST['qty'];
-//    $send_to_cart ="INSERT INTO cart ( product_id , product_name , product_price , product_image , product_qty)
-//    VALUES ( '$productId' , '$product_name' , '$product_price','$product_image' , '$product_qty')";
-//    $send_to_cart = mysqli_query($con , $send_to_cart) ;
-// }
-else if(isset($_POST['submit'])){
+
+else if(isset($_POST['Update'])){
    if(isset($_SESSION['auth']))
    {
    $user_id= $_SESSION['auth_user']['user_id'];
+   echo $user_id;
    $name = $_POST['name'];
    $email = $_POST['email'];
    $city = $_POST['city'];
-   $Gender = $_POST['Gender'];
-   $prev_pass = $_POST['prev_pass'];
-   $old_pass = $_POST['old_pass'];
-   $new_pass = $_POST['new_pass'];
-   $cpass = $_POST['cpass'];
-
-
-   if (isset($_FILES['pp']['name']) AND !empty($_FILES['pp']['name'])) {
-         
-         
-      $img_name = $_FILES['pp']['name'];
-      $tmp_name = $_FILES['pp']['tmp_name'];
-      $error = $_FILES['pp']['error'];
-      
-      if($error === 0){
-         $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-         $img_ex_to_lc = strtolower($img_ex);
-
-         $allowed_exs = array('jpg', 'jpeg', 'png');
-         if(in_array($img_ex_to_lc, $allowed_exs)){
-            $new_img_name = uniqid($uname, true).'.'.$img_ex_to_lc;
-            $img_upload_path = '../upload/'.$new_img_name;
-            move_uploaded_file($tmp_name, $img_upload_path);
-
-$sql = "UPDATE `users` SET name =$name, email = $email ,image = $new_img_name,city = $city WHERE User_id = $user_id";
-   $update_query_run = mysqli_query($con , $sql);
-
-   redirect("../admin/offers.php" , "Discount Removed Successfully");
-   exit;
-}else {
-   redirect("../admin/offers.php" , "Discount Removed Successfully");
-exit;
-}
-}else {
-   redirect("../admin/offers.php" , "Discount Removed Successfully");
-exit;
-}
-   }
+   $street = $_POST['street'];
+   $gender = $_POST['gender'];
    $image = $_FILES['image']['name'];
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];
    $image_folder = '../Uploads/'.$image; 
-   // $old_image = $_POST['old_image'];  
+   $old_image = $_POST['old_image'];  
 
-   // if($new_image != ""){
-   //    $update_image = $new_image ;
-   // }
-   // else
-   // {
-   //     $update_image = $old_image ;
-   // }
-   $sql = "UPDATE `users` SET name =$name, email = $email ,image = $image,city = $city WHERE User_id = $user_id";
+   if($image != ""){
+           $update_image = $image ;
+        }
+        else
+           {
+               $update_image = $old_image ;
+           }   
+   $sql = "UPDATE `users` SET `User_id`='$user_id',`name`='$name',`email`='$email',`image`='$update_image',`city`='$city',`street`='$street',`gender`='$gender' WHERE `User_id`='$user_id'";
    $update_query_run = mysqli_query($con , $sql);
-
+   if ($update_query_run)
+   {
+      if($_FILES['image']['name'] != "")
+     {
+       move_uploaded_file($image_tmp_name , $image_folder);
+       if(file_exists("../uploads/".$old_image))
+       {
+          unlink("../uploads/".$old_image);
+       }
+     }
+      // redirect("../profile.php" , "Users Update Successfully");
+   }
+   
    $empty_password = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
-   $prev_password = $_POST['prev_pass'];
-   $old_password = $_POST['old_pass'];
-   $new_password = $_POST['new_pass'];
-   $cpassword = $_POST['cpass'];
+   $prev_password = $_POST['prev_password'];
+   $old_password = $_POST['old_password'];
+   $new_password = $_POST['new_password'];
+   $cpassword = $_POST['cpassword'];
 
    if($old_password == $empty_password){
-      $message[] = 'please enter old password!';
+      redirect("../updateProfile.php","please enter old password!");
+
+      // $message[] = 'please enter old password!';
    }elseif($old_password != $prev_password){
-      $message[] = 'old password not matched!';
+     redirect("../updateProfile.php","old password not matched!");
+
+      // $message[] = 'old password not matched!';
    }elseif($new_password != $cpassword){
-      $message[] = 'confirm password not matched!';
+     redirect("../updateProfile.php","confirm password not matched!");
+
+      // $message[] = 'confirm password not matched!';
    }else{
-      if($new_password != $empty_password){
-         $sql = "UPDATE `users` SET password = $cpassword WHERE User_id = $user_id";
+      if(($new_password != $empty_password) && $update_query_run){
+         $sql = "UPDATE `users` SET `password`='$cpassword' WHERE `User_id`='$user_id'";
          $update_query_run = mysqli_query($con , $sql);
-         // $update_admin_password = $conn->prepare("UPDATE `users` SET password = $cpassword WHERE User_id = $user_id");
-         // $update_admin_password->execute([$cpass, ]);$user_id
-         $message[] = 'password updated successfully!';
+         redirect("../profile.php","profile updated successfully!");
+         // $message[] = 'password updated successfully!';
       }else{
-         $message[] = 'please enter a new password!';
+         redirect("../updateProfile.php","please enter a new password");
+         // $message[] = 'please enter a new password!';
       }
    }
    
 } 
+   else
+     {
+        $_SESSION ['message']="Don't found";
+        header('Location: ../login.php');
+     }
 }
-// else
-// {
-//     $_SESSION ['message']="Don't found";
-//     header('Location: ../login.php');
-// }
-
-if(isset($_SESSION['auth']))
-   {
-      $user_id= $_SESSION['auth_user']['user_id'];
-
-if(isset($_POST['fname']) && 
-   isset($_POST['uname']) &&  
-   isset($_POST['pass'])){
 
 
-    $fname = $_POST['fname'];
-    $uname = $_POST['uname'];
-    $pass = $_POST['pass'];
-
-    $data = "fname=".$fname."&uname=".$uname;
-    
-    if (empty($fname)) {
-    	$em = "Full name is required";
-    	header("Location: ../index.php?error=$em&$data");
-	    exit;
-    }else if(empty($uname)){
-    	$em = "User name is required";
-    	header("Location: ../index.php?error=$em&$data");
-	    exit;
-    }else if(empty($pass)){
-    	$em = "Password is required";
-    	header("Location: ../index.php?error=$em&$data");
-	    exit;
-    }else {
-      // hashing the password
-      $pass = password_hash($pass, PASSWORD_DEFAULT);
-
-      if (isset($_FILES['pp']['name']) AND !empty($_FILES['pp']['name'])) {
-         
-         
-         $img_name = $_FILES['pp']['name'];
-         $tmp_name = $_FILES['pp']['tmp_name'];
-         $error = $_FILES['pp']['error'];
-         
-         if($error === 0){
-            $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-            $img_ex_to_lc = strtolower($img_ex);
-
-            $allowed_exs = array('jpg', 'jpeg', 'png');
-            if(in_array($img_ex_to_lc, $allowed_exs)){
-               $new_img_name = uniqid($uname, true).'.'.$img_ex_to_lc;
-               $img_upload_path = '../upload/'.$new_img_name;
-               move_uploaded_file($tmp_name, $img_upload_path);
-
-               // Insert into Database
-               $sql = "UPDATE `users` SET name =$fname, image= $new_img_name,city = $uname WHERE User_id = $user_id";
-               $update_query_run = mysqli_query($con , $sql);
-               // $sql = "UPDATE `users` SET password = $cpassword WHERE User_id = $user_id)";
-               // $stmt = $conn->prepare($sql);
-               // $stmt->execute([$fname, $uname, $pass, $new_img_name]);
-
-               header("Location: ../checkout.php?success=Your account has been created successfully");
-                exit;
-            }else {
-               $em = "You can't upload files of this type";
-               header("Location: ../yourOrder.php?error=$em&$data");
-               exit;
-            }
-         }else {
-            $em = "unknown error occurred!";
-            header("Location: ../yourGift.php?error=$em&$data");
-            exit;
-         }
-
-        
-      }else {
-       	// $sql = "INSERT INTO users(fname, username, password) 
-       	//         VALUES(?,?,?)";
-       	// $stmt = $conn->prepare($sql);
-       	// $stmt->execute([$fname, $uname, $pass]);
-
-       	header("Location: ../index.php?success=Your account has been created successfully");
-   	    exit;
-      }
-    }
 
 
-}else {
-	header("Location: ../aboutUs.php?error=error");
-	exit;
-}
-}
-else
-{
-    $_SESSION ['message']="Don't found";
-    header('Location: ../login.php');
-}
+
+
 ?>

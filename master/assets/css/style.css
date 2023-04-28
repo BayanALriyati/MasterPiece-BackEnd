@@ -1904,7 +1904,7 @@ section i{
    font-size: x-large;
 }
 
-#navbarDropdownMenuLink
+/* #navbarDropdownMenuLink */
 
 .popup {
    position: absolute;
@@ -2067,3 +2067,27 @@ a.start:hover {
    margin-top: 20px;
    color: var(--black);
 } */
+
+.img_up {
+   min-height: 5% !important;
+   min-width: 6% !important;
+   height: 5rem !important;
+   margin: auto;
+}
+   /* min-height: 10%!important;
+   min-width: 10%!important;
+   height: 10rem!important;
+   margin: auto; */
+   /* .img_user{
+      min-height: 5% ;
+   min-width: 6% ;
+   height: 5rem ;
+   margin: auto;
+   border: var(--border);
+   border-radius: 50%;
+   } */
+
+.personalDetails li{
+   font-size: large;
+    color: var(--dark-color);
+}
