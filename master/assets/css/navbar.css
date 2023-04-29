@@ -184,6 +184,7 @@ html::-webkit-scrollbar-thumb{
 .header .flex .profile .btnprofile {
    border-radius: .5rem;
    color: var(--black);
+   margin-top: 3rem;
    background: var(--pink);
    font-size: 2rem;
    text-decoration: none;
@@ -213,8 +214,8 @@ html::-webkit-scrollbar-thumb{
 
 .header .flex .profile .first{
    font-size: 2rem;
-   color:var(--black);
-   margin-bottom: .5rem;
+   color:var(--white);
+   margin-bottom: 3.5rem;
 }
 /* /.header .flex .profile .account{
    margin-top: 1.5rem;

@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="../">
+          <a class="nav-link text-white active bg-gradient-primary" href="index.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <!-- <i class="material-icons opacity-10">dashboard</i> -->
               <i class="fa-solid fa-house"></i>
@@ -56,9 +56,9 @@
         <li class="nav-item">
           <a class="nav-link text-white active bg-gradient-primary" href="admins.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fa-solid fa-badge-percent"></i>            
+              <i class="material-icons opacity-10">person_add</i>
             </div>
-            <span class="nav-link-text ms-1">Admin</span>
+            <span class="nav-link-text ms-1">Admins</span>
           </a>
         </li>
       </ul>

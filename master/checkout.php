@@ -48,6 +48,7 @@ if(isset($_SESSION['auth']))
           <?php if ($fetch_cart['is_discount'] == 1){ ?>
                 <span class="text-center my-5 fs-2">JD <?= $fetch_cart['price_discount']?></span>
                <?php } else { ?>
+                
                 <span class="text-center my-5 fs-2">JD<?= $fetch_cart['price']?></span> 
           <?php } ?>
           <span class="text-center my-5 fs-2"><span class="text-center my-5 fs-0" >x</span><?=$fetch_cart['qty'];?></span>

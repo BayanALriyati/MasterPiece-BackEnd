@@ -123,7 +123,7 @@ include_once ('./config/connect.php');
                
          ?>
             <p class="first">please login first!</p>
-            <a href="login.php" class="btn">login</a>
+            <a href="login.php" class="btnprofile">login</a>
          <?php
           
             }

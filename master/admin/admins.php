@@ -49,8 +49,9 @@ include_once ('../config/connect.php') ;
                   <tbody>
                     <?php
                          
-                         $sql ="SELECT *FROM users WHERE role='1'";
-                         $users =mysqli_query($con,$sql);
+                        //  $sql ="SELECT *FROM users WHERE role='1'";
+                        //  $users =mysqli_query($con,$sql);
+                        $users = getByRole("users" , 1);
 
                         if(mysqli_num_rows($users)> 0 )
                         {
