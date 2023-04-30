@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="index.php">
+          <a class="nav-link text-white active bg-primary" href="index.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <!-- <i class="material-icons opacity-10">dashboard</i> -->
               <i class="fa-solid fa-house"></i>
@@ -20,7 +20,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="category.php">
+          <a class="nav-link text-white active bg-primary" href="category.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <!-- <i class="material-icons opacity-10">table_view</i> -->
               <i class="fa-sharp fa-solid fa-gifts"></i>
@@ -29,7 +29,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="product.php">
+          <a class="nav-link text-white active bg-primary" href="product.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <!-- <i class="material-icons opacity-10">table_view</i> -->
               <i class="fa-sharp fa-solid fa-gifts"></i>
@@ -38,15 +38,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="offers.php">
+          <a class="nav-link text-white active bg-primary" href="offers.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fa-sharp fa-solid fa-percent"></i>        
+              <i class="fa-sharp fa-solid fa-percent"></i>        
             </div>
             <span class="nav-link-text ms-1">Offers</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="users.php">
+          <a class="nav-link text-white active bg-primary" href="users.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa-solid fa-users"></i>
             </div>
@@ -54,18 +54,27 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="admins.php">
+          <a class="nav-link text-white active bg-primary" href="admins.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person_add</i>
             </div>
             <span class="nav-link-text ms-1">Admins</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-white active bg-primary" href="admins.php">
+            <div class="text-white text-center fs-4 me-2 d-flex align-items-center justify-content-center">
+              <!-- <i class='bx bx-list-check'></i> -->
+              <i class='bx bx-list-ul' ></i>
+            </div>
+            <span class="nav-link-text ms-1">Orders</span>
+          </a>
+        </li>
       </ul>
     </div>
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
       <div class="mx-3">
-        <a class="btn bg-gradient-primary mt-4 w-100" href="../logout.php" >Logout</a>
+        <a class="btn bg-primary mt-4 w-100" href="../logout.php" >Logout</a>
       </div>
     </div>
   </aside>
