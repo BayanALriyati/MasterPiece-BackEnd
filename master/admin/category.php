@@ -2,10 +2,6 @@
 include_once ('includes/header.php');
 include_once ('../middleware/adminMiddleware.php');
 include_once ('../config/connect.php') ;
-// include_once ('../functions/code.php') ;
-// include_once ('../functions/myfunctions.php') ;
-
-
 ?>
 
 
@@ -25,7 +21,7 @@ include_once ('../config/connect.php') ;
 			</div>
 		<!-- _____________ -->
 
-        <div class="container-fluid py-4">
+    <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
           <div class="card my-4">
@@ -34,14 +30,13 @@ include_once ('../config/connect.php') ;
                 <h6 class="text-white text-capitalize ps-3">Category</h6>
               </div>
             </div>
-            <div class="card-body px-0 pb-2">
+            <div class="card-body px-0 pb-2" id="category_table">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                      <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Remove Sale</th> -->
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Edit</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Delete</th>
                     </tr>
@@ -79,10 +74,14 @@ include_once ('../config/connect.php') ;
                                 <button><a href="editCategory.php?id=<?= $item['category_id']?>"><i class="fa-solid fa-pen-to-square fa-solid"></i></a></button>
                             </td>
                             <td class="align-center text-center text-sm">
-                                <form action="../functions/code.php" method="POST">
+                              <form action="../functions/code.php" method="POST">
                                   <input type="hidden" name="id" value="<?= $item['category_id']?>"/>
-                                  <button type="submit" name="delateCategory_btn"><i class="fa-solid fa-trash delete1"></i></button>
-                                </form>
+                                  <button type="button" class="delateCategory_btn" value="<?= $item['category_id']; ?>" name="delateCategory_btn"><i   class="fa-solid fa-trash fa-solid"></i></button>
+                              </form>
+                                <!-- <form action="../functions/code.php" method="POST">
+                                  <input type="hidden" name="id" value="<?= $item['category_id']?>"/>
+                                  <a href="../functions/code.php?delete=<?= $item['category_id']; ?>" onclick="return confirm('Delete This Product?');"><i class="fa-solid fa-trash delete1"></i></a>
+                                </form> -->
                             </td>
                           </tr>
                       <?php
@@ -109,5 +108,5 @@ include_once ('../config/connect.php') ;
 	<!-- CONTENT -->
 
 <?php
-  include ('./includes/footer.php');
+  include ('includes/footer.php');
 ?>

@@ -24,22 +24,10 @@ include_once('config/connect.php');
       FROM order_details INNER JOIN orders
       ON order_details.order_id=orders.order_id
       WHERE order_details.order_id ='$last_id'";
-    //   echo ($sql);
       $check_order = mysqli_query($con , $sql);
       
       $data = mysqli_fetch_array($check_order);
-    
-    //   print_r ($check_order);
 
-    // while($product = mysqli_fetch_array($check_order)){ 
-
-      // _________________________________      ____-
-    //   if(mysqli_num_rows($check_order)> 0 )
-    //   {
-    //     // while($fetch_product = mysqli_fetch_array($product)){ 
-    //             while($product = mysqli_fetch_array($check_order)){ 
-                //     $i=0 ;               
-                    // foreach ($check_order as $product) {
                     ?>
       
          <div class="col-md-12">   

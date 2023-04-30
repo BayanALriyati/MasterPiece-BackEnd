@@ -62,7 +62,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-primary" href="admins.php">
+          <a class="nav-link text-white active bg-primary" href="orders.php">
             <div class="text-white text-center fs-4 me-2 d-flex align-items-center justify-content-center">
               <!-- <i class='bx bx-list-check'></i> -->
               <i class='bx bx-list-ul' ></i>

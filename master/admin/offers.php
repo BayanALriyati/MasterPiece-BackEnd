@@ -239,37 +239,37 @@ include_once ('../config/connect.php') ;
                               
                               <?php } else { ?>
                                 <div class="openBtn">
-      <button class="openButton" onclick="openForm()"><i class="fa-sharp fa-solid fa-circle-plus"></i></button>
-      <input type="hidden" name="product" value="<?= $fetch_product['product_id']?>"/>
+                                  <button class="openButton" onclick="openForm()"><i class="fa-sharp fa-solid fa-circle-plus"></i></button>
+                                  <input type="hidden" name="product" value="<?= $fetch_product['product_id']?>"/>
 
-    </div>
+                                </div>
     
-  <div class="discountPopup">
+                                <div class="discountPopup">
   
-      <div class="formPopup" id="popupForm">
-      <form action="../functions/code.php" method="POST" enctype="multipart/form-data" class="formContainer">
+                                  <div class="formPopup" id="popupForm">
+                                    <form action="../functions/code.php" method="POST" enctype="multipart/form-data" class="formContainer">
 
-        <!-- <form action="../functions/code.php" class="formContainer"> -->
+                                        <!-- <form action="../functions/code.php" class="formContainer"> -->
 
 
-          <h2>Add Discount</h2>
-          <!-- <label for="email">
-            <strong>Price</strong>
-          </label><br/>
-          <input type="text" id="price"  name="price" value="<?= $fetch_product['price']?>" required><br/>
-          <label for="psw"> -->
-            <strong>Percent Discount</strong>
-          </label><br/>
-          <input type="hidden" name="product" value="<?= $fetch_product['product_id']?>"/>
-          <input type="text" placeholder="%" name="add-on-product" required><br/>
-          <button type="submit" class="btn btn-outline-secondary" name="add-discountProduct">Add Product</button><br/>
+                                   <h2>Add Discount</h2>
+                                   <!-- <label for="email">
+                                     <strong>Price</strong>
+                                   </label><br/>
+                                   <input type="text" id="price"  name="price" value="<?= $fetch_product['price']?>" required><br/>
+                                   <label for="psw"> -->
+                                     <strong>Percent Discount</strong>
+                                   </label><br/>
+                                   <input type="hidden" name="product" value="<?= $fetch_product['product_id']?>"/>
+                                 <input type="text" placeholder="%" name="add-on-product" required><br/>
+                                 <button type="submit" class="btn btn-outline-secondary" name="add-discountProduct">Add Product</button><b                       r/>
 
-          <!-- <button type="submit" class="btnDiscount" name="add-discountProduct">Add</button><br/> -->
-          <button type="submit" class="btnCancel" onclick="closeForm()">Close</button>
-        </form>
+                                 <!-- <button type="submit" class="btnDiscount" name="add-discountProduct">Add</button><br/> -->
+                                 <button type="submit" class="btnCancel" onclick="closeForm()">Close</button>
+                               </form>
        
-    </div>
-      
+                           </div>
+                             
     </div>
                                 <!-- <i class="fa-sharp fa-solid fa-circle-plus"></i> -->
                                 <?php } ?>                            

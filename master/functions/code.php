@@ -78,8 +78,8 @@ else if(isset($_POST['addCategory_btn'])){
     $image_folder = '../Uploads/'.$image;
 
     //   Do the category name already exists ?
-    $select_category =("SELECT * FROM `category` WHERE categoryName='$categoryName'");
-    $select_category_run=mysqli_query ($con , $select_category);
+    $select_category =("SELECT * FROM `category` WHERE categoryName ='$categoryName'");
+    $select_category_run = mysqli_query ($con , $select_category);
  
     if(mysqli_num_rows($select_category_run)> 0)
      {      
@@ -152,29 +152,28 @@ else if(isset($_POST['editCategory_btn'])){
 } 
 
 else if(isset($_POST['delateCategory_btn'])){
-    
-     $id =  $_POST['id'];
-     $category_query = "SELECT * FROM category WHERE categoryName = '$id' " ;
-     $category_query_run = mysqli_query($con , $category_query) ;
-     $category_data = mysqli_fetch_array($category_query_run) ;
-     $image = $category_data['image'] ;
-  
-     $delate_query = " DELETE FROM `category` WHERE category_id = '$id' ";
-     $delate_query_run = mysqli_query($con , $delate_query);
+   $delete_id = $_POST['delete_id'];
+   $category_query = "SELECT * FROM category WHERE category_id = '$delete_id' " ;
+   $category_query_run = mysqli_query($con , $category_query) ;
+   $category_data = mysqli_fetch_array($category_query_run) ;
+   $image = $category_data['image'] ;
 
-     if($delate_query_run)
-     {
-        if(file_exists("../uploads/".$image))
-        {
-           unlink("../uploads/".$image);
-        }
-        redirect("../admin/category.php" , "Category Deleted Successfully");
-     }
-     else{
-        redirect("../admin/category.php" , "Something went wrong");
-     }
+   $delate_query = "DELETE FROM `category` WHERE category_id = '$delete_id'";
+   $delate_query_run = mysqli_query($con , $delate_query);
+
+   if($delate_query_run)
+   {
+      if(file_exists("../uploads/".$image))
+      {
+         unlink("../uploads/".$image);
+      }
+      echo 200 ;
+   }
+   else{
+      echo 500 ;
+
+   }
 }
-
 else if(isset($_POST['addProduct_btn'])){
 
    $category_name = $_POST['category'];
@@ -345,14 +344,13 @@ else if(isset($_POST['editProduct_btn'])){
 } 
 
 else if(isset($_POST['delateProduct_btn'])){
-    
-   $id =  $_POST['id'];
-   $product_query = "SELECT * FROM product WHERE productName = '$id' " ;
+   $delete_id = $_POST['delete_id'];
+   $product_query = "SELECT * FROM product WHERE product_id = '$delete_id' " ;
    $product_query_run = mysqli_query($con , $product_query) ;
    $product_data = mysqli_fetch_array($product_query_run) ;
    $image = $product_data['imageMain'] ;
 
-   $delate_query = " DELETE FROM `product` WHERE product_id = '$id' ";
+   $delate_query = "DELETE FROM `product` WHERE product_id = '$delete_id'";
    $delate_query_run = mysqli_query($con , $delate_query);
 
    if($delate_query_run)
@@ -361,12 +359,13 @@ else if(isset($_POST['delateProduct_btn'])){
       {
          unlink("../uploads/".$image);
       }
-      redirect("../admin/product.php" , "Product Deleted Successfully");
-      // echo 200 ;
+      // redirect("../admin/product.php" , "Product Deleted Successfully");
+      echo 200 ;
+
    }
    else{
-      redirect("../admin/product.php" , "Something went wrong");
-      // echo 500 ;
+      // redirect("../admin/product.php" , "Something went wrong");
+      echo 500 ;
 
    }
 }
@@ -586,6 +585,24 @@ else if(isset($_POST['Update'])){
      }
 }
 
+else if(isset($_POST['delateOrder_btn'])){
+    
+   $order_id =  $_POST['delete_id'];
+   $order_query = "SELECT * FROM orders WHERE order_id = '$order_id' " ;
+   $order_query_run = mysqli_query($con , $order_query) ;
+   $order_id_data = mysqli_fetch_array($order_query_run) ;
+   $delate_query = " DELETE FROM `orders` WHERE order_id = '$order_id' ";
+   $delate_query_run = mysqli_query($con , $delate_query);
+   
+   if($delate_query_run)
+   {
+      echo 200 ;
+   }
+   else{
+      echo 500 ;
+   }
+  
+}
 
 
 

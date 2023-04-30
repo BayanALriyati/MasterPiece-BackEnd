@@ -339,38 +339,9 @@ if(value > 1)
     e.preventDefault();
     var qty = $('.input-qty').val();
 
-    // var qty = $(this).closest('.product-data').find('.input-qty').val();
     var product_id = $(this).val();
     alert(product_id);
-    // $.ajax({
-    //         method: "POST",
-    //         url:"./functions/handleAdd.php",
-    //          data:{
-    //           'product_id': product_id,
-    //           'product_qty': qty,
-    //           'scope' : "add" ,
-    //         },
-    //           success : function (response){
-                
-    //             if(response == 201){
-    //               alertify.success ("Product Added TO Cart");
-    //               // alert ("pppp");
-    //             }
-    //             else if (response == "existing"){
-    //               alertify.success ("Product Already TO Cart");
-    //               // alert("qty");
-    //             }
-    //             else if (response == 401){
-    //               alertify.success ("Login To Continue");
-    //               // alert("qty");
-    //             }
-    //             else if (response == 500){
-    //               alertify.success ("Something Went Wrong");
-    //               // alert("q/ty");
-    //             }
-    //          }
-           
-    //  })
+  
    }) 
 });
 

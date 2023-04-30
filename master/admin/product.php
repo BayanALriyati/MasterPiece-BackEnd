@@ -6,7 +6,6 @@ include_once ('../config/connect.php') ;
 ?>
 
 
-
      <!-- CONTENT -->
 	<section id="content">
 		<!-- MAIN -->
@@ -38,6 +37,7 @@ include_once ('../config/connect.php') ;
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Edit</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Delate</th>
                     </tr>
@@ -87,14 +87,19 @@ include_once ('../config/connect.php') ;
                               </div>
                             </td>
                             <td class="align-center text-center text-sm">
-                                <button><a href="editProduct.php?id=<?= $fetch_product['product_id']?>"><i class="fa-solid fa-pen-to-square fa-solid"></i></a></button>
+                              <?php if ($fetch_product['is_discount'] == 1){ ?>
+                              <h6 class="mb-0 text-sm"><?= $fetch_product['price_discount'];?></h6>
+                              <?php } else { ?>
+                              <h6 class="mb-0 text-sm"><?= $fetch_product['price'];?></h6> <?php } ?>
                             </td>
                             <td class="align-center text-center text-sm">
-                                <form action="../functions/code.php" method="POST">
+                              <button class="bg-primary"><a href="editProduct.php?id=<?= $fetch_product['product_id']?>"><i class="fa-solid fa-pen-to-square fa-solid"></i></a></button>
+                            </td>
+                            <td class="align-center text-center text-sm">
+                              <form action="../functions/code.php" method="POST">
                                   <input type="hidden" name="id" value="<?= $fetch_product['product_id']?>"/>
-                                <button type="submit" class="delateProduct_btn delateProduct_btn" name="delateProduct_btn" 
-                                  value="<?= $fetch_product['product_id']?>"><i class="fa-solid fa-trash delete1"></i></button>
-                                </form>
+                                  <button type="button" class="delateProduct_btn bg-primary" value="<?=   $fetch_product['product_id']; ?>" name="delateProduct_btn"><i   class="fa-solid fa-trash fa-solid"></i></button>
+                              </form>
                             </td>
                           </tr>
                       <?php

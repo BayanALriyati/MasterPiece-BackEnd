@@ -9,8 +9,6 @@
     --border-hover:.1rem solid var(--black);
     --box-shadow:0 .5rem 1rem rgb(248, 215, 218);
 
-
-
     /* --poppins: 'Poppins', sans-serif;
 	--lato: 'Lato', sans-serif;
 
@@ -183,6 +181,7 @@
 	display: flex;
 	justify-content: center;
   }
+
   .openButton {
 	border: none;
 	border-radius: 5px;
@@ -192,6 +191,7 @@
 	cursor: pointer;
 	/* position: fixed; */
   }
+
   .discountPopup {
 	position: relative;
 	text-align: center;
@@ -262,3 +262,49 @@
   .openButton:hover {
 	opacity: 1;
   }
+  .orders .box-container .heading{
+    text-align: center;
+}
+
+  .orders .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 33rem);
+    gap: 1.5rem;
+    align-items: stretch;
+    justify-content: start;
+}
+ 
+ .orders .box-container .box{
+	padding:2rem;
+	padding-top: 1rem;
+	width: 77rem;
+	border-radius: .5rem;
+	border:var(--border);
+	background-color: var(--pink);
+	box-shadow: var(--box-shadow);
+ }
+ 
+ .orders .box-container .box p{
+	line-height: 1.5;
+	font-size: 2rem;
+	color:var(--black);
+	margin:1rem 0;
+ }
+ 
+ .orders .box-container .box p span{
+	color:var(--dark-color);
+	font-weight: bolder;
+ }
+ 
+ .orders .box-container .select{
+	margin-bottom: .5rem;
+	width: 100%;
+	background-color: var(--dark-color);
+	padding:1rem;
+	font-size: 1.8rem;
+	color:var(--black);
+	border-radius: .5rem;
+	border:var(--border);
+ }
+
+ 

@@ -30,7 +30,12 @@ function getCategoryProduct($table_1 , $table_2 ){
     return $sql_run=mysqli_query($con,$sql);
 }
 
-
+// read  data from table by get id
+function getByIdOrder($table , $id){
+    global $con;
+    $sql="SELECT *FROM $table WHERE order_id='$id'";
+    return $sql_run=mysqli_query($con,$sql);
+}
 
 function redirect($url,$message)
 {
