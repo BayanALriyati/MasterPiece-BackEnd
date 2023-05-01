@@ -4,6 +4,17 @@ include_once('functions/userFunctions.php');
 include_once('config/connect.php');
 
 ?>
+<?php
+                   if (isset($_SESSION ['message'])){
+                  ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                       <?= $_SESSION ['message']; ?>
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="fa-sharp fa-solid fa-close"></i></button>
+                  </div>
+                    <?php  
+                        unset($_SESSION ['message']);
+                       }
+                     ?>
 
 <?php
    $sql = "SELECT * FROM `orders` ORDER BY order_id DESC LIMIT 1;";

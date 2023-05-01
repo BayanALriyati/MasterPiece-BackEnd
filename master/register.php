@@ -8,11 +8,22 @@ if(isset($_SESSION['auth'])){
 }
 include('includes/header.php') ;
 ?>
+          <?php  
+                     if (isset($_SESSION ['message'])){
+                  ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                       <?= $_SESSION ['message']; ?>
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                    <?php  
+                        unset($_SESSION ['message']);
+                       }
+                     ?>
 
-<div class="heading-main">
+<!-- <div class="heading-main">
     <h3>Register</h3>
     <p><a href="index.php" target="_blank">home </a> <span> / Register</span></p>
- </div>
+ </div> -->
 <section class="w-100 vh-150 mt-5" style="background:url(assets/images/heading-bg.jpg);">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -60,15 +71,15 @@ include('includes/header.php') ;
                       </div>
                     </div>
   
-                    <div class="d-flex flex-row align-items-center mb-4">
+                    <!-- <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-camera fa-3x mt-5 me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-2">
                         <label class="form-label" for="form3Example4c">Photo</label>
                         <input type="file" name="image" class="form-control" required>
 
-                        <!-- <input type="file" name="image" id="form3Example4c" class="form-control" required/> -->
+                        <input type="file" name="image" id="form3Example4c" class="form-control" required/>
                       </div>
-                    </div>
+                    </div> -->
 
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-lock fa-3x mt-5 me-3 fa-fw"></i>

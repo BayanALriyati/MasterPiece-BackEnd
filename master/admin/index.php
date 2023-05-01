@@ -5,6 +5,17 @@ include_once ('../functions/myfunctions.php') ;
 
 
 ?>
+<?php
+                   if (isset($_SESSION ['message'])){
+                  ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?= $_SESSION ['message']; ?>
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                    <?php  
+                        unset($_SESSION ['message']);
+                       }
+                     ?>
 <div class="container">
   <div class="row">
     <div class="col-md-12 mb-5 text-center">
@@ -41,12 +52,13 @@ include_once ('../functions/myfunctions.php') ;
                         }
                          else
                          {
-                        
-                          // redirect("../category.php","Don't found");
-                          $_SESSION ['message']="Don't found";
-                          // header('Location: ../category.php');
-                        }
-                      
+                          ?>
+                          <div class="text-end pt-1">
+                          <p class="text-sm mb-0 text-capitalize">All Gifts</p>
+                          <h4 class="mb-0"> 0 </h4>
+                        </div>
+                        <?php
+                      }
                     ?>
   </div>
 
@@ -115,12 +127,13 @@ include_once ('../functions/myfunctions.php') ;
                         }
                          else
                          {
-                        
-                          // redirect("../category.php","Don't found");
-                          $_SESSION ['message']="Don't found";
-                          // header('Location: ../category.php');
-                        }
-                      
+                          ?>
+                          <div class="text-end pt-1">
+                            <p class="text-sm mb-0 text-capitalize">All Orders</p>
+                            <h4 class="mb-0"> <?= 0 ?></h4>
+                          </div>
+                        <?php
+                      }
                     ?>
    </div>
 
@@ -188,12 +201,13 @@ include_once ('../functions/myfunctions.php') ;
                         }
                          else
                          {
-                        
-                          // redirect("../category.php","Don't found");
-                          $_SESSION ['message']="Don't found";
-                          // header('Location: ../category.php');
-                        }
-                      
+                          ?>
+                          <div class="text-end pt-1">
+                            <p class="text-sm mb-0 text-capitalize">All Admins</p>
+                            <h4 class="mb-0"> <?= 0 ?></h4>
+                          </div>
+                        <?php
+                      }
                     ?>
     </div>
 
@@ -224,12 +238,13 @@ include_once ('../functions/myfunctions.php') ;
                         }
                          else
                          {
-                        
-                          // redirect("../category.php","Don't found");
-                          $_SESSION ['message']="Don't found";
-                          // header('Location: ../category.php');
-                        }
-                      
+                          ?>
+                          <div class="text-end pt-1">
+                            <p class="text-sm mb-0 text-capitalize">All Users</p>
+                            <h4 class="mb-0"> <?= 0 ?></h4>
+                          </div>
+                        <?php
+                      }
                     ?>
     </div>
   </div>

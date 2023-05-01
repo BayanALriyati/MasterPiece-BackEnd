@@ -83,9 +83,9 @@ else if(isset($_POST['addCategory_btn'])){
  
     if(mysqli_num_rows($select_category_run)> 0)
      {      
-          redirect("../admin/addCategory.php" , "Category name already exist!");
-         //  $_SESSION ['message']="category name already exist!";
-         //  header('Location: ../admin/addCategory.php');
+         //  redirect("../admin/addCategory.php" , "Category name already exist!");
+          $_SESSION ['message']="category name already exist!";
+          header('Location: ../admin/addCategory.php');
      }
      else
       {
@@ -97,15 +97,15 @@ else if(isset($_POST['addCategory_btn'])){
    
     if($insert_query_run){
         move_uploaded_file($image_tmp_name , $image_folder);
-        redirect("../admin/Category.php" , "Category Added Successfully");
-        //   $_SESSION ['message'] = "Category Added Successfully";
-        //   header('Location: ../admin/category.php');
+      //   redirect("../admin/Category.php" , "Category Added Successfully");
+          $_SESSION ['message'] = "Category Added Successfully";
+          header('Location: ../admin/category.php');
      }
      else
      {
-        redirect("../admin/addCategory.php" , "Something went wrong"); 
-        //   $_SESSION ['message'] = "Something went wrong";
-        //   header('Location: ../admin/addCategory.php');
+      //   redirect("../admin/addCategory.php" , "Something went wrong"); 
+          $_SESSION ['message'] = "Something went wrong";
+          header('Location: ../admin/addCategory.php');
      }
   }
 
@@ -584,6 +584,45 @@ else if(isset($_POST['Update'])){
         header('Location: ../login.php');
      }
 }
+
+// if (isset($_GET['editStatus'])){
+//    $order_id = $_GET['editStatus'];
+//    $status = $_POST['status'];
+
+//     $update_query = "UPDATE `orders` SET status='$status' WHERE order_id='$order_id'" ;
+//     $update_query_run = mysqli_query($con , $update_query);
+
+//      if ($update_query_run)
+//      {
+//           $_SESSION ['message'] = "Order Update Successfully";
+//           header('Location: ../admin/orders.php');
+//        }
+//       //   redirect("../admin/category.php" , "Category Update Successfully");
+//         $_SESSION ['message'] = "Something went wrong";
+//           header('Location: ../admin/orders.php');
+//      }
+// } 
+
+else if(isset($_POST['updateOrder'])){
+    
+   $order_id =  $_POST['order_id'];
+   $status =  $_POST['status'];
+   // $order_query = "SELECT * FROM orders WHERE order_id = '$order_id' " ;
+   // $order_query_run = mysqli_query($con , $order_query) ;
+   // $order_id_data = mysqli_fetch_array($order_query_run) ;
+   $update_query = "UPDATE `orders` SET status='$status' WHERE order_id='$order_id'" ;
+   $update_query_run = mysqli_query($con , $update_query);
+   
+   if($update_query_run)
+   {
+      $_SESSION ['message'] = "Order Update Successfully";
+      header('Location: ../admin/orders.php');   }
+   else{
+      $_SESSION ['message'] = "Something went wrong";
+      header('Location: ../admin/orders.php');   }
+  
+}
+
 
 else if(isset($_POST['delateOrder_btn'])){
     

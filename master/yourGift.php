@@ -2,6 +2,17 @@
 include_once('includes/header.php');
 include_once('functions/userFunctions.php');
 ?>
+<?php
+                   if (isset($_SESSION ['message'])){
+                  ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                       <?= $_SESSION ['message']; ?>
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="fa-sharp fa-solid fa-close"></i></button>
+                  </div>
+                    <?php  
+                        unset($_SESSION ['message']);
+                       }
+                     ?>
 
    <!-- Shop Section Begin -->
    <section class="shop spad">
@@ -33,9 +44,9 @@ include_once('functions/userFunctions.php');
                                         else
                                     {
                         
-                                    redirect("index.php","Don't found");
-                                     // $_SESSION ['message']="Don't found";
-                                     // header('Location: ../category.php');
+                                        echo "Don't found" ;
+                                        //  $_SESSION ['message']="Don't found";
+                                    //  header('Location: ./yourGift.php');                        
                                     }
                                   ?>
                             </div>
@@ -138,8 +149,8 @@ include_once('functions/userFunctions.php');
                         else
                         {
                             echo "Don't found" ;
-                        //   redirect("login.php","Don't found");
-                        
+                            // $_SESSION ['message']="Don't found";
+                            // header('Location: ./yourGift.php');                        
                         }
                     
                 
@@ -231,8 +242,10 @@ include_once('functions/userFunctions.php');
                         }
                         else
                         {
-                            echo "Don't found" ;
+                            // echo "Don't found" ;
                         //   redirect("login.php","Don't found");
+                        $_SESSION ['message']="Don't found";
+                        header('Location: yourGift.php'); 
                         
                         }
                         }

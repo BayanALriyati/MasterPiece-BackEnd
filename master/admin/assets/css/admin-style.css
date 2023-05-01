@@ -307,4 +307,19 @@
 	border:var(--border);
  }
 
- 
+ .flex-btn{
+	display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+ }
+
+ .alert-danger {
+	background-image: none !important;
+    background-color: #d81b60 !important;
+	width: 50%;
+    margin:auto;
+    text-align: center;
+    font-size: 2rem;
+    color: var(--white);
+}
+  

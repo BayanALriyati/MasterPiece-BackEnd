@@ -59,11 +59,11 @@ function getSearch($table , $productName){
     return $sql_run=mysqli_query($con,$sql);
 }
 
-function redirect($url,$message)
-{
-    $_SESSION ['message'] = $message;
-    header('Location: ' .$url);
-    exit();
-}
+// function redirect($url,$message)
+// {
+//     $_SESSION ['message'] = $message;
+//     header('Location: ' .$url);
+//     exit();
+// }
 
 ?>

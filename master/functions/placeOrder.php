@@ -82,12 +82,15 @@ if(isset($_POST['placeOrder'])){
          $delate_cart = mysqli_query($con , $sql) ;
           }
         }
-      redirect("../yourOrder.php" , "Place Order Successfully");
-
+      // redirect("../yourOrder.php" , "Place Order Successfully");
+      $_SESSION ['message'] = "Category Added Successfully";
+      header('Location: ../yourOrder.php');
     }
     else
     {
-    redirect("../index.php" , "Something went wrong");
+   //  redirect("../index.php" , "Something went wrong");
+    $_SESSION ['message'] = "Something went wrong";
+      header('Location: ../index.php');
     }
     
 }

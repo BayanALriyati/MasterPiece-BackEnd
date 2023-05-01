@@ -3,6 +3,17 @@ include_once ('includes/header.php');
 include_once ('../middleware/adminMiddleware.php');
 
 ?>
+<?php
+                   if (isset($_SESSION ['message'])){
+                  ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                         <?= $_SESSION ['message']; ?>
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                    <?php  
+                        unset($_SESSION ['message']);
+                       }
+                     ?>
 <div class="container mt-2">
   <div class="row">
     <div class="col-md-12 shadow-lg p-3 mb-3 bg-primary rounded ">

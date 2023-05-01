@@ -1,14 +1,9 @@
+<?php 
+include_once ('includes/header.php');
+include_once ('../middleware/adminMiddleware.php');
+include_once ('../config/connect.php') ;
+?>
 <?php
-
-include '../components/connect.php';
-session_start();
-
-$admin_id = $_SESSION['admin_id'];
-
-if(!isset($admin_id)){
-   header('location:admin_login.php');
-}
-
 if(isset($_POST['submit'])){
 
     $name = $_POST['name'];
@@ -47,47 +42,26 @@ if(isset($_POST['submit'])){
     }
     
  }
- 
+ ?>
 
-include '../components/header.php';
-include '../components/sidebar.php';
-include '../components/navbar.php';
-include '../components/footer.php';
-?>
+
 
 <div class="container">
-<?php
-   if(isset($message)){
-      foreach($message as $message){
-         echo '
-         <div class="mt-5 d-flex justify-content-around alert alert-warning alert-dismissible fade show bg-danger-subtle">
-            <div> 
-               <span>'.$message.'</span>
-            </div>   
-            <div>
-               <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-            </div>
-         </div>
-         ';
-      }
-   }
-?>
+
 <div class="row flex-lg-nowrap">
-  <!-- <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
-    <div class="card p-3">
-      <div class="e-navlist e-navlist--active-bg">
-        <ul class="nav">
-          <li class="nav-item"><a class="nav-link px-2 active" href="#"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Overview</span></a></li>
-          <li class="nav-item"><a class="nav-link px-2" href="https://www.bootdey.com/snippets/view/bs4-crud-users" target="__blank"><i class="fa fa-fw fa-th mr-1"></i><span>CRUD</span></a></li>
-          <li class="nav-item"><a class="nav-link px-2" href="https://www.bootdey.com/snippets/view/bs4-edit-profile-page" target="__blank"><i class="fa fa-fw fa-cog mr-1"></i><span>Settings</span></a></li>
-        </ul>
-      </div>
-    </div>
-  </div> -->
-  <?php $select_admin = $con->prepare("SELECT * FROM `users` WHERE User_id = $admin_id");
-   $select_admin->execute();
-	$fetch_admin = $select_admin->fetch(PDO::FETCH_ASSOC);?>
-  <input type="hidden" name="prev_pass" value="<?= $fetch_admin['Password'];?> ">
+  
+<?php 
+if(isset($_SESSION['auth']))
+{
+ $user_id= $_SESSION['auth_user']['user_id'];
+   $sql="SELECT *FROM users WHERE User_id='$user_id'";
+   $sql_run=mysqli_query($con,$sql);
+   if(mysqli_num_rows($sql_run)> 0 )
+  { 
+     foreach($sql_run as $item){
+
+ ?>
+  <input type="hidden" name="prev_pass" value=" ">
 
   <div class="col">
     <div class="row">
@@ -99,14 +73,19 @@ include '../components/footer.php';
                 <div class="col-12 col-sm-auto mb-3">
                   <div class="mx-auto" style="width: 140px;">
                     <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                      <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
+                      <!-- <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span> -->
+                      <img
+              class="profile-image"
+              src="../uploads/<?= $item['image']; ?>"
+              alt="profile image"
+              height="120" width="120"/>
                     </div>
                   </div>
                 </div>
                 <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                   <div class="text-center text-sm-left mb-2 mb-sm-0">
-                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap" ><?= $fetch_admin['UserName'];?></h4>
-                    <p class="mb-0"><?= $fetch_admin['Email'];?></p>
+                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap" ><?= $item['name']; ?></h4>
+                    <p class="mb-0"><?= $item['email']; ?></p>
                     <div class="mt-2">
                       <button class="btn btn-block" type="button">
                         <i class="fa fa-fw fa-camera"></i>
@@ -237,3 +216,15 @@ include '../components/footer.php';
 
 </div>
 </div>
+<?php
+          }
+        }
+      }
+                 else{
+              echo '<p class="emptyReview">No user</p>';
+           }
+            ?>
+        </div>
+<?php
+  include ('includes/footer.php');
+?>

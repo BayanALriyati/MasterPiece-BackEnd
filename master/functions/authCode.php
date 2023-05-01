@@ -10,15 +10,7 @@ if (isset($_POST['register'])){
     $password=  $_POST['password'];
   
     $cPassword= $_POST['cPassword'];
-    $image = $_FILES['image']['name'];
-    $image_size = $_FILES['image']['size'];
-    $image_tmp_name = $_FILES['image']['tmp_name'];
-    $image_folder = '../Uploads/'.$image;
-   
-    // $password = sha1($_POST['password']);
-    // $password =htmlspecialchars($password, ENT_QUOTES);
-    // $cPassword = sha1($_POST['cPassword']);
-    // $cPassword = htmlspecialchars($cPassword, ENT_QUOTES);
+  
    
     // Check if email already registered 
     $check_email_query="SELECT email FROM users WHERE email='$email'";
@@ -26,38 +18,37 @@ if (isset($_POST['register'])){
     
     if(mysqli_num_rows($check_email_run)> 0)
     {
-            redirect("../register.php","Email already registered");
-            // $_SESSION ['message']="Email already registered";
-            // header('Location: ../register.php');
+            // redirect("../register.php","Email already registered");
+            $_SESSION ['message']="Email already registered";
+            header('Location: ../register.php');
     }else
     {
             if($password === $cPassword)
             {
                 //Insert user data 
-                $register_query = "INSERT INTO users (name,password,email,image) VALUE ('$username','$password','$email','$image')";
+                $register_query = "INSERT INTO users (name,password,email) VALUE ('$username','$password','$email')";
                 $register_query_run=mysqli_query($con,$register_query);
                 
                 if($register_query_run)
                 {
-                    move_uploaded_file($image_tmp_name , $image_folder);
-                    redirect("../login.php","Register Successfully");
-                    // $_SESSION ['message']="Register Successfully";
-                    // header('Location: ../login.php');
+                    // redirect("../login.php","Register Successfully");
+                    $_SESSION ['message']="Register Successfully";
+                    header('Location: ../login.php');
                 }
                 else
                 {
-                    redirect("../register.php","Something went wrong");
-                    // $_SESSION ['message'] = "Something went wrong";
-                    // header('Location: ../register.php');
+                    // redirect("../register.php","Something went wrong");
+                    $_SESSION ['message'] = "Something went wrong";
+                    header('Location: ../register.php');
                 }
             }
             else
             {
-                redirect("../register.php","password do not match");  
+                // redirect("../register.php","password do not match");  
                  
                    
-                // $_SESSION ['message'] = "password do not match";
-                // header('Location: ../register.php');
+                $_SESSION ['message'] = "password do not match";
+                header('Location: ../register.php');
             }
   }
 }
@@ -94,23 +85,25 @@ if(mysqli_num_rows($login_query_run) > 0)
         $_SESSION ['role_as'] = $Role ;
 
         if($Role == 1){
-            redirect("../admin/index.php","Welcome To Dashboard");
-            // $_SESSION ['message'] = "Welcome To Dashboard";
-            // header('Location: ../admin/index.php');
+            // redirect("../admin/index.php","Welcome To Dashboard");
+            $_SESSION ['message'] = "Welcome To Dashboard";
+            header('Location: ../admin/index.php');
         }
         else
         {
-            redirect("../index.php","Logged In Successfully");
-            // $_SESSION ['message'] = "Logged In Successfully";
-            // header('Location: ../index.php');
+            // redirect("../index.php","Logged In Successfully");
+            $_SESSION ['message'] = "Logged In Successfully";
+            header('Location: ../index.php');
+            // header('Location: ../admin/login_admin.php');
         }
 
 }
 else
 {
-       redirect("../login.php","Invalid Credentials");
-    //    $_SESSION ['message'] = "Invalid Credentials";
-    //    header('Location: ../login.php');
+    //    redirect("../login.php","Invalid Credentials");
+       $_SESSION ['message'] = "Invalid Credentials";
+       header('Location: ../login.php');
+
 }
     
 

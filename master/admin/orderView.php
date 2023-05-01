@@ -4,6 +4,17 @@ include_once ('includes/header.php');
 include_once ('../middleware/adminMiddleware.php');
 include_once ('../config/connect.php') ;
 ?>
+<?php
+                   if (isset($_SESSION ['message'])){
+                  ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                       <strong>Hallo</strong> <?= $_SESSION ['message']; ?>
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                    <?php  
+                        unset($_SESSION ['message']);
+                       }
+                     ?>
 <?php 
 
 if (isset($_GET['order'])){
@@ -16,34 +27,34 @@ if (isset($_GET['order'])){
         $_SESSION['order_id']= $order_id;
         ?> 
 
-<section class="orders">
-
- <h1 class="heading">placed orders</h1>
-
-<div class="box-container">
-
-   <div class="box">
-      <p> placed on : <span><?= $order['order_time']; ?></span> </p>
-      <p> Name : <span><?= $order['fullName']; ?></span> </p>
-      <p> Number : <span><?= $order['phone']; ?></span> </p>
-      <p> Location : <span><?= $order['location']; ?></span> </p>
-      <p> Letter : <span><?= $order['letter']; ?></span> </p>
-      <p> Gift Delivery Time : <span><?= $order['delivery_time']; ?></span> </p>
-      <p> Total Products : <span><?= $order['total_products']; ?></span> </p>
-      <p> Total Price : <span><?= $order['total_price']; ?> JOD</span> </p>
-      <p> Payment Method : <span><?= $order['pay_method']; ?></span> </p>
+<div class="card mx-auto mt-4 shadow-lg rounded" style="width: 50rem;">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title text-center">Order</h5>
+      <p class="card-text text-dark fs-3"> placed on : <span class="card-text text-primary fs-4"><?= $order['order_time']; ?></span> </p>
+      <p class="card-text text-dark fs-3"> Name : <span class="card-text text-primary fs-4"><?= $order['fullName']; ?></span> </p>
+      <p class="card-text text-dark fs-3"> Number : <span class="card-text text-primary fs-4"><?= $order['phone']; ?></span> </p>
+      <p class="card-text text-dark fs-3"> Location : <span class="card-text text-primary fs-4"><?= $order['location']; ?></span> </p>
+      <p class="card-text text-dark fs-3"> Letter : <span class="card-text text-primary fs-4"><?= $order['letter']; ?></span> </p>
+      <p class="card-text text-dark fs-3"> Gift Delivery Time : <span class="card-text text-primary fs-4"><?= $order['delivery_time']; ?></span> </p>
+      <p class="card-text text-dark fs-3"> Total Products : <span class="card-text text-primary fs-4"><?= $order['total_products']; ?></span> </p>
+      <p class="card-text text-dark fs-3"> Total Price : <span class="card-text text-primary fs-4"><?= $order['total_price']; ?> JOD</span> </p>
+      <p class="card-text text-dark fs-3"> Payment Method : <span class="card-text text-primary fs-4"><?= $order['pay_method']; ?></span> </p>
       <?php 
             if ($order['pay_method'] == "Credit card"){
                ?>
-                 <p>credit information :<span><?= $order['credit_information']; ?></span></p>
+                 <p class="card-text text-dark fs-3">credit information :<span class="card-text text-primary fs-4"><?= $order['credit_information']; ?></span></p>
                <?php
             } else {
                ?>
                <input type="hidden" name="credit_information" value="<?= $order['credit_information'];?>">
                <?php
             }
-            ?>
-   </div>
+            ?>   
+            <div class="text-center">
+             <a href="orders.php" class="btn btn-primary">Go Back</a>
+            </div>
+  </div>
 </div>
 <?php
     //     }
@@ -66,12 +77,7 @@ echo "Something Went Wrong";
 
 }
 
-?>
-
-</section>
-
-
-        
+?>       
 
 <?php
   include ('includes/footer.php');

@@ -5,8 +5,18 @@ include_once('functions/userFunctions.php');
 
 
  ?>
-  
-
+                    <?php  
+                     if (isset($_SESSION ['message'])){
+                  ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                         <?= $_SESSION ['message']; ?>
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                    <?php  
+                        unset($_SESSION ['message']);
+                       }
+                     ?>
+ 
 <div class="heading-video">
     <div>
     <h1 class="head-h1">The Best GIFT</h1>

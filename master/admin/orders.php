@@ -5,6 +5,18 @@ include_once ('../middleware/adminMiddleware.php');
 include_once ('../config/connect.php') ;
 ?>
 
+<?php
+                   if (isset($_SESSION ['message'])){
+                  ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                         <?= $_SESSION ['message']; ?>
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                    <?php  
+                        unset($_SESSION ['message']);
+                       }
+                     ?>
+
 
 
      <!-- CONTENT -->
@@ -42,7 +54,7 @@ include_once ('../config/connect.php') ;
                   </thead>
                   <tbody>
                     <?php
-                        $orders = getAll("orders");
+                        $orders = getAllOrder("orders");
 
                         if(mysqli_num_rows($orders)> 0 )
                         {
@@ -65,33 +77,39 @@ include_once ('../config/connect.php') ;
                             </td>                          
                             </td>
                             <td class="align-center text-center text-sm">
-                              <form action="" method="post">
                                 <div class="flex-btn">
+                                <form action="../functions/code.php" method="POST" enctype="multipart/form-data">
                                   <input type="hidden" name="order_id" value="<?= $fetch_orders['order_id']; ?>">
-                                  <select name="payment_status" class="select">
+                                  <select name="status" class="select">
                                      <option selected disabled><?= $fetch_orders['status']; ?></option>
                                      <option value="pending">pending</option>
                                      <option value="completed">completed</option>
                                   </select>
-                                  <button><a href="editProduct.php?id=<?= $fetch_product['product_id']?>"><i class="fa-solid fa-pen-to-square fa-solid"></i></a></button>
+                                    <button class="bg-primary" value="<?= $fetch_orders['order_id']; ?>" name="updateOrder"><i class="fa-solid fa-pen-to-square fa-solid"></i></button>
+                                    <!-- <a href="../functions/code?editStatus=<?= $fetch_orders['order_id']?>"><i class="fa-solid fa-pen-to-square fa-solid"></i></a> -->
                                   <!-- <input type="submit" value="update" class="option-btn" name="update_payment"> -->
                                   <!-- <a href="placed_orders.php?delete=<?= $fetch_orders['order_id']; ?>" class="delete-btn" onclick="return confirm('delete this order?');">delete</a> -->
-                                     <a href="orderView.php?order=<?= $fetch_orders['order_id']?>"><i class="fas fa-eye"></i></a>
-
+                                  <!-- <button class="bg-primary"><a href="orderView.php?order=<?= $fetch_orders['order_id']?>"><i class="fas fa-eye"></i></a></button> -->
+                                  </form>
                                 </div>
-                              </form>
+                              
+                              <!-- <button class="bg-primary"><a href="orderView.php?order=<?= $fetch_orders['order_id']?>"><i class="fa-solid fa-eye fa-solid"></i></a></button> -->
+
                             </td>
                             <td class="align-center text-center text-sm">
-                              <form action="" method="post">
+                            <!-- <button class="bg-primary"><a href="orderView.php?order=<?= $fetch_orders['order_id']?>"><i class="fa-solid fa-eye fa-solid"></i></a></button> -->
+
+                              <!-- <form action="" method="post"> -->
                                   <!-- <input type="hidden" name="order_id" value="<?= $fetch_orders['order_id']; ?>"> -->
                                   <div class="flex-btn">
+                                     <button class="bg-primary"><a href="orderView.php?order=<?= $fetch_orders['order_id']?>"><i class="fa-solid fa-eye fa-solid"></i></a></button>
                                      <!-- <a href="orderView.php?order=<?= $fetch_orders['order_id']?>"><i class="fas fa-eye"></i></a> -->
                                      <form action="../functions/code.php" method="POST">
                                      <input type="hidden" name="id" value="<?= $fetch_orders['order_id']?>"/>
-                                     <button type="button" class="delateOrder_btn bg-primary" value="<?= $fetch_orders['order_id']; ?>" name="delateOrder_btn"><i   class="fa-solid fa-trash fa-solid"></i></button>
+                                     <button type="button" class="delateOrder_btn bg-primary" value="<?= $fetch_orders['order_id']; ?>" name="delateOrder_btn"><i class="fa-solid fa-trash fa-solid"></i></button>
                                     </form>
                                   </div>
-                              </form>
+                               <!-- </form> -->
                             </td>
                           </tr>
                       <?php
@@ -100,10 +118,9 @@ include_once ('../config/connect.php') ;
                     
                           else
                           {
-                        
-                          // redirect("../category.php","Don't found");
-                          $_SESSION ['message']="Don't found";
-                          // header('Location: ../category.php');
+                            $_SESSION ['message']="Don't found";
+                            // header('Location: orders.php');
+                          // $_SESSION ['message']="Don't found";
                         }
                       
                     ?>

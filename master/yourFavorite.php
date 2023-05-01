@@ -100,7 +100,9 @@ if(mysqli_num_rows($items)> 0 )
      }
         else
         {
-         redirect("./login.php","Login To Continue");
+         // redirect("./login.php","Login To Continue");
+          $_SESSION ['message']="Login To Continue";
+          header('Location: login.php');
         }
        
      ?> 

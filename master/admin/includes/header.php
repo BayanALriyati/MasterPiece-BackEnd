@@ -2,9 +2,21 @@
  session_start();
  include_once ('../middleware/adminMiddleware.php');
 //  include('../functions/myfunctions.php');
-
-
 ?>
+<?php
+// $admin_id = $_SESSION['auth'];
+
+// if(!isset($admin_id)){
+//    header('location: login_admin.php');
+// }
+// // if(!isset($_SESSION['auth']))
+// // {
+// //  $user_id= $_SESSION['auth_user']['user_id'];
+// // }else{
+// //    header('location: login_admin.php');
+// // }
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +53,6 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
-  <?php include ('sidebar.php'); ?>
+  <?php include_once ('sidebar.php'); ?>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
        <?php include_once('navbar.php'); ?>

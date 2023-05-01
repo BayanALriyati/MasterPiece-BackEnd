@@ -29,7 +29,7 @@ function getCategoryProduct($table_1 , $table_2 ){
     $sql="SELECT * FROM `$table_1` INNER JOIN `$table_2` ON product.category_id = category.category_id";
     return $sql_run=mysqli_query($con,$sql);
 }
-
+// ORDER BY orders.order_id DESC
 // read  data from table by get id
 function getByIdOrder($table , $id){
     global $con;
@@ -37,11 +37,17 @@ function getByIdOrder($table , $id){
     return $sql_run=mysqli_query($con,$sql);
 }
 
-function redirect($url,$message)
-{
-    $_SESSION ['message'] = $message;
-    header('Location: ' .$url);
-    exit();
+function getAllOrder($table){
+    global $con;
+    $sql="SELECT *FROM $table ORDER BY orders.order_id DESC";
+    return $sql_run=mysqli_query($con,$sql);
 }
+
+// function redirect($url,$message)
+// {
+//     $_SESSION ['message'] = $message;
+//     header('Location: ' .$url);
+//     exit();
+// }
 
 ?>
