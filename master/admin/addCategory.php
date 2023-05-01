@@ -8,7 +8,8 @@ include_once ('../middleware/adminMiddleware.php');
     <div class="col-md-12 shadow-lg p-3 mb-3 bg-primary rounded ">
       <div class="card shadow-lg p-3 mb-3 bg-white rounded">
         <di class="card-header">
-            <h4>Add Category</h4>
+            <h4>Add Category nnn
+            </h4>
         </di >
         <div class="card-body">
           <form action="../functions/code.php" method="POST" enctype="multipart/form-data">
