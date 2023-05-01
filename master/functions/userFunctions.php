@@ -59,7 +59,6 @@ function getSearch($table , $productName){
     return $sql_run=mysqli_query($con,$sql);
 }
 
-// $sql = "SELECT * FROM `product` WHERE productName LIKE '%{$search_box}%'";
 function redirect($url,$message)
 {
     $_SESSION ['message'] = $message;

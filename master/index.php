@@ -5,26 +5,7 @@ include_once('functions/userFunctions.php');
 
 
  ?>
-  <!-- <div> 
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-      <?php
-         if (isset($_SESSION ['message'])){
-      ?>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-           <strong>Hallo</strong> <?= $_SESSION ['message']; ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-         </div>
-           <?php  
-              unset($_SESSION ['message']);
-              }
-            ?>
-          </div>
-        </div>
-     </div>
-   </div> -->
+  
 
 <div class="heading-video">
     <div>
@@ -71,10 +52,9 @@ include_once('functions/userFunctions.php');
                         }
                         else
                         {
-                        
                           redirect("index.php","Don't found");
                           // $_SESSION ['message']="Don't found";
-                          // header('Location: ../category.php');
+                          // header('Location: ../index.php');
                         }
                     ?>
    </div>
