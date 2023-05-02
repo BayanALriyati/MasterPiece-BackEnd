@@ -45,17 +45,7 @@ include('includes/header.php')
                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                 
                   <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
-                  <?php
-                   if (isset($_SESSION ['message'])){
-                  ?>
-                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                       <strong>Hallo</strong> <?= $_SESSION ['message']; ?>
-                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
-                    <?php  
-                        unset($_SESSION ['message']);
-                       }
-                     ?>
+                
                   <form class="mx-1 mx-md-4" action="./functions/authCode.php" method="POST">
   
                     <div class="d-flex flex-row align-items-center mb-4">

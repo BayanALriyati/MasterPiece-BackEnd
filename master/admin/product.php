@@ -109,7 +109,7 @@ include_once ('../config/connect.php') ;
                             <td class="align-center text-center text-sm">
                               <form action="../functions/code.php" method="POST">
                                   <input type="hidden" name="id" value="<?= $fetch_product['product_id']?>"/>
-                                  <button type="button" class="delateProduct_btn bg-primary" value="<?=   $fetch_product['product_id']; ?>" name="delateProduct_btn"><i   class="fa-solid fa-trash fa-solid"></i></button>
+                                  <button type="button" class="delateProduct_btn bg-primary" value="<?= $fetch_product['product_id']; ?>" name="delateProduct_btn"><i   class="fa-solid fa-trash fa-solid"></i></button>
                               </form>
                             </td>
                           </tr>

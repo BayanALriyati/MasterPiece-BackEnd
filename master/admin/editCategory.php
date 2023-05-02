@@ -38,7 +38,7 @@ include_once ('../functions/myfunctions.php') ;
                <h4>Edit Category</h4>
              </div>
              <div class="card-body">
-              <form action="../functions/code.php" method="POST" enctype="multipart/form-data">
+              <form action="../functions/code.php" method="POST" enctype="multipart/form-data" disabled>
                 <div class="row">
                 <input type="hidden" name="id" value="<?= $data['category_id']?>"/>
                  <div class="col-md-6">
@@ -59,13 +59,13 @@ include_once ('../functions/myfunctions.php') ;
                  </div>
                  <div class="col-md-12">
                   <label class="label">Description</label>
-                  <textarea name="description" placeholder="Enter Description" class="form-control" maxlength="500" cols="3" rows="3" required><?= $data['description']?></textarea>
+                  <textarea name="description" value="<?= $data['description']?>" class="form-control" maxlength="500" cols="3" rows="3" required><?= $data['description']?></textarea>
                  </div>
                  <div class="col-md-12">
                   <label for="" class="label">Upload Image</label>
-                  <input type="file" name="image" class="form-control" required>
+                  <input type="file" name="image" class="form-control" value="<?= $data['image']?>">
                   <label for="" class="label">Current Image</label>
-                  <input type="hidden" name="old_image" class="form-control" required>
+                  <input type="hidden" name="old_image" class="form-control" value="<?= $data['image']?>">
                   <img src="../Uploads/<?= $data['image']?>" height="90" width="100" />
                  </div>
                  <div class="col-md-12"> 

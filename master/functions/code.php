@@ -8,15 +8,15 @@ if(isset($_POST['editUser_btn'])){
    $id = $_POST['id'];
    $name = $_POST['name'];
    $email = $_POST['email'];
-   $role = ($_POST['role']) ? '1':'0'; 
-   $new_image = $_FILES['image']['name'];
+   $role = isset($_POST['role']) ? '1':'0'; 
+   $image = $_FILES['image']['name'];
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];
-   $image_folder = '../Uploads/'.$new_image; 
-   $old_image = $_POST['old_image'];  
+   $image_folder = '../Uploads/'.$image; 
+   $old_image = $_POST['old_image']; 
 
-   if($new_image != ""){
-      $update_image = $new_image ;
+   if($image != ""){
+      $update_image = $image ;
    }
    else
    {
@@ -24,7 +24,7 @@ if(isset($_POST['editUser_btn'])){
    }
 
 
-   $update_query = "UPDATE `users` SET name='$name' ,email='$email' , role='$role' , image='$update_image' WHERE User_id='$id'" ;
+   $update_query = "UPDATE `users` SET name='$name' , email='$email' , role='$role' , image='$update_image' WHERE User_id='$id'" ;
    $update_query_run = mysqli_query($con , $update_query);
 
     if ($update_query_run)
@@ -35,15 +35,25 @@ if(isset($_POST['editUser_btn'])){
         if(file_exists("../uploads/".$old_image))
         {
            unlink("../uploads/".$old_image);
-        }
-      }
-       redirect("../admin/users.php" , "Users Update Successfully");
+           {
+            unlink("../uploads/".$old_image);
+            // $_SESSION ['message'] = "Users Update Successfully";
+            // header('Location: ../admin/admins.php');
+           }
+       }
+      //  else{
+      //       $_SESSION ['message'] = "Something went wrong";
+      //       header('Location: ../admin/editUser.php');
+      //  }
+        
+       $_SESSION ['message'] = "Users Update Successfully";
+       header('Location: ../admin/admins.php');
     }
-} 
+  } 
+}
 
-else if(isset($_POST['delateUser_btn'])){
-   
-    $id =  $_POST['id'];
+else if(isset($_POST['delateUsers_btn'])){
+    $id =  $_POST['delete_id'];
     $user_query = "SELECT * FROM users WHERE User_id = '$id' " ;
     $user_query_run = mysqli_query($con , $user_query) ;
     $user_data = mysqli_fetch_array($user_query_run) ;
@@ -58,11 +68,34 @@ else if(isset($_POST['delateUser_btn'])){
        {
           unlink("../uploads/".$image);
        }
-       redirect("../admin/users.php" , "User Deleted Successfully");
+         echo 200 ;
     }
     else{
-       redirect("../admin/users.php" , "Something went wrong");
+         echo 500 ;
     }
+}
+
+else if(isset($_POST['delateAdmin_btn'])){
+   $id =  $_POST['delete_id'];
+   $user_query = "SELECT * FROM users WHERE User_id = '$id' " ;
+   $user_query_run = mysqli_query($con , $user_query) ;
+   $user_data = mysqli_fetch_array($user_query_run) ;
+   $image = $user_data['image'] ;
+
+   $delate_query = "DELETE FROM `users` WHERE User_id = '$id'";
+   $delate_query_run = mysqli_query($con , $delate_query);
+
+   if($delate_query_run)
+   {
+      if(file_exists("../uploads/".$image))
+      {
+         unlink("../uploads/".$image);
+      }
+        echo 200 ;
+   }
+   else{
+        echo 500 ;
+   }
 }
 
 else if(isset($_POST['addCategory_btn'])){
@@ -147,7 +180,9 @@ else if(isset($_POST['editCategory_btn'])){
             unlink("../uploads/".$old_image);
          }
        }
-        redirect("../admin/category.php" , "Category Update Successfully");
+      //   redirect("../admin/category.php" , "Category Update Successfully");
+        $_SESSION ['message'] = "Category Update Successfully";
+       header('Location: ../admin/category.php');
      }
 } 
 
@@ -174,6 +209,7 @@ else if(isset($_POST['delateCategory_btn'])){
 
    }
 }
+
 else if(isset($_POST['addProduct_btn'])){
 
    $category_name = $_POST['category'];
@@ -237,20 +273,22 @@ else if(isset($_POST['addProduct_btn'])){
                move_uploaded_file($thumbnail_2_tmp_name , $thumbnail_2_folder);
                move_uploaded_file($thumbnail_3_tmp_name , $thumbnail_3_folder);
 
-               redirect("../admin/Product.php" , "Product Added Successfully");
-               // $_SESSION ['message'] = "Product Added Successfully";
-               // header('Location: ../admin/Product.php');
+               // redirect("../admin/Product.php" , "Product Added Successfully");
+               $_SESSION ['message'] = "Product Added Successfully";
+               header('Location: ../admin/Product.php');
             }
             else
             {
-              redirect("../admin/addProduct.php" , "Something went wrong");
-              // $_SESSION ['message'] = "Something went wrong";
-              // header('Location: ../admin/addProduct.php');
+            //   redirect("../admin/addProduct.php" , "Something went wrong");
+              $_SESSION ['message'] = "Something went wrong";
+              header('Location: ../admin/addProduct.php');
            }
         }
         else
         {
-               redirect("../admin/addProduct.php" , "Something went wrong");
+               // redirect("../admin/addProduct.php" , "Something went wrong");
+               $_SESSION ['message'] = "Something went wrong";
+               header('Location: ../admin/addProduct.php');
         }
    }
 }
@@ -339,7 +377,9 @@ else if(isset($_POST['editProduct_btn'])){
            unlink("../uploads/".$oldThumbnail_3);
         }
       }
-       redirect("../admin/product.php" , "Product Update Successfully");
+      //  redirect("../admin/product.php" , "Product Update Successfully");
+       $_SESSION ['message'] = "Product Update Successfully";
+       header('Location: ../admin/product.php');
     }
 } 
 
@@ -544,7 +584,6 @@ else if(isset($_POST['Update'])){
           unlink("../uploads/".$old_image);
        }
      }
-      // redirect("../profile.php" , "Users Update Successfully");
    }
    
    $empty_password = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
@@ -554,26 +593,23 @@ else if(isset($_POST['Update'])){
    $cpassword = $_POST['cpassword'];
 
    if($old_password == $empty_password){
-      redirect("../updateProfile.php","please enter old password!");
-
-      // $message[] = 'please enter old password!';
+      $_SESSION ['message'] = "please enter old password!";
+      header('Location: ../updateProfile.php');
    }elseif($old_password != $prev_password){
-     redirect("../updateProfile.php","old password not matched!");
-
-      // $message[] = 'old password not matched!';
+     $_SESSION ['message'] = "old password not matched!";
+     header('Location: ../updateProfile.php');
    }elseif($new_password != $cpassword){
-     redirect("../updateProfile.php","confirm password not matched!");
-
-      // $message[] = 'confirm password not matched!';
+     $_SESSION ['message'] = "confirm password not matched!";
+     header('Location: ../updateProfile.php');
    }else{
       if(($new_password != $empty_password) && $update_query_run){
          $sql = "UPDATE `users` SET `password`='$cpassword' WHERE `User_id`='$user_id'";
          $update_query_run = mysqli_query($con , $sql);
-         redirect("../profile.php","profile updated successfully!");
-         // $message[] = 'password updated successfully!';
+         $_SESSION ['message'] = "profile updated successfully!";
+         header('Location: ../profile.php');
       }else{
-         redirect("../updateProfile.php","please enter a new password");
-         // $message[] = 'please enter a new password!';
+         $_SESSION ['message'] = "please enter a new password";
+         header('Location: ../updateProfile.php');
       }
    }
    
@@ -583,33 +619,155 @@ else if(isset($_POST['Update'])){
         $_SESSION ['message']="Don't found";
         header('Location: ../login.php');
      }
-}
+} 
 
-// if (isset($_GET['editStatus'])){
-//    $order_id = $_GET['editStatus'];
-//    $status = $_POST['status'];
+else if(isset($_POST['updateImage_admin'])){
+   if(isset($_SESSION['auth']))
+   {
+   $user_id= $_SESSION['auth_user']['user_id'];
+   $image = $_FILES['image']['name'];
+   $image_size = $_FILES['image']['size'];
+   $image_tmp_name = $_FILES['image']['tmp_name'];
+   $image_folder = '../Uploads/'.$image; 
+   $old_image = $_POST['old_image'];  
 
-//     $update_query = "UPDATE `orders` SET status='$status' WHERE order_id='$order_id'" ;
-//     $update_query_run = mysqli_query($con , $update_query);
+   if($image != ""){
+           $update_image = $image ;
+        }
+        else
+           {
+               $update_image = $old_image ;
+           }   
+   $sql = "UPDATE `users` SET `image`='$update_image' WHERE `User_id`='$user_id'";
+   $update_query_run = mysqli_query($con , $sql);
+   if ($update_query_run)
+   {
+      if($_FILES['image']['name'] != "")
+     {
+       move_uploaded_file($image_tmp_name , $image_folder);
+       if(file_exists("../uploads/".$old_image))
+       {
+          unlink("../uploads/".$old_image);
+          $_SESSION ['message'] = "Photo Update Successfully";
+          header('Location: ../admin/profile_admin.php');
+       }
+     }else{
+          $_SESSION ['message'] = "Something went wrong";
+          header('Location: ../admin/profile_admin.php');
+     }
+   } 
+  }
+} 
 
-//      if ($update_query_run)
+// else if(isset($_POST['updateProfile_admin'])){
+//    if(isset($_SESSION['auth']))
+//    {
+//    $user_id= $_SESSION['auth_user']['user_id'];
+//    echo $user_id;
+//    $name = $_POST['name'];
+//    $email = $_POST['email'];
+//    $city = $_POST['city'];
+//    $street = $_POST['street'];
+//    $gender = $_POST['gender'];
+//    $empty_password = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
+//    $prev_password = $_POST['prev_password'];
+//    $old_password = $_POST['old_password'];
+//    $new_password = $_POST['new_password'];
+//    $cpassword = $_POST['cpassword'];
+   
+//    if($old_password == $empty_password){
+//       $_SESSION ['message'] = "please enter old password!";
+//       header('Location: ../admin/profile_admin.php');
+//    }elseif($old_password != $prev_password){
+//      $_SESSION ['message'] = "old password not matched!";
+//      header('Location: ../admin/profile_admin.php');
+//    }elseif($new_password != $cpassword){
+//      $_SESSION ['message'] = "confirm password not matched!";
+//      header('Location: ../admin/profile_admin.php');
+//    }else{
+//       if(($new_password != $empty_password)){
+//          $sql = "UPDATE `users` SET `User_id`='$user_id',`name`='$name',`email`='$email',`password`='$cpassword',`city`='$city',`street`='$street',`gender`='$gender' WHERE `User_id`='$user_id'";
+//          $update_query_run = mysqli_query($con , $sql);
+//          $_SESSION ['message'] = "profile updated successfully!";
+//          header('Location: ../admin/profile_admin.php');
+//       }else{
+//          $_SESSION ['message'] = "please enter a new password";
+//          header('Location: ../admin/profile_admin.php');
+//       }
+//    }
+   
+// } 
+//    else
 //      {
-//           $_SESSION ['message'] = "Order Update Successfully";
-//           header('Location: ../admin/orders.php');
-//        }
-//       //   redirect("../admin/category.php" , "Category Update Successfully");
-//         $_SESSION ['message'] = "Something went wrong";
-//           header('Location: ../admin/orders.php');
+//         $_SESSION ['message']="Don't found";
+//         header('Location: ../login.php');
 //      }
 // } 
 
+else if(isset($_POST['updateProfile_admin'])){
+   if(isset($_SESSION['auth']))
+   {
+   $user_id= $_SESSION['auth_user']['user_id'];
+   echo $user_id;
+   $name = $_POST['name'];
+   $email = $_POST['email'];
+   $city = $_POST['city'];
+   $street = $_POST['street'];
+   $gender = $_POST['gender'];
+   $empty_password = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
+   $prev_password = $_POST['prev_password'];
+   $old_password = $_POST['old_password'];
+   $new_password = $_POST['new_password'];
+   $cpassword = $_POST['cpassword'];
+   // Check if email already registered 
+   $check_email_query="SELECT email FROM users WHERE email='$email'";
+   $check_email_run=mysqli_query($con,$check_email_query);
+   
+   if(mysqli_num_rows($check_email_run)> 0)
+   {
+           // redirect("../register.php","Email already registered");
+           $_SESSION ['message']="Email already exists";
+           header('Location: ../admin/profile_admin.php');
+   }else
+   {
+      if($old_password == $empty_password){
+         $_SESSION ['message'] = "please enter old password!";
+         header('Location: ../admin/profile_admin.php');
+      }elseif($old_password != $prev_password){
+        $_SESSION ['message'] = "old password not matched!";
+        header('Location: ../admin/profile_admin.php');
+      }elseif($new_password != $cpassword){
+        $_SESSION ['message'] = "confirm password not matched!";
+        header('Location: ../admin/profile_admin.php');
+      }else{
+         if(($new_password != $empty_password)){
+            $sql = "UPDATE `users` SET `User_id`='$user_id',`name`='$name',`email`='$email',`password`='$cpassword',`city`='$city',`street`='$street',`gender`='$gender' WHERE `User_id`='$user_id'";
+            $update_query_run = mysqli_query($con , $sql);
+            $_SESSION ['message'] = "profile updated successfully!";
+            header('Location: ../admin/profile_admin.php');
+         }else{
+            $_SESSION ['message'] = "please enter a new password";
+            header('Location: ../admin/profile_admin.php');
+         }
+      // }
+      // else
+      // {
+      //    $_SESSION ['message']="Don't found";
+      //    header('Location: ../login.php');
+      // }
+    }
+  } 
+}   
+else
+     {
+        $_SESSION ['message']="Don't found";
+        header('Location: ../login.php');
+     } 
+}
 else if(isset($_POST['updateOrder'])){
     
    $order_id =  $_POST['order_id'];
    $status =  $_POST['status'];
-   // $order_query = "SELECT * FROM orders WHERE order_id = '$order_id' " ;
-   // $order_query_run = mysqli_query($con , $order_query) ;
-   // $order_id_data = mysqli_fetch_array($order_query_run) ;
    $update_query = "UPDATE `orders` SET status='$status' WHERE order_id='$order_id'" ;
    $update_query_run = mysqli_query($con , $update_query);
    

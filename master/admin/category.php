@@ -82,12 +82,12 @@ include_once ('../config/connect.php') ;
                               <a href=""><i class="fa-solid fa-square-minus delete1"></i></a>
                             </td> -->
                             <td class="align-center text-center text-sm">
-                                <button><a href="editCategory.php?id=<?= $item['category_id']?>"><i class="fa-solid fa-pen-to-square fa-solid"></i></a></button>
+                                <button class="bg-primary"><a href="editCategory.php?id=<?= $item['category_id']?>"><i class="fa-solid fa-pen-to-square fa-solid"></i></a></button>
                             </td>
                             <td class="align-center text-center text-sm">
                               <form action="../functions/code.php" method="POST">
                                   <input type="hidden" name="id" value="<?= $item['category_id']?>"/>
-                                  <button type="button" class="delateCategory_btn" value="<?= $item['category_id']; ?>" name="delateCategory_btn"><i   class="fa-solid fa-trash fa-solid"></i></button>
+                                  <button type="button" class="delateCategory_btn bg-primary" value="<?= $item['category_id']; ?>" name="delateCategory_btn"><i   class="fa-solid fa-trash fa-solid"></i></button>
                               </form>
                                 <!-- <form action="../functions/code.php" method="POST">
                                   <input type="hidden" name="id" value="<?= $item['category_id']?>"/>

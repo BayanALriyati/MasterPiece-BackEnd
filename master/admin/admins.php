@@ -45,7 +45,7 @@ include_once ('../config/connect.php') ;
                 <h6 class="text-white text-capitalize ps-3">Category</h6>
               </div>
             </div>
-            <div class="card-body px-0 pb-2">
+            <div class="card-body px-0 pb-2" id="admin_table">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
                   <thead>
@@ -88,12 +88,12 @@ include_once ('../config/connect.php') ;
                               <a href=""><i class="fa-solid fa-square-minus delete1"></i></a>
                             </td> -->
                             <td class="align-center text-center text-sm">
-                                <button><a href="editUser.php?id=<?= $item['User_id']?>"><i class="fa-solid fa-pen-to-square fa-solid"></i></a></button>
+                                <button class="bg-primary"><a href="editUser.php?id=<?= $item['User_id']?>"><i class="fa-solid fa-pen-to-square fa-solid"></i></a></button>
                             </td>
                             <td class="align-center text-center text-sm">
                                 <form action="../functions/code.php" method="POST">
                                   <input type="hidden" name="id" value="<?= $item['User_id']?>"/>
-                                  <button type="submit" name="delateUser_btn"><i class="fa-solid fa-trash delete1"></i></button>
+                                  <button type="button" value="<?= $item['User_id']?>" name="delateAdmin_btn" class="delateAdmin_btn bg-primary"><i class="fa-solid fa-trash delete1"></i></button>
                                 </form>
                             </td>
                           </tr>

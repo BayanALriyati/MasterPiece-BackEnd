@@ -600,6 +600,12 @@ section{
     height: auto;
     margin: auto;
 }
+.img-profile {
+   min-height: 3rem;
+   min-width: 46rem;
+   height: 0rem;
+   margin: auto;
+}
 
 /*---------------------
   yourGift 

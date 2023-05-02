@@ -10,6 +10,13 @@ function getAll($table){
 }
 
 // read  data from table by get id
+function getByIdOne($table , $id){
+    global $con;
+    $sql="SELECT *FROM $table WHERE User_id='$id'";
+    return $sql_run=mysqli_query($con,$sql);
+}
+
+// read  data from table by get id
 function getById($table , $id){
     global $con;
     $sql="SELECT *FROM $table WHERE id='$id'";

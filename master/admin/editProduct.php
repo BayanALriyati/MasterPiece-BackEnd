@@ -36,7 +36,7 @@ include_once ('../config/connect.php');
             <h4>Edit Product</h4>
             </div >
             <div class="card-body">
-            <form action="../functions/code.php" method="POST" enctype="multipart/form-data">
+            <form action="../functions/code.php" method="POST" enctype="multipart/form-data" disabled>
             <div class="row">
             <input type="hidden" name="id" value="<?= $data['product_id']?>"/>
                 <div class="col-md-12">
@@ -85,28 +85,28 @@ include_once ('../config/connect.php');
             </div>
                 <div class="col-md-12"> 
             <label for="" class="label">Image Main</label>
-                <input type="file" name="imageMain" class="form-control" required>
+                <input type="file" name="imageMain" class="form-control" value="<?= $data['imageMain']?>">
                 <label for="" class="label">Current Image</label>
                 <input type="hidden" name="oldImageMain" value="<?= $data['imageMain']?>" class="form-control" required>
                 <img src="../Uploads/<?= $data['imageMain']?>" height="90" width="100" />
             </div>
                 <div class="col-md-4"> 
             <label for="" class="label">Thumbnail 1</label>
-                <input type="file" name="thumbnail_1" class="form-control" required>
+                <input type="file" name="thumbnail_1" class="form-control" value="<?= $data['thumbnail_1']?>">
                 <label for="" class="label">Current Image</label>
                 <input type="hidden" name="oldThumbnail_1" value="<?= $data['thumbnail_1']?>" class="form-control" required>
                 <img src="../Uploads/<?= $data['thumbnail_1']?>" height="90" width="100" />
             </div>
                 <div class="col-md-4"> 
             <label for="" class="label">Thumbnail 2</label>
-                <input type="file" name="thumbnail_2" class="form-control" required>
+                <input type="file" name="thumbnail_2" class="form-control" value="<?= $data['thumbnail_2']?>">
                 <label for="" class="label">Current Image</label>
                 <input type="hidden" name="oldThumbnail_2" value="<?= $data['thumbnail_2']?>" class="form-control" required>
                 <img src="../Uploads/<?= $data['thumbnail_2']?>" height="90" width="100" />
             </div>
                 <div class="col-md-4"> 
                 <label for="" class="label">Thumbnail 3</label>
-                <input type="file" name="thumbnail_3" class="form-control" required>
+                <input type="file" name="thumbnail_3" class="form-control" value="<?= $data['thumbnail_3']?>">
                 <label for="" class="label">Current Image</label>
                 <input type="hidden" name="oldThumbnail_3" value="<?= $data['thumbnail_3']?>" class="form-control" required>
                 <img src="../Uploads/<?= $data['thumbnail_3']?>" height="90" width="100" />

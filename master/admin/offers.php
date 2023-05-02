@@ -259,28 +259,18 @@ include_once ('../config/connect.php') ;
                                   <div class="formPopup" id="popupForm">
                                     <form action="../functions/code.php" method="POST" enctype="multipart/form-data" class="formContainer">
 
-                                        <!-- <form action="../functions/code.php" class="formContainer"> -->
+                                      <h2>Add Discount</h2>
 
-
-                                   <h2>Add Discount</h2>
-                                   <!-- <label for="email">
-                                     <strong>Price</strong>
-                                   </label><br/>
-                                   <input type="text" id="price"  name="price" value="<?= $fetch_product['price']?>" required><br/>
-                                   <label for="psw"> -->
-                                     <strong>Percent Discount</strong>
-                                   </label><br/>
-                                   <input type="hidden" name="product" value="<?= $fetch_product['product_id']?>"/>
-                                 <input type="text" placeholder="%" name="add-on-product" required><br/>
-                                 <button type="submit" class="btn btn-outline-secondary" name="add-discountProduct">Add Product</button><b                       r/>
-
-                                 <!-- <button type="submit" class="btnDiscount" name="add-discountProduct">Add</button><br/> -->
-                                 <button type="submit" class="btnCancel" onclick="closeForm()">Close</button>
-                               </form>
-       
-                           </div>
-                             
-    </div>
+                                      <strong>Percent Discount</strong>
+                                      </label><br/>
+                                      <input type="hidden" name="product" value="<?= $fetch_product['product_id']?>"/>
+                                      <input type="text" placeholder="%" name="add-on-product" required><br/>
+                                      <button type="submit" class="btn btn-outline-secondary" name="add-discountProduct">Add Product</button><br/>
+                                      <button type="submit" class="btnCancel" onclick="closeForm()">Close</button>
+                                    </form>
+                                  </div>
+                            
+                                </div>
                                 <!-- <i class="fa-sharp fa-solid fa-circle-plus"></i> -->
                                 <?php } ?>                            
                             <!-- <h6 class="mb-0 text-sm" style="color:#d81b60;">Not Discount</h6> -->

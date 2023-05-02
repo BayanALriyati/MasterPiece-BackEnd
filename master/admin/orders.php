@@ -41,7 +41,7 @@ include_once ('../config/connect.php') ;
                 <h6 class="text-white text-capitalize ps-3">Orders</h6>
               </div>
             </div>
-            <div class="card-body px-0 pb-2">
+            <div class="card-body px-0 pb-2" id="order_id">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
                   <thead>

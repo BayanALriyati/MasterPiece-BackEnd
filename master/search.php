@@ -10,7 +10,17 @@ if(isset($_SESSION['auth'])){
 };
 
 ?>
-   
+<?php  
+                     if (isset($_SESSION ['message'])){
+                  ?>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                         <?= $_SESSION ['message']; ?>
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                    <?php  
+                        unset($_SESSION ['message']);
+                       }
+                     ?>  
 
 <section class="search-form">
    <form action="" method="post">
