@@ -4,13 +4,13 @@
 // read data from table
 function getAllActive($table){
     global $con;
-    $sql="SELECT *FROM $table WHERE status='0'";
+    $sql="SELECT *FROM $table WHERE status='1'";
     return $sql_run=mysqli_query($con,$sql);
 }
 
 function getSlugActive($table , $slug){
     global $con;
-    $sql="SELECT *FROM $table WHERE slug='$slug' AND status='0' LIMIT 1";
+    $sql="SELECT *FROM $table WHERE slug='$slug' AND status='1' LIMIT 1";
     return $sql_run=mysqli_query($con,$sql);
 }
 

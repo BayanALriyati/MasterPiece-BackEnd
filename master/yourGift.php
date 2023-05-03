@@ -30,8 +30,6 @@ include_once('functions/userFunctions.php');
                             <?php
                     
                                 $category = getAllActive("category");
-                                // $sql="SELECT *FROM category";
-                                // $category=mysqli_query($con,$sql);
                                 if(mysqli_num_rows($category)> 0 )
                                 {
                                     foreach($category as $item)
@@ -44,8 +42,8 @@ include_once('functions/userFunctions.php');
                                         else
                                     {
                         
-                                        echo "Don't found" ;
-                                        //  $_SESSION ['message']="Don't found";
+                                        // echo "Don't found" ;
+                                         $_SESSION ['message']="Don't found";
                                     //  header('Location: ./yourGift.php');                        
                                     }
                                   ?>
@@ -76,7 +74,7 @@ include_once('functions/userFunctions.php');
                         
                         <?php
                             
-                            $sql="SELECT *FROM product WHERE category_id='$category_id' AND status='0'";
+                            $sql="SELECT *FROM product WHERE category_id='$category_id' AND status='1'";
                             $product=mysqli_query($con,$sql);
                             if(mysqli_num_rows($product)> 0 )
                             {
@@ -148,8 +146,8 @@ include_once('functions/userFunctions.php');
                         }
                         else
                         {
-                            echo "Don't found" ;
-                            // $_SESSION ['message']="Don't found";
+                            // echo "Don't found" ;
+                            $_SESSION ['message']="Don't found";
                             // header('Location: ./yourGift.php');                        
                         }
                     
@@ -245,7 +243,7 @@ include_once('functions/userFunctions.php');
                             // echo "Don't found" ;
                         //   redirect("login.php","Don't found");
                         $_SESSION ['message']="Don't found";
-                        header('Location: yourGift.php'); 
+                        // header('Location: ./yourGift.php'); 
                         
                         }
                         }
@@ -257,18 +255,9 @@ include_once('functions/userFunctions.php');
 
                         </div>
                      </div>
-                   
-           
-  
-                    
-                       
-                
-                
-            
-
-        </div>
     </div>
-    </section>
+  </div>
+</section>
     <!-- Shop Section End -->
 
 

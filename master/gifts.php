@@ -22,7 +22,7 @@ if (isset($_GET['category'])){
 <div class="box-container">
 <?php
                     
-                    $sql="SELECT *FROM product WHERE category_id='$category_id' AND status='0'";
+                    $sql="SELECT *FROM product WHERE category_id='$category_id' AND status='1'";
                     $product=mysqli_query($con,$sql);
                     if(mysqli_num_rows($product)> 0 )
                     {

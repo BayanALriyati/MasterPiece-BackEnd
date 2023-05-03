@@ -79,8 +79,8 @@ if(isset($_SESSION['auth'])){
            <div class="image">
                <img src="./uploads/<?= $fetch_product['imageMain']?>" alt="Image">
                <div class="icons">
-                  <button name="addheartSearch" class="cart-btn"><i class="fas fa-heart"></i></button>
-                  <button name="addcartSearch" class="cart-btn">Add Cart</button>
+                  <button name="addHeartSearch" class="cart-btn"><i class="fas fa-heart"></i></button>
+                  <button name="addCartSearch" class="cart-btn">Add Cart</button>
                   <a href="product_view.php?product=<?= $item['slug']?>" target="_blank"><i class="fas fa-share"></i></a>
                </div>
            </div>

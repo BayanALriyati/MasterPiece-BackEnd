@@ -1310,7 +1310,7 @@ img {
    text-decoration: none;
 }
 
- .btnCart {
+ .btnDelete {
    z-index: 1000;
    text-align: center;
    margin: 2rem 4rem;
@@ -1326,7 +1326,7 @@ img {
    text-decoration: none;
 }
 
-.btnCart:hover{
+.btnDelete:hover{
    color:var(--black);
    background-image: url(../images/heading-bg.jpg);
 }

@@ -346,35 +346,94 @@ if(value > 1)
 });
 
 </script>
-<!-- <script>
-  const inputQty = document.querySelector('.input-qty');
-   $('.addCartBtn').click(function (e){
-    e.preventDefault();
-    var qty = $(this).closest('.product-data').find('.input-qty').val();
-    var product_id = $(this).val();
-    alert(product_id);
-    $.ajax({
-             mothed: "POST",
-             url:"functions/handleCart.php",
+<script>
+  $(document).ready(function(){
+    $('.btnCartDelete').click(function(e){
+      e.preventDefault();
+      var id = $(this).val();
+      // alert(id);
+  
+      swal({
+        title: "Are You Sure Delete?",
+        text: "Once Deleted, You Will Not Be Able To Recover",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      
+      })
+    
+      .then((willDelete) => {
+        if (willDelete) {
+          $.ajax({
+             type: "POST",
+             url:"./functions/handleAdd.php",
              data:{
-              'product_id': product_id,
-              'product_qty': qty,
-              'scope' : "add" ,
-            },
-              success : function (response){
-                if(response == 201){
-                  alertify.success ("Product Added TO Cart")
+              'delete_all':id,
+              'btnCartDelete':true,
+             },
+             success : function (response){
+              console.log(response);
+                if(response == 200)
+                {
+                  swal("Success!", "Items Deleted Successfully!", "success");
+                  $("#delete_all").load(location.href + " #delete_all");
                 }
-                else if (response == 401){
-                  alertify.success ("Login To Continue")
-                }
-                else if (response == 500){
-                  alertify.success ("Something Error")
-                }
+                else if(response == 500)
+                swal("Error!", "Something went wrong!", "error");
              }
-             
-            })
-   }) 
-</script>  -->
+            
+          });
+        
+        } 
+      });
+    });
+  
+ });
+</script> 
+
+<script>
+  $(document).ready(function(){
+    $('.btnDelete').click(function(e){
+      e.preventDefault();
+      var id = $(this).val();
+      alert(id);
+  
+      swal({
+        title: "Are You Sure Delete?",
+        text: "Once Deleted, You Will Not Be Able To Recover",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      
+      })
+    
+      .then((willDelete) => {
+        if (willDelete) {
+          $.ajax({
+             type: "POST",
+             url:"./functions/handleAdd.php",
+             data:{
+              'deleteCart_id':id,
+              'btnDelete':true,
+             },
+             success : function (response){
+              console.log(response);
+                if(response == 200)
+                {
+                  swal("Success!", "Item Deleted Successfully!", "success");
+                  $("#delete_all").load(location.href + " #delete_all");
+                }
+                else if(response == 500)
+                swal("Error!", "Something went wrong!", "error");
+             }
+            
+          });
+        
+        } 
+      });
+    });
+  
+ });
+</script> 
    </body>
    </html>

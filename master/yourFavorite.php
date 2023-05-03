@@ -68,8 +68,8 @@ if(mysqli_num_rows($items)> 0 )
            <div class="image">
                <img src="./uploads/<?= $item['imageMain']?>" alt="Image">
                <div class="icons">
-                  <button name="addheartFavorite" class="cart-btn"><i class="fas fa-heart"></i></button>
-                  <button name="addcartFavorite" class="cart-btn">Add Cart</button>
+                  <button name="addHeartFavorite" class="cart-btn"><i class="fas fa-heart"></i></button>
+                  <button name="addCartFavorite" class="cart-btn">Add Cart</button>
                   <a href="product_view.php?product=<?= $item['slug']?>" target="_blank"><i class="fas fa-share"></i></a>
                </div>
            </div>

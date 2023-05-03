@@ -34,17 +34,22 @@
            if(isset($_SESSION['auth']))
            {
             ?>
-                 <!-- <li class="nav-item dropdown"> -->
                      <a>
                           <?= $_SESSION['auth_user']['name']; ?>
                      </a>
-<!-- 
-                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="#">Order</a>
-                    <a class="dropdown-item" href="Logout.php">Logout</a>
-                 </ul>
-           </li>  -->
+         <?php 
+            }else{
+         ?>
+             <li class="nav-item">
+               <a class="nav-link text-white " href="login_admin.php">
+    
+                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                     <i class="material-icons opacity-10">assignment</i>
+                   </div>
+    
+                 <span class="nav-link-text ms-1">Sign Up</span>
+               </a>
+             </li>
          <?php 
             }
            ?>

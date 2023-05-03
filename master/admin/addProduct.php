@@ -22,7 +22,7 @@ include_once ('../middleware/adminMiddleware.php');
             <h4>Add Product</h4>
         </di >
         <div class="card-body">
-          <form action="../functions/code.php" method="POST" enctype="multipart/form-data">
+          <form action="../functions/code.php" method="POST" enctype="multipart/form-data" disabled>
            <div class="row">
            <div class="col-md-12">
             <label for="" class="label">Name</label>
@@ -74,15 +74,15 @@ include_once ('../middleware/adminMiddleware.php');
            </div>
            <div class="col-md-4"> 
             <label for="" class="label">Thumbnail 1</label>
-            <input type="file" name="thumbnail_1" class="form-control" required>
+            <input type="file" name="thumbnail_1" class="form-control">
            </div>
            <div class="col-md-4"> 
             <label for="" class="label">Thumbnail 2</label>
-            <input type="file" name="thumbnail_2" class="form-control" required>
+            <input type="file" name="thumbnail_2" class="form-control">
            </div>
            <div class="col-md-4"> 
             <label for="" class="label">Thumbnail 3</label>
-            <input type="file" name="thumbnail_3" class="form-control" required>
+            <input type="file" name="thumbnail_3" class="form-control">
            </div>
            <div class="col-md-12"> 
             <button type="submit" class="btn btn-primary mt-5" name="addProduct_btn">Save</button>

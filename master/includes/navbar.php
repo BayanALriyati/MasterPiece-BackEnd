@@ -113,7 +113,7 @@ include_once ('./config/connect.php');
          <div class="flex">
             <a href="profile.php" class="btnprofile">profile</a>
             <p class="name"><?= $item['name']; ?></p>
-            <a href="Logout.php" class="btnprofile">logout</a>
+            <a href="./includes/Logout.php" class="btnprofile">logout</a>
          </div>
          <?php
             }

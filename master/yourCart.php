@@ -27,7 +27,7 @@ if(isset($_SESSION['auth']))
 ?>
 
 
-  <div class="container cart">
+  <div class="container cart" id="delete_all">
   
     <table>
     
@@ -77,13 +77,7 @@ if(mysqli_num_rows($items)> 0 )
             <button type="submit" class="input-group-text cart-btn" name="update_qty"><i class="fa-solid fa-pen"></i></button>
             </div>
           </div>
-            <!-- <button type="submit" class="btnCart" name="delete" value="<?= $item['id']; ?>" onclick="return confirm('Delete This From Cart?');"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i></button></td>  -->
-        </form>
-         <!-- <div class="cart-btn">
-            <button type="submit" class="input-group-text cart-btn" name="update_qty"><i class="fa-solid fa-pen"></i></button>
-           </div>
-         </div> -->
-        
+        </form>        
         </td>
         <td>
          <div class="cart-sub">
@@ -96,10 +90,10 @@ if(mysqli_num_rows($items)> 0 )
         </td>
         
         <td>
-        <form action="./functions/handleAdd.php" method="POST" enctype="multipart/       form-data">  
+        <form action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">  
             <input type="hidden" name="user_id" value="<?= $item['user_id']; ?>">
             <input type="hidden" name="cart_id" value="<?= $item['id']; ?>">
-            <button type="submit" class="btnCart" name="delete" value="<?= $item['id']; ?>" onclick="return confirm('Delete This From Cart?');"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i></button></td> 
+            <button type="submit" class="btnDelete" name="btnDelete" value="<?= $item['id']; ?>"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i></button></td> 
         </form> 
           </tr>
           <?php 
@@ -125,15 +119,19 @@ if(mysqli_num_rows($items)> 0 )
           </td>
         </tr>
       </table>
+      
       <div class="total_btn">
+     
       <form action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">  
             <input type="hidden" name="cart_id" value="<?= $item['id']; ?>">
             <input type="hidden" name="user_id" value="<?= $item['user_id']; ?>">
-            <button type="submit" class="btnCartDelete" name="delete_all" value="<?= $item['user_id'];?>"  onclick="return confirm('Delete All From Cart?');">Delete All Item</button></td> 
+            <button type="submit" class="btnCartDelete" name="btnCartDelete" value="<?= $item['user_id'];?>">Delete All Item</button>
       </form> 
-        <a href="./yourGift.php" target="_blank" class="btnCart">Continue Shopping</a>
-        <a href="checkout.php" target="_blank" class="btnCart">Proceed To Checkout</a>
+      <!-- onclick="return confirm('Delete All From Cart?');" -->
+        <a href="./yourGift.php" target="_blank" class="btnCartDelete">Continue Shopping</a>
+        <a href="checkout.php" target="_blank" class="btnCartDelete">Proceed To Checkout</a>
       </div>
+      
     </div>
   </div>
   </div>
@@ -143,7 +141,7 @@ if(mysqli_num_rows($items)> 0 )
    {
     // redirect("./login.php","Login To Continue");
     $_SESSION ['message']="Login To Continue";
-          header('Location: login.php');
+    header('Location: login.php');
    }
   
 ?>

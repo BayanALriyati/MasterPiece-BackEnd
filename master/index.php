@@ -62,9 +62,9 @@ include_once('functions/userFunctions.php');
                         }
                         else
                         {
-                          redirect("index.php","Don't found");
-                          // $_SESSION ['message']="Don't found";
-                          // header('Location: ../index.php');
+                        //   redirect("index.php","Don't found");
+                          $_SESSION ['message']="Don't found";
+                        //   header('Location: index.php');
                         }
                     ?>
    </div>
@@ -123,8 +123,8 @@ include_once('functions/userFunctions.php');
            <div class="image">
                <img src="./uploads/<?= $item['imageMain']?>" alt="">
                <div class="icons">
-                  <button name="addheartIndrex" class="cart-btn"><i class="fas fa-heart"></i></button>
-                  <button name="addcartIndrex" class="cart-btn">Add Cart</button>
+                  <button name="addHeartIndrex" class="cart-btn"><i class="fas fa-heart"></i></button>
+                  <button name="addCartIndrex" class="cart-btn">Add Cart</button>
                   <a href="product_view.php?product=<?= $item['slug']?>" target="_blank"><i class="fas fa-eye"></i></a>
                </div>
            </div>
@@ -146,10 +146,10 @@ include_once('functions/userFunctions.php');
                         }
                         else
                         {
-                            echo "Don't found" ;
+                            // echo "Don't found" ;
                         //   redirect("login.php","Don't found");
-                        //   $_SESSION ['message']="Don't found";
-                        //   header('Location: ../category.php');
+                          $_SESSION ['message']="Don't found";
+                        //   header('Location: ../index.php');
                         }
                     
                 

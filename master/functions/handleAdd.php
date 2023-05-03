@@ -8,17 +8,15 @@ if(isset($_POST['addTOcart'])){
   {
    $user_id = $_SESSION['auth_user']['user_id'];
    $productId = $_POST['product_id'];
-  //  $product_name = $_POST['name'];
    $product_qty = $_POST['qty'];
-  //  $product_price = $_POST['price'];
-  //  $product_image = $_POST['image'];
-   
-   
+     
    $sql = "SELECT * FROM `cart` WHERE product_id = '$productId' AND user_id = '$user_id';";
    $check_cart = mysqli_query($con , $sql) ;
    if(mysqli_num_rows($check_cart) > 0 )
    {      
-    redirect("../yourGift.php" , "Your Product Added To Cart!");
+   //  redirect("../yourGift.php" , "Your Product Added To Cart!");
+    $_SESSION ['message']="Your Product Added To Cart!";
+    header('Location: ../yourGift.php');
 }
 else
 {
@@ -26,43 +24,55 @@ else
  
        $send_to_cart = mysqli_query($con , $sql) ;
         if($send_to_cart){
-         redirect("../yourGift.php" ,"Product Added Successfully");
+         // redirect("../yourGift.php" ,"Product Added Successfully");
+         $_SESSION ['message']="Product Added To Cart Successfully";
+         header('Location: ../yourGift.php');     
         }
           else
         {
-           redirect("../index.php" , "Something went wrong");
+         //   redirect("../index.php" , "Something went wrong");
+           $_SESSION ['message']="Something went wrong";
+           header('Location: ../index.php');   
         }
       }
     }
     else
     {
-     redirect("../login.php" , "Login To Continue");
+   //   redirect("../login.php" , "Login To Continue");
+     $_SESSION ['message']="Login To Continue";
+     header('Location: ../login.php');
     }
 }
 
-else if(isset($_POST['delete'])){
-  $cart_id = $_POST['cart_id'];
+else if(isset($_POST['btnDelete'])){
+  $cart_id = $_POST['deleteCart_id'];
   $sql = "DELETE FROM `cart` WHERE id = $cart_id";
   $delete_item = mysqli_query($con , $sql) ;
   if($delete_item)
    {
-      redirect("../yourCart.php" , "Item Deleted Successfully");
+      // redirect("../yourCart.php" , "Item Deleted Successfully");
+      // $_SESSION ['message']="Item Deleted Successfully";
+      // header('Location: ../yourCart.phpp');.
+      echo 200 ;
    }
    else{
-      redirect("../index.php" , "Something went wrong");
+      // redirect("../index.php" , "Something went wrong");
+      // $_SESSION ['message']="Something went wrong";
+      // header('Location: ../index.php');
+      echo 500 ;
    }
 }
 
-else if(isset($_POST['delete_all'])){
-  $user_id = $_POST['user_id'];
+else if(isset($_POST['btnCartDelete'])){
+  $user_id = $_POST['delete_all'];
   $sql = "DELETE FROM `cart` WHERE user_id = $user_id";
   $delete_item = mysqli_query($con , $sql) ;
   if($delete_item)
    {
-      redirect("../yourCart.php" , "Items Deleted Successfully");
+      echo 200 ;
    }
    else{
-      redirect("../index.php" , "Something went wrong");
+      echo 500 ;
    }
 }
 
@@ -74,10 +84,14 @@ else if(isset($_POST['update_qty'])){
   $update_item = mysqli_query($con , $sql) ;
   if($update_item)
    {
-      redirect("../yourCart.php" , "Item Update Successfully");
+      // redirect("../yourCart.php" , "Item Update Successfully");
+      $_SESSION ['message']="Item Update Successfully";
+      header('Location: ../yourCart.php');
    }
    else{
-      redirect("../yourCart.php" , "Something went wrong");
+      // redirect("../yourCart.php" , "Something went wrong");
+      $_SESSION ['message']="Something went wrong";
+      header('Location: ../yourCart.php');
    }
 }
 
@@ -94,7 +108,9 @@ else if(isset($_POST['addTOheart'])){
    $check_cart = mysqli_query($con , $sql) ;
    if(mysqli_num_rows($check_cart) > 0 )
    {      
-    redirect("../yourGift.php" , "Your Product Added To Favorite!");
+   //  redirect("../yourGift.php" , "Your Product Added To Favorite!");
+    $_SESSION ['message']="Your Product Added To Favorite!";
+    header('Location: ../yourGift.php');
 }
 else
 {
@@ -103,17 +119,23 @@ else
      $send_to_cart = mysqli_query($con , $sql) ;
      echo ($sql);
      if($send_to_cart){
-        redirect("../yourGift.php","Product Added Successfully");
+      //   redirect("../yourGift.php","Product Added Successfully");
+        $_SESSION ['message']="Product Added To Favorite Successfully";
+        header('Location: ../yourGift.php');
      }
      else
      {
-        redirect("../index.php","Something went wrong");
+      //   redirect("../index.php","Something went wrong");
+        $_SESSION ['message']="Something went wrong";
+        header('Location: ../index.php');
      }
    }
 } 
     else
     {
-     redirect("../login.php","Login To Continue");
+   //   redirect("../login.php","Login To Continue");
+     $_SESSION ['message']="Login To Continue";
+     header('Location: ../login.php');
     }
 }
 
@@ -123,15 +145,19 @@ else if(isset($_POST['deleteFavorite'])){
    $delete_item = mysqli_query($con , $sql) ;
    if($delete_item)
     {
-       redirect("../yourFavorite.php" , "Item Deleted Successfully");
+      //  redirect("../yourFavorite.php" , "Item Deleted Successfully");
+       $_SESSION ['message']="Item Deleted Successfully";
+       header('Location: ../yourFavorite.php');
     }
     else{
-       redirect("../index.php" , "Something went wrong");
+      //  redirect("../index.php" , "Something went wrong");
+       $_SESSION ['message']="Something went wrong";
+       header('Location: ../index.php');
     }
  }
 
 
-else if(isset($_POST['addcartFavorite'])){
+else if(isset($_POST['addCartFavorite'])){
    if(isset($_SESSION['auth']))
  {
   $user_id = $_SESSION['auth_user']['user_id'];
@@ -143,7 +169,9 @@ else if(isset($_POST['addcartFavorite'])){
   $check_cart = mysqli_query($con , $sql) ;
   if(mysqli_num_rows($check_cart) > 0 )
   {      
-   redirect("../yourFavorite.php" , "Your Product Added To Cart!");
+   // redirect("../yourFavorite.php" , "Your Product Added To Cart!");
+   $_SESSION ['message']="Your Product Added To Cart!";
+   header('Location: ../yourFavorite.php');
 }
 else
 {
@@ -151,21 +179,27 @@ else
 
       $send_to_cart = mysqli_query($con , $sql) ;
        if($send_to_cart){
-        redirect("../yourFavorite.php" ,"Product Added Successfully");
+      //   redirect("../yourFavorite.php" ,"Product Added Successfully");
+        $_SESSION ['message']="Product Added To cart Successfully";
+        header('Location: ../yourFavorite.php');
        }
          else
        {
-          redirect("../index.php" , "Something went wrong");
+         //  redirect("../index.php" , "Something went wrong");
+          $_SESSION ['message']="Something went wrong";
+          header('Location: ../index.php');
        }
      }
    }
    else
    {
-    redirect("../login.php" , "Login To Continue");
+   //  redirect("../login.php" , "Login To Continue");
+    $_SESSION ['message']="Login To Continue";
+    header('Location: ../login.php');
    }
 }
 
-else if(isset($_POST['addheartFavorite'])){
+else if(isset($_POST['addHeartFavorite'])){
  if(isset($_SESSION['auth']))
 {
   $user_id = $_SESSION['auth_user']['user_id'];
@@ -178,7 +212,9 @@ else if(isset($_POST['addheartFavorite'])){
   $check_cart = mysqli_query($con , $sql) ;
   if(mysqli_num_rows($check_cart) > 0 )
   {      
-   redirect("../yourFavorite.php" , "Your Product Added To Favorite!");
+   // redirect("../yourFavorite.php" , "Your Product Added To Favorite!");
+   $_SESSION ['message']="Your Product Added To Favorite!";
+    header('Location: ../yourFavorit.php');
 }
 else
 {
@@ -187,21 +223,112 @@ else
     $send_to_cart = mysqli_query($con , $sql) ;
     echo ($sql);
     if($send_to_cart){
-       redirect("../yourFavorite.php","Product Added Successfully");
+      //  redirect("../yourFavorite.php","Product Added To Favorite Successfully");
+       $_SESSION ['message']="Product Added To Favorite Successfully";
+       header('Location: ../yourFavorite.php');
     }
     else
     {
-       redirect("../index.php","Something went wrong");
+      //  redirect("../index.php","Something went wrong");
+       $_SESSION ['message']="Something went wrong";
+       header('Location: ../index.php');
     }
   }
 } 
    else
    {
-    redirect("../login.php","Login To Continue");
+   //  redirect("../login.php","Login To Continue");
+    $_SESSION ['message']="Login To Continue";
+    header('Location: ../login.php');
    }
 }
 
-else if(isset($_POST['addcartIndrex'])){
+else if(isset($_POST['addCartIndrex'])){
+   if(isset($_SESSION['auth']))
+ {
+  $user_id = $_SESSION['auth_user']['user_id'];
+  $productId = $_POST['product_id'];
+  $product_qty = $_POST['qty'];
+  
+  $sql = "SELECT * FROM `cart` WHERE product_id = '$productId' AND user_id = '$user_id';";
+  $check_cart = mysqli_query($con , $sql) ;
+  if(mysqli_num_rows($check_cart) > 0 )
+  {      
+   // redirect("../index.php" , "Your Product Added To Cart!");
+   $_SESSION ['message']="Your Product Added To Cart!";
+    header('Location: ../index.php');
+}
+else
+{
+     $sql = "INSERT INTO `cart`(`id`, `user_id`, `product_id`, `qty`) VALUES (NULL,'$user_id','$productId','$product_qty');";
+
+      $send_to_cart = mysqli_query($con , $sql) ;
+       if($send_to_cart){
+      //   redirect("../index.php" ,"Product Added To Cart Successfully");
+        $_SESSION ['message']="Product Added To Cart Successfully";
+        header('Location: ../index.php');
+       }
+         else
+       {
+         //  redirect("../index.php" , "Something went wrong");
+          $_SESSION ['message']="Something went wrong";
+          header('Location: ../index.php');
+       }
+     }
+   }
+   else
+   {
+   //  redirect("../login.php" , "Login To Continue");
+    $_SESSION ['message']="Login To Continue";
+    header('Location: ../login.php');
+   }
+}
+
+else if(isset($_POST['addHeartIndrex'])){
+ if(isset($_SESSION['auth']))
+{
+  $user_id = $_SESSION['auth_user']['user_id'];
+  $productId = $_POST['product_id'];
+  $product_name = $_POST['name'];
+  $product_price = $_POST['price'];
+  $product_image = $_POST['image'];
+  $description   = $_POST['description']; 
+  $sql = "SELECT * FROM `favorite` WHERE product_id = '$productId' AND user_id = '$user_id';";
+  $check_cart = mysqli_query($con , $sql) ;
+  if(mysqli_num_rows($check_cart) > 0 )
+  {      
+   // redirect("../index.php" , "Your Product Added To Favorite!");
+   $_SESSION ['message']="Your Product Added To Favorite!";
+    header('Location: ../index.php');
+}
+else
+{
+
+    $sql = "INSERT INTO `favorite` (`id`, `user_id`, `product_id`, `name`, `description`, `price`, `image`)  VALUES (NULL,'$user_id', '$productId' , '$product_name' , '$description' , '$product_price', '$product_image');";
+    $send_to_cart = mysqli_query($con , $sql) ;
+    echo ($sql);
+    if($send_to_cart){
+      //  redirect("../index.php","Product Added Successfully");
+       $_SESSION ['message']="Product Added To favorite Successfully";
+       header('Location: ../index.php');
+    }
+    else
+    {
+      //  redirect("../index.php","Something went wrong");
+       $_SESSION ['message']="Something went wrong";
+       header('Location: ../index.php');
+    }
+  }
+} 
+   else
+   {
+   //  redirect("../login.php","Login To Continue");
+    $_SESSION ['message']="Login To Continue";
+    header('Location: ../login.php');
+   }
+}
+
+else if(isset($_POST['addCartSearch'])){
    if(isset($_SESSION['auth']))
  {
   $user_id = $_SESSION['auth_user']['user_id'];
@@ -216,7 +343,9 @@ else if(isset($_POST['addcartIndrex'])){
   $check_cart = mysqli_query($con , $sql) ;
   if(mysqli_num_rows($check_cart) > 0 )
   {      
-   redirect("../index.php" , "Your Product Added To Cart!");
+   // redirect("../search.php" , "Your Product Added To Cart!");
+   $_SESSION ['message']="Your Product Added To Cart!";
+    header('Location: ../search.php');
 }
 else
 {
@@ -224,21 +353,27 @@ else
 
       $send_to_cart = mysqli_query($con , $sql) ;
        if($send_to_cart){
-        redirect("../index.php" ,"Product Added Successfully");
+      //   redirect("../search.php" ,"Product Added Successfully");
+        $_SESSION ['message']="Product Added to cart Successfully";
+        header('Location: ../search.php');
        }
          else
        {
-          redirect("../index.php" , "Something went wrong");
+         //  redirect("../index.php" , "Something went wrong");
+          $_SESSION ['message']="Something went wrong";
+        header('Location: ../index.php');
        }
      }
    }
    else
    {
-    redirect("../login.php" , "Login To Continue");
+   //  redirect("../login.php" , "Login To Continue");
+    $_SESSION ['message']="Login To Continue";
+    header('Location: ../login.php');
    }
 }
 
-else if(isset($_POST['addheartIndrex'])){
+else if(isset($_POST['addHeartSearch'])){
  if(isset($_SESSION['auth']))
 {
   $user_id = $_SESSION['auth_user']['user_id'];
@@ -251,7 +386,9 @@ else if(isset($_POST['addheartIndrex'])){
   $check_cart = mysqli_query($con , $sql) ;
   if(mysqli_num_rows($check_cart) > 0 )
   {      
-   redirect("../index.php" , "Your Product Added To Favorite!");
+   // redirect("../search.php" , "Your Product Added To Favorite!");
+   $_SESSION ['message']="Your Product Added To Favorite!";
+    header('Location: ../search.php');
 }
 else
 {
@@ -260,90 +397,23 @@ else
     $send_to_cart = mysqli_query($con , $sql) ;
     echo ($sql);
     if($send_to_cart){
-       redirect("../index.php","Product Added Successfully");
+      //  redirect("../search.php","Product Added Successfully");
+       $_SESSION ['message']="Product Added To Favorite Successfully";
+       header('Location: ../search.php');
     }
     else
     {
-       redirect("../index.php","Something went wrong");
+      //  redirect("../index.php","Something went wrong");
+       $_SESSION ['message']="Something went wrong";
+    header('Location: ../index.php');
     }
   }
 } 
    else
    {
-    redirect("../login.php","Login To Continue");
-   }
-}
-
-else if(isset($_POST['addcartSearch'])){
-   if(isset($_SESSION['auth']))
- {
-  $user_id = $_SESSION['auth_user']['user_id'];
-  $productId = $_POST['product_id'];
- //  $product_name = $_POST['name'];
-  $product_qty = $_POST['qty'];
- //  $product_price = $_POST['price'];
- //  $product_image = $_POST['image'];
-  
-  
-  $sql = "SELECT * FROM `cart` WHERE product_id = '$productId' AND user_id = '$user_id';";
-  $check_cart = mysqli_query($con , $sql) ;
-  if(mysqli_num_rows($check_cart) > 0 )
-  {      
-   redirect("../search.php" , "Your Product Added To Cart!");
-}
-else
-{
-     $sql = "INSERT INTO `cart`(`id`, `user_id`, `product_id`, `qty`) VALUES (NULL,'$user_id','$productId','$product_qty');";
-
-      $send_to_cart = mysqli_query($con , $sql) ;
-       if($send_to_cart){
-        redirect("../search.php" ,"Product Added Successfully");
-       }
-         else
-       {
-          redirect("../index.php" , "Something went wrong");
-       }
-     }
-   }
-   else
-   {
-    redirect("../login.php" , "Login To Continue");
-   }
-}
-
-else if(isset($_POST['addheartSearch'])){
- if(isset($_SESSION['auth']))
-{
-  $user_id = $_SESSION['auth_user']['user_id'];
-  $productId = $_POST['product_id'];
-  $product_name = $_POST['name'];
-  $product_price = $_POST['price'];
-  $product_image = $_POST['image'];
-  $description   = $_POST['description']; 
-  $sql = "SELECT * FROM `favorite` WHERE product_id = '$productId' AND user_id = '$user_id';";
-  $check_cart = mysqli_query($con , $sql) ;
-  if(mysqli_num_rows($check_cart) > 0 )
-  {      
-   redirect("../search.php" , "Your Product Added To Favorite!");
-}
-else
-{
-
-    $sql = "INSERT INTO `favorite` (`id`, `user_id`, `product_id`, `name`, `description`, `price`, `image`)  VALUES (NULL,'$user_id', '$productId' , '$product_name' , '$description' , '$product_price', '$product_image');";
-    $send_to_cart = mysqli_query($con , $sql) ;
-    echo ($sql);
-    if($send_to_cart){
-       redirect("../search.php","Product Added Successfully");
-    }
-    else
-    {
-       redirect("../index.php","Something went wrong");
-    }
-  }
-} 
-   else
-   {
-    redirect("../login.php","Login To Continue");
+   //  redirect("../login.php","Login To Continue");
+    $_SESSION ['message']="Login To Continue";
+    header('Location: ../login.php');
    }
 }
 
@@ -360,18 +430,23 @@ else if(isset($_POST['addReview'])){
       $send_to_review = mysqli_query($con , $sql) ;
       echo ($sql);
       if($send_to_review){
-        redirect("../yourGift.php","Product Review Added Successfully");
-      //   redirect("../product_view.php","Product Review Added Successfully");
+      //   redirect("../yourGift.php","Product Review Added Successfully");
+        $_SESSION ['message']="Product Review Added Successfully";
+        header('Location: ../product_view.php');
       }
       else
       {
-         redirect("../index.php","Something went wrong");
+         // redirect("../index.php","Something went wrong");
+         $_SESSION ['message']="Something went wrong";
+         header('Location: ../index.php');
       }
     }
   } 
      else
      {
-      redirect("../login.php","Login To Continue");
+      // redirect("../login.php","Login To Continue");
+      $_SESSION ['message']="Login To Continue";
+      header('Location: ../login.php');
      }
 //   }
 ?>
