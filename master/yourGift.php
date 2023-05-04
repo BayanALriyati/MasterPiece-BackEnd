@@ -7,7 +7,7 @@ include_once('functions/userFunctions.php');
                   ?>
                   <div class="alert alert-danger alert-dismissible fade show" role="alert">
                        <?= $_SESSION ['message']; ?>
-                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="fa-sharp fa-solid fa-close"></i></button>
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
                     <?php  
                         unset($_SESSION ['message']);

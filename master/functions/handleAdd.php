@@ -140,19 +140,21 @@ else
 }
 
 else if(isset($_POST['deleteFavorite'])){
-   $favorite_id = $_POST['favorite_id'];
+   $favorite_id = $_POST['deleteFavorite_id'];
    $sql = "DELETE FROM `favorite` WHERE id = $favorite_id";
    $delete_item = mysqli_query($con , $sql) ;
    if($delete_item)
     {
       //  redirect("../yourFavorite.php" , "Item Deleted Successfully");
-       $_SESSION ['message']="Item Deleted Successfully";
-       header('Location: ../yourFavorite.php');
+      //  $_SESSION ['message']="Item Deleted Successfully";
+      //  header('Location: ../yourFavorite.php');
+      echo 200 ;
     }
     else{
       //  redirect("../index.php" , "Something went wrong");
-       $_SESSION ['message']="Something went wrong";
-       header('Location: ../index.php');
+      //  $_SESSION ['message']="Something went wrong";
+      //  header('Location: ../index.php');
+      echo 500 ;
     }
  }
 

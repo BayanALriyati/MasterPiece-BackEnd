@@ -19,7 +19,7 @@ if(isset($_SESSION['auth']))
 
 <section class="products" id="product">
 
-   <div class="box-container">
+   <div class="box-container" id="deleteFavorite">
    <?php 
 
 $items = getHeartItems();
@@ -59,10 +59,10 @@ if(mysqli_num_rows($items)> 0 )
                  }
 
                  ?>
-                 <form action="./functions/handleAdd.php" method="POST" enctype="multipart/       form-data">  
+                 <form action="./functions/handleAdd.php" method="POST" enctype="multipart/form-data">  
                      <input type="hidden" name="user_id" value="<?= $item['user_id']; ?>">
                      <input type="hidden" name="favorite_id" value="<?= $item['id']; ?>">
-                     <button type="submit" name="deleteFavorite" value="<?= $item['id']; ?>" onclick="return confirm('Delete This From Cart?');"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i></button></td> 
+                     <button type="submit" class="deleteFavorite" name="deleteFavorite" value="<?= $item['id']; ?>"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i></button></td> 
                  </form> 
         </div>
            <div class="image">

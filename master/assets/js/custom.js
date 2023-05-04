@@ -54,3 +54,45 @@
              
     //         })
    }) 
+//   $(document).ready(function(){
+//     $('.deleteFavorite').click(function(e){
+//       e.preventDefault();
+//       var id = $(this).val();
+//       // alert(id);
+  
+//       swal({
+//         title: "Are You Sure Delete?",
+//         text: "Once Deleted, You Will Not Be Able To Recover",
+//         icon: "warning",
+//         buttons: true,
+//         dangerMode: true,
+      
+//       })
+    
+//       .then((willDelete) => {
+//         if (willDelete) {
+//           $.ajax({
+//              type: "POST",
+//              url:"./functions/handleAdd.php",
+//              data:{
+//               'deleteFavorite_id':id,
+//               'deleteFavorite':true,
+//              },
+//              success : function (response){
+//               console.log(response);
+//                 if(response == 200)
+//                 {
+//                   swal("Success!", "Item Deleted Successfully!", "success");
+//                   $("#product").load(location.href + " #product");
+//                 }
+//                 else if(response == 500)
+//                 swal("Error!", "Something went wrong!", "error");
+//              }
+            
+//           });
+        
+//         } 
+//       });
+//     });
+  
+//  });

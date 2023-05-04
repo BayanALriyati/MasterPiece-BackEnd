@@ -107,20 +107,20 @@
      <!-- End of .container -->
      <script src="assets/js/jquery-3.6.3.min.js"></script>
      <script src = "https://ajax.googleapis.com/ajax/libs/jQuery/3.3.1/jQuery.min.js"></script>
-
-     <script src="assets/js/custom.js"></script>
+     <!-- <script src="assets/js/script.js"></script> -->
+     <!-- <script src="assets/js/custom.js"></script> -->
 
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/perfect-scrollbar.min.js"></script>
   <script src="assets/js/smooth-scrollbar.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
    
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="./assets/js/script.js"></script>
-   <script src="assets/js/silder.js"></script>
+  <!-- <script src="assets/js/script.js"></script> -->
+   <!-- <script src="assets/js/silder.js"></script> -->
     <!-- Alertify Js -->
    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
    
@@ -181,96 +181,15 @@
   },
 });
 </script>
+
 <script>
-
-
 profile = document.querySelector('.header .flex .profile');
 
 document.querySelector('#user-btn').onclick = () =>{
    profile.classList.toggle('active');
 }
   </script>
-  <!-- <script>
-// navbar = document.querySelector('.header .flex .navbar');
-
-// document.querySelector('#menu-btn').onclick = () =>{
-//    navbar.classList.toggle('active');
-//    profile.classList.remove('active');
-// }
-
-profile = document.querySelector('.header .flex .profile');
-
-document.querySelector('#user-btn').onclick = () =>{
-   profile.classList.toggle('active');
-  //  navbar.classList.remove('active');
-}
-  </script>
-  <script>
-function showInputBox() {
-  // var selectBox = document.getElementById("mySelect");
-  // var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-  // if (selectedValue === "Credit card") {
-  //   // var inputBox = document.createElement("input"); 
-  //   // inputBox.type = "text";
-  //   // inputBox.name = "card_Number";
-  //   // inputBox.id = "myInputBox";
-  //   // inputBox.placeholder = "Enter your Name here";
-  //   // var container = document.getElementById("inputName");
-  //   // container.innerHTML = "";
-  //   // container.appendChild(inputBox);
-
-  //   var inputBox = document.createElement("Div"); 
-    
-  //   // inputBox.type = "text";
-  //   // inputBox.name = "card_Number";
-  //   // inputBox.id = "myInputBox";
-  //   // inputBox.placeholder = "Enter your Card Number here";
-  //   var container = document.getElementById("boxCredit");
-  //   container.innerHTML = "";
-  //   // container.appendChild(inputBox);
-
-  //   // var inputBox = document.createElement("input"); 
-  //   // inputBox.type = "text";
-  //   // inputBox.name = "card_Number";
-  //   // inputBox.id = "myInputBox";
-  //   // inputBox.placeholder = "Enter your Name here";
-  //   // var container = document.getElementById("inputExpirationDate");
-  //   // container.innerHTML = "";
-  //   // container.appendChild(inputBox);
-
-  //   // var inputBox = document.createElement("input"); 
-  //   // inputBox.type = "text";
-  //   // inputBox.name = "card_Number";
-  //   // inputBox.id = "myInputBox";
-  //   // inputBox.placeholder = "Enter your CVV here";
-  //   // var container = document.getElementById("inputCVV");
-  //   // container.innerHTML = "";
-  //   // container.appendChild(inputBox);
-  // } else {
-  //   // var container = document.getElementById("inputName");
-  //   // container.innerHTML = "";
-  //   var container = document.getElementById("boxCredit");
-  //   container.innerHTML = "";
-  //   // var container = document.getElementById("inputExpirationDate");
-  //   // container.innerHTML = "";
-  //   // var container = document.getElementById("inputCVV");
-  //   // container.innerHTML = "";
-  // }
-  function createDiv() {
-    
-    
-
-			const selectBox = document.getElementById("selectBox");
-			const selectedValue = selectBox.value;
-      if (selectedValue === "Credit card") {
-			const div = document.createElement("div");
-			// div.innerHTML = `You selected ${selectedValue}`;
-			document.getElementById("output").appendChild(div);
-    }
-		}
-}
-  </script> -->
+ 
   <script>
 		function createDiv() {
 			const selectBox = document.getElementById("selectBox");
@@ -292,50 +211,43 @@ function showInputBox() {
     }
 	</script>
  
-  <script>
-$(document).ready(function(){
+<script>
+ $(document).ready(function(){
+  $('.increment-btn').click(function (e) {
+
+    e.preventDefault();
+
+    var qty = $('.input-qty').val();
+
+    var value = parseInt(qty, 20); 
+    value = isNaN(value)? 0 : value;
 
 
+    if(value < 20)
+    {
+       value++;
+      $('.input-qty').val(value);
+    }
+});
 
-$('.increment-btn').click(function (e) {
+$('.decrement-btn').click(function (e) {
 
-e.preventDefault();
+  e.preventDefault();
+  var qty = $('.input-qty').val();
 
-var qty = $('.input-qty').val();
-
-var value = parseInt(qty, 20); 
-value = isNaN(value)? 0 : value;
-
-
-if(value < 20)
-{
-   value++;
-  $('.input-qty').val(value);
-
-}
+  var value = parseInt(qty, 20); 
+  value = isNaN(value)? 0 : value;
 
 
- });
- $('.decrement-btn').click(function (e) {
-
-e.preventDefault();
-
-var qty = $('.input-qty').val();
-
-
-var value = parseInt(qty, 20); 
-value = isNaN(value)? 0 : value;
-
-
-if(value > 1)
-{
+  if(value > 1)
+  {
    value--;
   $('.input-qty').val(value);
   // alert(qty);
-}
+  }
+});
 
- });
- $('.addToCartBtn').click(function (e){
+$('.addToCartBtn').click(function (e){
     e.preventDefault();
     var qty = $('.input-qty').val();
 
@@ -344,8 +256,8 @@ if(value > 1)
   
    }) 
 });
-
 </script>
+
 <script>
   $(document).ready(function(){
     $('.btnCartDelete').click(function(e){
@@ -434,6 +346,52 @@ if(value > 1)
     });
   
  });
-</script> 
-   </body>
-   </html>
+</script>
+
+<script>
+  $(document).ready(function(){
+    $('.deleteFavorite').click(function(e){
+      e.preventDefault();
+      var id = $(this).val();
+      // alert(id);
+  
+      swal({
+        title: "Are You Sure Delete?",
+        text: "Once Deleted, You Will Not Be Able To Recover",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      
+      })
+    
+      .then((willDelete) => {
+        if (willDelete) {
+          $.ajax({
+             type: "POST",
+             url:"./functions/handleAdd.php",
+             data:{
+              'deleteFavorite_id':id,
+              'deleteFavorite':true,
+             },
+             success : function (response){
+              console.log(response);
+                if(response == 200)
+                {
+                  swal("Success!", "Item Deleted Successfully!", "success");
+                  $("#product").load(location.href + " #product");
+                }
+                else if(response == 500)
+                swal("Error!", "Something went wrong!", "error");
+             }
+            
+          });
+        
+        } 
+      });
+    });
+  
+ });
+</script>
+
+</body>
+</html>

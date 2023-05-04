@@ -21,7 +21,7 @@ include_once('functions/userFunctions.php');
     <div>
     <h1 class="head-h1">The Best GIFT</h1>
     <p class="head-p">Your gift is on us and the visit is on you.</p>
-    <a href="./yourGift.php" class="btnCart" target="_blank">Discover More</a>
+    <a href="./yourGift.php" class="btn" target="_blank">Discover More</a>
     </div>
  
     <video class="video-bg" autoplay muted loop>

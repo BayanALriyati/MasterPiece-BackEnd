@@ -73,17 +73,45 @@ var ProductImg = document.getElementById('ProductImg');
       ProductImg.src = SmallImg[3].src;
     };
 
-
-    // navbar = document.querySelector('.header .navbar');
-
-    // document.querySelector('#menu-btn').onclick = () =>{
-    //    navbar.classList.toggle('active');
-    //    profile.classList.remove('active');
-    // }
+//   $(document).ready(function(){
+//     $('.deleteFavorite').click(function(e){
+//       e.preventDefault();
+//       var id = $(this).val();
+//       // alert(id);
+  
+//       swal({
+//         title: "Are You Sure Delete?",
+//         text: "Once Deleted, You Will Not Be Able To Recover",
+//         icon: "warning",
+//         buttons: true,
+//         dangerMode: true,
+      
+//       })
     
-    // profile = document.querySelector('.header .profile');
-    
-    // document.querySelector('#user-btn').onclick = () =>{
-    //    profile.classList.toggle('active');
-    //    navbar.classList.remove('active');
-    // }
+//       .then((willDelete) => {
+//         if (willDelete) {
+//           $.ajax({
+//              type: "POST",
+//              url:"./functions/handleAdd.php",
+//              data:{
+//               'deleteFavorite_id':id,
+//               'deleteFavorite':true,
+//              },
+//              success : function (response){
+//               console.log(response);
+//                 if(response == 200)
+//                 {
+//                   swal("Success!", "Item Deleted Successfully!", "success");
+//                   $("#product").load(location.href + " #product");
+//                 }
+//                 else if(response == 500)
+//                 swal("Error!", "Something went wrong!", "error");
+//              }
+            
+//           });
+        
+//         } 
+//       });
+//     });
+  
+//  });

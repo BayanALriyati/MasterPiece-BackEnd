@@ -265,10 +265,13 @@ section{
 }
 
 .btn{
+   width: 20rem;
+   height: 4rem;
+   margin-top: 2rem;
+   font-size: 2rem;
    border-radius: .5rem;
    color:var(--white);
    background:var(--dark-color);
-   font-size: 1.7rem;
    cursor: pointer;
    font-weight: 500;
 }
@@ -1330,7 +1333,25 @@ img {
    color:var(--black);
    background-image: url(../images/heading-bg.jpg);
 }
+.deleteFavorite{
+   z-index: 1000;
+   text-align: center;
+   margin: 0rem 1rem;
+   display: inline-block;
+   padding: 0.9rem 1rem;
+   border: 1px solid black;
+   border-radius: 5rem;
+   color: var(--white);
+   background: var(--dark-color);
+   font-size: 1.7rem;
+   cursor: pointer;
+   height: max-content;
+}
 
+.deleteFavorite:hover{
+   color:var(--black);
+   background-image: url(../images/heading-bg.jpg);
+}
  td:last-child {
    text-align: center;
    padding: 1rem 0.5rem;
@@ -1556,8 +1577,25 @@ td .input-group .cart-btn:hover{
    margin-top: 8vh;
    margin-left: 20vh;
 }
-
+/* section i {
+   border-radius: 50%;
+   width: 5rem;
+   height: 5rem;
+   background-color: rgba(255,255,255,0.8);
+   color: var(--black);
+   text-align: center;
+} */
 section i{
+   border-radius: 50%;
+   width: 4rem;
+   height: 4rem;
+   background-color: var(--black);
+   text-align: center;
+   /* margin: auto auto; */
+   padding: 1rem;
+}
+
+section i:hover{
    border-radius: 50%;
    width: 4rem;
    height: 4rem;
@@ -1618,14 +1656,14 @@ section i{
     margin-top: 5rem;
     /* margin-bottom: 0; */
  }
- section i{
+ /* section i{
     border-radius: 50%;
     width: 5rem;
     height: 5rem;
     background-color: rgba(255,255,255,0.8);
     color: var(--black);
     text-align: center;
- }
+ } */
  .form {
     display: flex;
     position: absolute;
